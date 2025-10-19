@@ -1,0 +1,7 @@
+2025-10-19 15:16:02.657324
+
+AdaptiveSparkPlan isFinalPlan=false
++- HashAggregate(keys=[user_id#17], functions=[count(1), sum(price#19)], output=[user_id#17, n#39L, total#40])
+   +- Exchange hashpartitioning(user_id#17, 200), ENSURE_REQUIREMENTS, [plan_id=84]
+      +- HashAggregate(keys=[user_id#17], functions=[partial_count(1), partial_sum(price#19)], output=[user_id#17, count#52L, sum#53])
+         +- FileScan csv [user_id#17,price#19] Batched: false, DataFilters: [], Format: CSV, Location: InMemoryFileIndex(1 paths)[file:/home/sable/Documents/data engineering1/data/sample_sales.csv], PartitionFilters: [], PushedFilters: [], ReadSchema: struct<user_id:int,price:double>
