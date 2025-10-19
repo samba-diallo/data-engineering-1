@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+
+# Virtual Environment
+de1-env/
+venv/
+
+# IDE
+.vscode/
+.idea/
+
+# Spark
+spark-warehouse/
+*.log
+derby.log
