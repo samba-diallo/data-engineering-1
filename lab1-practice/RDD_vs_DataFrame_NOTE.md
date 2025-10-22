@@ -1,7 +1,7 @@
 # RDD_vs_DataFrame_NOTE.md
 
 ## DE1 Lab 1: PySpark Warmup and Reading Plans
-**Student:** Badr TAJINI | **Date:** 2025-10-23 | **AI Assistant:** Claude Haiku 4.5
+**Student:** Samba DIALLO | **Date:** 2025-10-23 | **AI Assistant:** Claude Haiku 4.5
 
 ---
 
