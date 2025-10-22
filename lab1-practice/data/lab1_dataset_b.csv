@@ -1,0 +1,1501 @@
+id,category,value,text
+0,toys,25.21,scala metrics map shuffle data plan scala python plan
+1,toys,52.98,python lake elt data shuffle aggregate data columnar data etl
+2,toys,72.58,partition data etl aggregate spark lake elt warehouse python scala elt aggregate
+3,electronics,57.98,reduce map aggregate ui metrics plan
+4,electronics,65.55,row join filter filter scala
+5,electronics,16.22,warehouse plan reduce scala elt ui plan lake aggregate elt elt
+6,electronics,5.12,metrics scala partition spark python python
+7,toys,1.97,aggregate warehouse python filter elt join spark ui etl shuffle plan ui
+8,grocery,20.06,metrics warehouse elt partition lake metrics data elt
+9,toys,16.11,aggregate data plan shuffle plan partition etl
+10,books,22.62,ui map reduce python elt etl row join spark metrics
+11,books,97.45,map map map aggregate elt columnar data join join filter
+12,grocery,90.69,lake partition python row aggregate join lake partition row filter
+13,toys,81.38,reduce shuffle elt data columnar ui
+14,electronics,90.54,filter plan reduce partition lake partition
+15,grocery,51.96,elt metrics shuffle row data
+16,books,89.34,plan shuffle scala plan columnar row filter
+17,toys,10.29,warehouse ui etl filter warehouse filter columnar partition lake data columnar aggregate
+18,toys,83.97,partition ui map elt row lake etl row data ui
+19,books,65.99,shuffle python partition etl filter
+20,grocery,27.11,spark ui data warehouse warehouse row reduce warehouse join
+21,grocery,24.55,plan ui reduce shuffle plan lake lake data
+22,toys,18.46,python lake map elt spark join shuffle lake filter map
+23,toys,7.42,python etl join warehouse map plan warehouse elt
+24,toys,80.75,python data metrics aggregate python join
+25,books,15.52,etl ui partition metrics aggregate python reduce ui row spark columnar join
+26,electronics,3.99,reduce python filter join python filter join row shuffle python data etl
+27,grocery,34.13,metrics aggregate warehouse join metrics
+28,books,62.83,data columnar partition join etl etl reduce
+29,grocery,87.35,partition elt etl aggregate scala plan elt python shuffle filter
+30,books,6.06,aggregate python map elt shuffle aggregate join warehouse join
+31,electronics,6.55,reduce spark metrics columnar filter metrics columnar shuffle
+32,grocery,91.77,scala columnar partition columnar python filter row data scala warehouse shuffle plan
+33,electronics,87.05,filter filter join aggregate scala row metrics reduce
+34,toys,33.09,row spark etl row warehouse lake columnar row lake filter scala
+35,toys,16.94,spark plan partition python join
+36,books,2.05,shuffle reduce elt ui data
+37,electronics,88.63,aggregate reduce ui shuffle ui map
+38,books,56.56,row elt aggregate lake data join filter spark reduce
+39,toys,27.59,lake filter reduce map etl partition partition warehouse spark warehouse
+40,toys,53.95,row spark aggregate row ui data partition join map map
+41,books,71.12,columnar shuffle python plan metrics
+42,grocery,60.4,filter metrics filter join scala row
+43,toys,87.24,metrics row elt ui join partition
+44,toys,99.14,aggregate elt aggregate ui data spark
+45,books,6.18,columnar elt lake metrics map aggregate scala aggregate filter filter map
+46,electronics,91.47,lake lake scala shuffle warehouse reduce metrics python
+47,books,92.57,map row elt python lake warehouse python metrics aggregate ui aggregate
+48,books,97.21,scala map metrics reduce aggregate elt lake map ui partition warehouse
+49,toys,97.19,data reduce partition spark join etl
+50,grocery,58.01,aggregate spark plan warehouse reduce scala
+51,grocery,82.64,filter row join aggregate elt map
+52,electronics,21.34,filter etl elt aggregate columnar lake etl aggregate scala elt data
+53,books,69.64,lake row warehouse data metrics plan
+54,grocery,36.52,aggregate scala metrics etl join scala filter metrics aggregate map
+55,toys,86.21,elt etl map python scala
+56,grocery,20.61,join map partition join join
+57,books,35.71,scala etl reduce python plan metrics ui python map
+58,toys,12.65,ui ui aggregate data map python lake
+59,grocery,82.23,warehouse ui scala join elt
+60,grocery,75.9,ui warehouse etl shuffle shuffle lake aggregate
+61,grocery,10.23,scala elt data plan etl ui spark metrics warehouse map plan
+62,books,49.77,aggregate scala etl row lake reduce filter warehouse
+63,toys,60.87,filter warehouse partition columnar lake
+64,electronics,88.16,metrics aggregate shuffle ui map row warehouse
+65,books,99.4,scala warehouse lake lake shuffle scala aggregate data plan
+66,electronics,29.11,elt scala elt aggregate partition
+67,grocery,79.92,shuffle aggregate data data map scala scala
+68,books,60.56,join ui warehouse elt shuffle warehouse reduce spark columnar spark reduce etl
+69,books,75.5,columnar scala shuffle elt filter aggregate row etl row
+70,electronics,19.93,lake join etl plan row reduce aggregate row join lake
+71,books,90.57,partition join elt ui warehouse warehouse elt
+72,grocery,71.77,reduce row warehouse partition etl
+73,toys,73.05,data map reduce ui filter
+74,electronics,82.85,ui aggregate join filter etl data
+75,books,58.56,etl metrics row data scala filter etl spark plan plan
+76,toys,33.64,ui metrics python map row shuffle warehouse
+77,books,5.02,filter scala shuffle python etl reduce scala spark shuffle columnar
+78,toys,47.81,data data etl partition lake python plan columnar
+79,electronics,37.21,etl spark metrics warehouse partition plan
+80,books,63.27,scala map row spark reduce metrics metrics aggregate python map
+81,toys,82.89,columnar scala python ui filter aggregate shuffle elt scala
+82,grocery,0.72,plan map lake columnar aggregate elt
+83,electronics,8.48,lake etl metrics row ui
+84,books,29.54,shuffle row ui aggregate map aggregate map
+85,books,87.24,scala map filter reduce map scala filter warehouse columnar reduce map metrics
+86,electronics,14.37,lake warehouse reduce scala spark plan lake plan
+87,grocery,67.65,map scala spark ui map scala aggregate python columnar etl python columnar
+88,electronics,10.81,spark filter shuffle lake lake shuffle
+89,books,66.04,ui aggregate join columnar python aggregate python
+90,electronics,83.37,aggregate plan map python metrics python aggregate warehouse warehouse
+91,electronics,58.7,partition columnar lake spark lake ui spark
+92,grocery,40.67,reduce plan lake reduce row plan metrics partition map
+93,electronics,44.44,join partition shuffle filter aggregate warehouse
+94,books,34.83,etl elt data shuffle lake reduce partition row data etl reduce
+95,books,46.72,columnar metrics columnar data spark elt shuffle python
+96,grocery,27.56,map columnar columnar map reduce columnar warehouse reduce
+97,toys,17.28,python columnar etl elt etl aggregate row
+98,toys,30.15,ui python reduce row warehouse filter warehouse plan join filter warehouse elt
+99,toys,43.3,reduce etl ui filter lake scala shuffle metrics spark spark row filter
+100,grocery,70.66,partition etl lake data columnar ui warehouse etl elt
+101,toys,9.07,plan filter shuffle scala reduce etl row spark lake
+102,electronics,14.7,python join spark elt row
+103,electronics,45.58,reduce warehouse shuffle spark warehouse elt row row shuffle row metrics plan
+104,grocery,26.76,reduce elt elt etl metrics
+105,electronics,31.84,reduce partition spark join metrics partition spark reduce
+106,electronics,35.26,reduce python data python spark warehouse ui spark shuffle
+107,grocery,92.87,warehouse warehouse join reduce data scala warehouse filter ui python
+108,electronics,48.4,reduce python aggregate spark warehouse columnar lake join scala scala lake metrics
+109,toys,48.47,lake aggregate row scala partition ui spark data
+110,toys,32.0,row partition partition join map elt plan map lake
+111,toys,6.21,filter etl columnar elt plan metrics spark spark
+112,toys,91.12,reduce partition row aggregate metrics
+113,books,96.61,python python filter shuffle spark
+114,books,8.5,join lake aggregate columnar reduce
+115,toys,98.17,plan row filter spark partition metrics partition row elt
+116,books,36.72,filter metrics python spark data
+117,books,97.42,lake warehouse row ui join warehouse data join
+118,books,59.86,data plan row python shuffle join data scala spark
+119,books,69.09,elt partition plan metrics columnar warehouse reduce elt ui
+120,grocery,13.42,elt map aggregate map shuffle scala shuffle
+121,electronics,99.85,metrics etl shuffle etl partition join lake
+122,toys,28.59,aggregate row map shuffle join elt lake python map python lake
+123,electronics,19.76,data map row ui spark python elt
+124,toys,54.22,columnar partition lake scala partition partition elt columnar
+125,toys,54.82,reduce metrics shuffle reduce ui row
+126,grocery,53.96,join shuffle map ui spark plan
+127,toys,46.42,columnar map elt row data filter
+128,grocery,6.17,data data map warehouse elt map
+129,grocery,6.81,lake elt warehouse filter columnar map warehouse lake metrics scala reduce
+130,books,56.9,join join partition metrics warehouse shuffle etl scala
+131,books,52.94,spark columnar partition shuffle shuffle
+132,toys,76.89,python ui data row columnar shuffle warehouse partition elt
+133,books,30.67,lake warehouse data etl lake
+134,toys,17.57,elt python plan filter spark join scala
+135,electronics,27.32,warehouse warehouse lake warehouse aggregate spark row columnar
+136,electronics,91.3,scala partition shuffle ui columnar
+137,electronics,54.41,map map metrics elt join
+138,grocery,56.1,join reduce partition warehouse plan scala ui scala
+139,books,45.38,spark scala metrics scala scala ui columnar filter
+140,grocery,81.5,shuffle ui etl lake columnar
+141,electronics,91.7,partition python columnar row etl ui ui map elt etl
+142,grocery,64.46,row join metrics shuffle data spark row map
+143,grocery,62.47,lake python plan join metrics map join aggregate etl metrics aggregate
+144,toys,41.59,python python filter plan metrics filter shuffle
+145,toys,53.46,lake columnar scala python shuffle metrics
+146,grocery,82.1,elt spark elt metrics ui filter
+147,electronics,9.37,columnar python warehouse filter etl row data
+148,books,81.38,etl map python aggregate etl columnar
+149,electronics,19.54,partition python reduce filter aggregate aggregate columnar shuffle ui spark scala
+150,electronics,66.75,lake elt python aggregate elt map shuffle ui spark partition
+151,toys,21.78,shuffle lake aggregate elt python row columnar python
+152,electronics,90.89,python partition etl lake join ui warehouse filter reduce reduce metrics spark
+153,books,71.2,python partition warehouse partition data plan data etl map
+154,grocery,56.22,scala warehouse metrics warehouse filter row aggregate partition warehouse reduce
+155,electronics,87.96,python metrics elt row scala etl elt partition data
+156,books,70.29,filter reduce elt etl reduce shuffle filter lake data warehouse plan data
+157,toys,1.83,warehouse etl partition elt python map metrics python
+158,grocery,5.27,join lake join scala elt columnar python scala filter join map map
+159,grocery,76.44,lake map warehouse columnar scala ui elt
+160,grocery,25.11,row filter metrics spark shuffle
+161,books,92.73,reduce scala scala metrics data scala plan partition python
+162,grocery,90.89,reduce partition join metrics map
+163,books,26.42,elt spark ui reduce metrics shuffle elt
+164,books,50.73,shuffle scala lake lake elt scala filter scala python
+165,electronics,0.32,ui partition filter map data spark metrics join warehouse
+166,grocery,22.21,join spark filter reduce metrics reduce etl map filter elt data
+167,electronics,38.64,shuffle map row metrics warehouse row aggregate plan warehouse
+168,toys,33.93,reduce columnar metrics lake join row filter filter elt
+169,grocery,88.3,scala python etl columnar metrics scala
+170,books,50.99,partition row shuffle scala shuffle scala aggregate lake map
+171,books,24.94,plan join python columnar plan
+172,books,18.52,data metrics plan filter join
+173,grocery,14.86,python warehouse scala map filter data shuffle data etl
+174,books,30.96,spark warehouse row ui shuffle spark filter scala shuffle python
+175,grocery,51.2,reduce elt shuffle etl python elt etl lake data spark partition
+176,books,34.16,warehouse join elt join partition map partition aggregate reduce elt
+177,grocery,8.97,filter python etl columnar warehouse filter warehouse aggregate
+178,books,92.65,elt scala shuffle warehouse join map lake
+179,books,98.47,filter warehouse plan data warehouse data map elt data python row filter
+180,grocery,93.0,etl columnar scala metrics row map filter filter warehouse ui scala
+181,books,96.41,elt shuffle map ui warehouse python
+182,grocery,81.99,plan reduce ui map lake partition
+183,electronics,68.07,ui spark lake lake shuffle python ui warehouse aggregate
+184,books,9.73,python join map data etl elt warehouse filter join
+185,grocery,93.69,scala python ui metrics metrics
+186,electronics,80.96,elt spark reduce warehouse python metrics data spark python etl filter
+187,toys,74.54,etl plan elt columnar elt
+188,books,15.36,scala metrics shuffle etl lake metrics row
+189,grocery,32.37,partition filter data map lake map
+190,toys,83.55,columnar plan data python filter metrics join filter python lake
+191,electronics,52.27,filter filter metrics partition spark filter warehouse plan elt metrics scala
+192,toys,15.32,ui reduce metrics aggregate warehouse lake ui
+193,grocery,35.1,shuffle shuffle warehouse metrics warehouse warehouse ui shuffle metrics python ui spark
+194,electronics,25.48,filter columnar columnar map scala aggregate lake shuffle
+195,books,77.71,partition reduce ui join partition elt row columnar
+196,books,25.72,elt aggregate scala aggregate warehouse
+197,toys,1.87,elt spark etl python row elt warehouse partition row shuffle columnar metrics
+198,books,40.1,data etl row plan python spark filter warehouse
+199,toys,64.44,scala aggregate filter filter join reduce row columnar data aggregate
+200,grocery,68.83,elt reduce python ui etl metrics warehouse shuffle row join
+201,electronics,2.59,map ui elt reduce lake ui columnar etl lake aggregate plan columnar
+202,grocery,68.54,etl columnar elt python plan
+203,grocery,23.63,reduce columnar elt map elt
+204,books,18.45,etl shuffle join lake ui join scala warehouse
+205,books,26.3,columnar reduce warehouse python ui shuffle map row shuffle reduce filter
+206,toys,77.29,lake aggregate plan elt spark python ui aggregate
+207,electronics,69.83,map columnar metrics shuffle columnar python map ui filter spark row row
+208,toys,52.46,aggregate aggregate reduce join aggregate metrics scala spark ui partition spark shuffle
+209,books,79.67,reduce spark elt filter lake elt python
+210,electronics,4.72,ui spark aggregate plan ui
+211,grocery,53.2,etl aggregate shuffle filter metrics lake partition data join columnar
+212,grocery,84.02,spark data shuffle lake aggregate metrics warehouse plan filter warehouse
+213,toys,51.24,row ui plan python data columnar filter aggregate row metrics partition filter
+214,electronics,6.44,row data join python columnar join row ui ui
+215,toys,91.96,warehouse etl ui python filter data reduce data aggregate
+216,books,13.59,data warehouse metrics data row shuffle data data elt
+217,electronics,82.64,elt data shuffle shuffle map etl filter filter data aggregate shuffle
+218,toys,56.75,shuffle data map scala metrics
+219,books,86.99,row warehouse plan shuffle map data scala
+220,toys,9.98,plan plan reduce scala filter spark plan etl data columnar reduce
+221,toys,8.22,shuffle partition shuffle reduce row spark warehouse
+222,grocery,29.79,ui metrics scala spark map map warehouse spark
+223,books,95.16,columnar elt join shuffle join
+224,toys,48.26,scala data scala reduce scala columnar
+225,books,22.51,row reduce python partition scala aggregate columnar join warehouse
+226,electronics,55.94,columnar lake map aggregate data lake
+227,grocery,33.65,join python warehouse plan reduce join
+228,electronics,88.38,shuffle data python etl row python
+229,grocery,26.3,filter reduce etl spark metrics metrics row spark
+230,grocery,27.47,reduce partition ui ui warehouse shuffle partition row lake data
+231,grocery,39.53,row metrics filter reduce data
+232,grocery,20.65,warehouse columnar row columnar data filter metrics data reduce elt
+233,electronics,62.72,columnar data join reduce elt data plan warehouse
+234,toys,87.63,row join python elt plan data row join map data filter etl
+235,toys,87.02,aggregate join columnar ui join shuffle row scala lake columnar
+236,toys,22.32,aggregate python lake metrics partition data ui map scala columnar
+237,toys,8.81,lake filter python map spark
+238,grocery,44.31,ui aggregate scala reduce etl warehouse lake
+239,electronics,44.52,shuffle elt python partition aggregate scala reduce lake lake plan
+240,grocery,48.32,warehouse scala python spark reduce spark lake row warehouse spark lake data
+241,electronics,2.7,metrics spark scala spark partition ui map python etl row reduce map
+242,books,37.12,row columnar warehouse partition lake elt aggregate scala lake row spark python
+243,electronics,97.56,plan plan map reduce aggregate plan
+244,toys,41.95,lake filter etl shuffle columnar
+245,books,61.09,plan row reduce columnar python shuffle
+246,books,52.68,plan aggregate columnar warehouse filter data scala spark data python columnar row
+247,toys,48.75,ui reduce join elt map ui warehouse shuffle partition metrics metrics spark
+248,toys,86.33,map columnar reduce plan warehouse python lake map scala columnar
+249,grocery,26.15,data metrics ui shuffle etl join join elt
+250,toys,1.29,python aggregate reduce python columnar lake row filter
+251,grocery,49.99,scala reduce ui data row
+252,books,24.8,join row lake python filter scala
+253,toys,78.12,shuffle filter elt metrics plan shuffle join python shuffle python
+254,electronics,47.78,warehouse ui spark filter spark partition reduce row
+255,grocery,81.82,aggregate lake spark lake shuffle
+256,electronics,39.76,elt reduce shuffle row aggregate scala ui elt
+257,books,85.68,shuffle reduce spark row aggregate lake elt spark warehouse
+258,electronics,54.52,filter shuffle scala aggregate join warehouse ui
+259,electronics,94.06,join lake reduce ui plan shuffle scala
+260,books,33.85,data lake row ui ui aggregate map partition warehouse
+261,electronics,2.56,data elt shuffle row scala shuffle columnar metrics join aggregate warehouse reduce
+262,books,47.94,aggregate elt row python columnar columnar map scala
+263,toys,37.42,aggregate python filter join partition plan elt map
+264,grocery,21.83,aggregate data plan ui scala ui plan metrics ui ui
+265,books,33.92,python lake spark columnar metrics
+266,books,88.74,reduce aggregate shuffle warehouse elt map columnar ui warehouse
+267,grocery,4.76,filter map map join metrics warehouse join ui
+268,toys,29.84,aggregate map spark data plan scala
+269,grocery,41.24,warehouse python join etl filter ui plan spark spark
+270,books,1.08,python elt map data etl etl row plan data join
+271,electronics,78.21,shuffle partition scala data python aggregate
+272,books,64.9,plan metrics shuffle columnar join map map
+273,grocery,20.96,join lake plan row warehouse join join row map ui warehouse
+274,books,38.69,elt lake spark row columnar etl plan columnar
+275,books,69.19,join columnar partition filter partition spark elt etl python scala
+276,grocery,78.17,spark data scala spark scala data aggregate data
+277,electronics,98.59,spark data metrics columnar partition ui warehouse map map filter columnar data
+278,toys,91.32,reduce reduce elt join columnar scala row row elt data
+279,toys,59.98,partition filter map filter map reduce ui partition join plan data lake
+280,grocery,46.15,row shuffle reduce columnar aggregate shuffle lake ui etl
+281,toys,25.84,row partition reduce partition elt join aggregate spark partition metrics row map
+282,books,29.47,columnar row aggregate reduce row python spark partition
+283,toys,5.83,elt partition spark scala etl map partition
+284,books,7.71,partition partition join spark python data
+285,books,76.55,etl warehouse elt python reduce etl reduce aggregate elt elt lake
+286,toys,45.93,etl plan row data metrics join scala filter map lake shuffle
+287,electronics,23.12,etl warehouse map elt aggregate elt
+288,electronics,49.48,elt ui scala partition shuffle metrics map ui filter reduce elt
+289,electronics,43.56,scala shuffle python spark join
+290,electronics,61.49,data partition lake partition data scala scala
+291,toys,41.58,aggregate join scala scala data lake shuffle join metrics
+292,grocery,25.54,plan aggregate filter elt elt row ui plan etl map
+293,books,0.38,aggregate python join shuffle spark scala
+294,grocery,41.3,lake data row metrics scala plan lake elt
+295,electronics,36.03,map scala row scala scala plan python aggregate scala spark
+296,books,99.32,elt partition plan plan elt
+297,toys,42.53,map etl plan shuffle scala aggregate elt aggregate row plan etl
+298,toys,80.2,join plan filter etl reduce lake map elt scala map map lake
+299,books,47.1,spark aggregate python etl join spark map join
+300,grocery,74.63,lake aggregate row aggregate python metrics columnar join map columnar metrics
+301,electronics,80.26,python join lake columnar partition warehouse filter reduce plan partition
+302,books,25.07,metrics join columnar spark reduce ui join scala partition metrics
+303,electronics,54.55,metrics elt aggregate plan metrics partition warehouse data
+304,toys,15.05,shuffle elt lake scala etl columnar aggregate
+305,electronics,91.14,join python reduce spark map data etl join filter data spark
+306,electronics,12.96,warehouse warehouse spark metrics etl
+307,toys,38.66,map lake join elt map reduce plan row
+308,toys,93.52,spark row map python columnar filter
+309,books,3.19,shuffle etl join scala scala data row
+310,electronics,69.84,spark shuffle map etl join ui columnar ui filter etl
+311,electronics,72.9,spark metrics ui columnar metrics data
+312,toys,63.2,partition spark shuffle scala plan spark
+313,books,67.51,metrics partition warehouse map python shuffle
+314,grocery,2.98,reduce python spark python reduce etl spark lake elt filter
+315,electronics,49.73,filter etl join ui row warehouse reduce map ui warehouse
+316,grocery,73.66,data row etl filter filter metrics reduce
+317,electronics,87.86,python spark etl map scala join ui
+318,grocery,87.69,columnar aggregate row shuffle warehouse
+319,books,56.93,elt metrics ui join filter
+320,books,84.23,warehouse map etl ui lake aggregate columnar map elt
+321,grocery,59.77,partition map row etl python etl
+322,grocery,9.81,warehouse ui data plan reduce python elt map etl spark reduce
+323,books,42.28,aggregate elt reduce warehouse elt scala
+324,grocery,92.7,columnar columnar metrics columnar warehouse row join join filter python warehouse
+325,toys,18.28,data warehouse metrics filter elt
+326,electronics,66.15,plan elt filter spark ui
+327,books,52.65,shuffle data join row etl
+328,toys,89.52,lake elt warehouse ui data
+329,electronics,67.69,scala ui plan shuffle reduce ui python etl ui
+330,books,21.09,python plan shuffle reduce spark spark etl spark etl elt aggregate
+331,toys,0.37,shuffle row join filter warehouse columnar row plan lake spark metrics
+332,toys,43.85,shuffle row scala lake spark elt lake
+333,electronics,65.96,map ui shuffle join columnar warehouse plan shuffle plan
+334,electronics,63.32,scala row lake columnar join etl aggregate python lake aggregate
+335,books,37.04,ui map filter row etl
+336,electronics,18.32,scala plan columnar warehouse row map data shuffle warehouse ui plan
+337,toys,92.21,reduce plan data reduce plan join columnar lake
+338,toys,43.79,partition etl scala elt columnar reduce row elt row shuffle
+339,toys,14.08,columnar data row scala ui aggregate row
+340,toys,2.35,metrics reduce columnar plan elt
+341,toys,24.84,partition lake map spark columnar shuffle plan partition join filter
+342,grocery,83.74,aggregate join spark row data reduce ui filter lake metrics reduce
+343,grocery,85.64,python row python metrics row data
+344,grocery,3.75,plan filter python reduce scala scala
+345,books,63.72,plan filter lake ui partition warehouse elt
+346,books,56.14,reduce ui warehouse data spark aggregate reduce aggregate scala lake
+347,toys,63.44,row filter scala scala reduce python warehouse
+348,electronics,85.69,data partition metrics python etl aggregate scala map etl python plan python
+349,grocery,38.59,elt shuffle plan spark plan row join
+350,electronics,87.91,ui filter data reduce shuffle
+351,electronics,46.36,data map etl plan python
+352,books,13.76,python ui data warehouse partition warehouse map map
+353,books,36.87,elt map aggregate spark columnar spark columnar aggregate
+354,books,59.42,join aggregate warehouse lake reduce partition elt
+355,toys,11.36,elt row data reduce elt reduce lake partition
+356,books,70.42,warehouse python lake map lake
+357,grocery,51.35,row elt ui ui reduce ui
+358,books,66.99,shuffle plan warehouse lake filter spark partition
+359,grocery,81.4,reduce data row plan shuffle etl scala plan elt scala plan
+360,electronics,29.09,filter lake elt scala lake warehouse shuffle
+361,books,91.8,columnar elt elt scala metrics python ui metrics filter join spark metrics
+362,electronics,90.96,row spark scala columnar shuffle columnar aggregate python warehouse row warehouse
+363,toys,51.56,join ui ui python plan metrics
+364,grocery,54.9,partition row reduce data metrics map reduce elt
+365,electronics,28.66,python metrics etl ui join ui row join
+366,books,91.26,aggregate aggregate partition columnar filter plan lake aggregate aggregate
+367,grocery,58.68,join partition shuffle aggregate shuffle aggregate
+368,toys,82.38,plan shuffle plan join filter partition python scala lake elt elt aggregate
+369,toys,0.57,warehouse row spark data warehouse shuffle map elt shuffle spark
+370,electronics,61.98,metrics warehouse shuffle shuffle etl lake columnar warehouse plan ui warehouse map
+371,grocery,28.04,spark filter etl python filter aggregate plan spark data row metrics
+372,toys,24.08,metrics scala python etl elt plan join scala ui etl data
+373,electronics,58.28,data reduce scala aggregate warehouse
+374,grocery,73.17,scala spark etl spark reduce map plan lake lake lake partition row
+375,books,93.92,filter ui columnar ui filter join metrics spark partition join columnar reduce
+376,grocery,60.17,lake map data data aggregate metrics map reduce
+377,books,68.94,aggregate filter map python aggregate plan
+378,books,44.5,shuffle elt metrics python scala plan python row
+379,grocery,29.68,join filter columnar spark aggregate spark etl partition join metrics ui reduce
+380,electronics,77.16,warehouse plan ui reduce ui reduce map row warehouse
+381,books,7.31,warehouse map map etl scala python elt
+382,grocery,81.37,elt lake aggregate warehouse warehouse data reduce row
+383,grocery,34.39,row etl row ui scala row lake
+384,electronics,45.83,data filter metrics aggregate elt shuffle partition partition scala reduce plan warehouse
+385,toys,33.75,python columnar partition scala metrics shuffle lake warehouse python
+386,grocery,52.52,map aggregate plan row row columnar warehouse metrics shuffle
+387,toys,26.24,metrics warehouse reduce row columnar row join columnar
+388,electronics,26.72,elt scala columnar ui filter ui elt elt elt shuffle
+389,books,53.79,aggregate data map aggregate partition scala spark lake map metrics
+390,toys,5.05,plan row map metrics python python
+391,electronics,77.05,data columnar plan elt map columnar warehouse data data metrics metrics
+392,toys,65.37,spark aggregate python scala data plan elt lake shuffle metrics plan data
+393,grocery,54.61,scala aggregate warehouse scala join aggregate aggregate etl warehouse etl
+394,toys,85.83,lake join map map lake warehouse
+395,toys,78.69,scala aggregate row row plan metrics
+396,toys,56.48,reduce filter ui warehouse plan ui etl aggregate scala metrics spark
+397,electronics,37.98,plan warehouse lake row lake
+398,grocery,90.29,metrics join reduce scala scala warehouse warehouse ui
+399,grocery,99.53,partition metrics join filter data filter map reduce ui warehouse python
+400,books,45.48,columnar warehouse spark warehouse metrics map map shuffle aggregate scala ui row
+401,books,58.48,join join columnar partition row scala python columnar data columnar aggregate reduce
+402,toys,92.44,map row metrics scala spark aggregate data columnar
+403,grocery,52.05,plan etl lake shuffle map reduce ui shuffle warehouse
+404,electronics,3.07,columnar join scala elt filter scala
+405,electronics,15.64,warehouse reduce metrics ui elt lake ui reduce etl
+406,books,38.17,row shuffle lake shuffle columnar scala filter etl
+407,toys,35.04,warehouse aggregate columnar reduce spark etl lake aggregate lake join scala plan
+408,electronics,77.58,filter data plan spark warehouse python spark
+409,books,40.85,ui filter row ui reduce
+410,books,89.73,reduce reduce filter partition etl partition
+411,grocery,93.15,filter spark reduce reduce map data warehouse shuffle data shuffle reduce python
+412,books,27.7,elt plan etl spark elt metrics shuffle
+413,grocery,71.51,ui spark partition lake data scala data python metrics scala
+414,books,23.8,partition shuffle ui aggregate warehouse partition partition scala shuffle join python join
+415,toys,34.85,metrics metrics data ui python
+416,toys,40.32,warehouse etl data data map shuffle warehouse shuffle columnar
+417,electronics,69.21,ui columnar elt filter row columnar join
+418,electronics,53.65,ui row python metrics lake
+419,books,50.69,metrics aggregate reduce data plan warehouse warehouse spark join ui
+420,electronics,13.13,spark data warehouse scala spark scala columnar metrics filter ui aggregate partition
+421,books,76.81,reduce scala shuffle lake data warehouse plan join partition data scala
+422,toys,22.79,filter data reduce filter filter shuffle metrics aggregate filter reduce
+423,grocery,4.46,row row scala partition shuffle metrics python
+424,toys,6.45,aggregate filter map map elt etl metrics
+425,electronics,13.2,join elt filter filter etl lake etl
+426,toys,83.97,shuffle partition shuffle data partition warehouse lake warehouse columnar metrics
+427,grocery,21.79,metrics map data warehouse spark filter
+428,toys,98.5,scala row etl metrics filter shuffle
+429,toys,68.76,python data ui columnar reduce metrics etl warehouse
+430,toys,48.37,filter lake aggregate etl data reduce python spark metrics
+431,books,47.96,lake metrics elt plan python warehouse spark shuffle etl
+432,grocery,57.23,map elt map filter elt ui metrics
+433,books,9.77,etl row warehouse python lake shuffle etl filter metrics data scala aggregate
+434,electronics,30.32,python data scala lake reduce columnar aggregate filter elt row lake metrics
+435,toys,41.76,row shuffle ui ui ui ui spark
+436,toys,63.39,etl elt aggregate warehouse plan data
+437,electronics,61.27,aggregate partition spark join warehouse lake filter elt reduce shuffle ui columnar
+438,grocery,67.6,ui row spark lake columnar scala plan plan
+439,electronics,5.94,elt reduce plan etl warehouse map
+440,toys,37.17,data warehouse warehouse metrics lake map filter partition metrics
+441,electronics,61.81,etl filter columnar aggregate lake shuffle lake plan warehouse metrics
+442,grocery,88.07,map reduce shuffle lake join
+443,toys,78.62,python spark columnar python scala columnar metrics
+444,toys,0.38,filter map warehouse lake reduce
+445,books,29.68,join elt data map lake etl
+446,toys,14.22,shuffle ui data shuffle data join
+447,grocery,60.8,spark reduce warehouse scala warehouse etl shuffle plan filter python shuffle
+448,grocery,44.43,partition partition filter plan reduce lake shuffle
+449,electronics,16.72,shuffle aggregate elt spark ui aggregate filter elt join
+450,toys,63.48,elt elt metrics row etl etl lake
+451,books,64.2,filter plan lake reduce data spark elt partition map partition
+452,toys,60.7,python join shuffle reduce data elt reduce ui python
+453,grocery,64.42,elt row filter metrics columnar python metrics scala join shuffle shuffle
+454,books,33.93,filter partition spark row etl shuffle partition reduce aggregate
+455,grocery,56.64,row aggregate shuffle reduce join elt join
+456,grocery,45.69,columnar data data ui python partition lake columnar map metrics columnar lake
+457,grocery,29.61,columnar lake elt warehouse aggregate
+458,books,24.45,warehouse map elt shuffle warehouse plan lake elt lake warehouse
+459,electronics,22.67,aggregate elt warehouse etl spark join lake partition warehouse metrics ui
+460,electronics,81.69,filter scala python warehouse map shuffle
+461,grocery,11.48,lake map columnar partition shuffle ui lake aggregate python shuffle python
+462,grocery,20.24,row join map row etl aggregate plan lake ui join
+463,grocery,22.67,elt filter warehouse filter warehouse plan plan columnar
+464,electronics,38.56,elt shuffle lake shuffle etl join partition lake python data
+465,toys,88.83,reduce shuffle shuffle warehouse data metrics etl metrics
+466,books,44.42,ui warehouse ui metrics ui shuffle map scala join ui join
+467,books,10.0,aggregate warehouse columnar scala plan scala shuffle row
+468,electronics,0.21,shuffle join warehouse reduce aggregate elt map lake shuffle etl
+469,electronics,4.2,partition row shuffle columnar metrics metrics
+470,electronics,21.11,spark reduce data join reduce spark spark join aggregate metrics
+471,grocery,72.01,row join shuffle shuffle lake filter etl
+472,toys,15.43,filter partition elt scala metrics aggregate metrics plan warehouse lake
+473,books,76.96,data lake warehouse row filter plan filter
+474,electronics,56.24,map shuffle plan etl columnar etl elt
+475,electronics,41.87,map metrics data elt metrics scala warehouse map data filter
+476,grocery,10.06,aggregate python partition filter map warehouse
+477,toys,8.82,aggregate python columnar spark plan ui reduce spark python
+478,grocery,65.46,filter join lake shuffle columnar
+479,toys,12.64,elt data shuffle aggregate columnar ui partition warehouse elt aggregate
+480,books,0.31,map etl lake columnar elt plan etl columnar plan shuffle etl python
+481,toys,79.11,columnar shuffle etl data plan filter metrics row plan row
+482,books,85.22,columnar reduce etl map scala spark elt ui
+483,books,19.8,map filter partition warehouse columnar row data warehouse etl
+484,electronics,46.1,spark python shuffle shuffle lake etl partition plan map etl metrics join
+485,grocery,70.45,scala python join scala scala columnar reduce ui warehouse spark data map
+486,electronics,44.72,shuffle ui join elt metrics
+487,toys,29.27,plan reduce partition partition columnar lake lake join
+488,toys,87.2,partition row filter scala etl metrics elt
+489,books,1.45,metrics data partition etl python data map reduce join filter elt partition
+490,grocery,53.3,data shuffle join elt row reduce data shuffle ui spark ui
+491,books,23.29,spark etl ui aggregate spark map join reduce row filter warehouse
+492,books,49.26,partition spark etl partition etl data map shuffle etl lake python scala
+493,toys,15.5,etl plan filter python shuffle
+494,books,96.67,data partition scala map etl elt spark columnar
+495,grocery,95.13,python filter etl row python columnar
+496,toys,46.69,elt row map elt spark lake scala metrics ui columnar ui reduce
+497,electronics,44.78,scala partition plan row columnar shuffle spark partition join row elt
+498,electronics,48.23,filter reduce columnar python shuffle
+499,toys,95.63,aggregate shuffle plan join aggregate lake
+500,electronics,80.48,lake row reduce row shuffle elt row data plan columnar
+501,grocery,92.82,aggregate metrics filter partition ui reduce join warehouse elt
+502,electronics,84.56,join aggregate metrics shuffle lake plan etl map partition warehouse
+503,grocery,99.32,warehouse data join row filter reduce python warehouse ui
+504,toys,10.9,etl reduce lake python elt shuffle elt elt python reduce
+505,books,80.67,spark ui data data plan row spark shuffle lake lake data join
+506,grocery,24.05,partition plan join warehouse warehouse metrics lake filter python row ui columnar
+507,toys,68.34,warehouse plan map filter elt lake aggregate columnar metrics
+508,electronics,14.44,map elt elt aggregate reduce reduce lake lake python
+509,grocery,74.91,join spark row aggregate elt
+510,toys,42.69,lake lake scala metrics metrics warehouse python row reduce
+511,grocery,23.29,plan etl elt columnar ui ui spark python warehouse etl python
+512,electronics,68.51,row warehouse join elt aggregate metrics
+513,books,65.37,spark plan join python aggregate row scala warehouse map metrics
+514,electronics,15.52,ui lake map scala shuffle map
+515,toys,9.54,warehouse reduce metrics data data
+516,electronics,4.02,shuffle row warehouse aggregate columnar elt plan python
+517,books,21.95,data reduce elt python shuffle row
+518,electronics,21.97,map filter scala filter ui join
+519,books,80.93,plan lake data etl spark
+520,toys,67.67,data aggregate map spark warehouse
+521,electronics,75.84,lake partition map aggregate data scala python scala join filter partition row
+522,electronics,23.5,warehouse scala filter elt ui columnar filter
+523,books,61.74,elt warehouse join plan shuffle filter reduce row
+524,grocery,44.79,ui warehouse etl spark warehouse lake join plan lake columnar reduce data
+525,toys,48.76,etl elt shuffle row map map elt lake
+526,toys,91.59,reduce etl scala data map elt join join ui filter data
+527,toys,68.37,python join metrics ui shuffle filter metrics shuffle ui
+528,toys,97.04,row metrics metrics aggregate lake lake partition
+529,toys,5.56,reduce warehouse reduce shuffle partition join map lake reduce
+530,electronics,56.61,etl row partition data metrics metrics aggregate
+531,grocery,6.18,elt scala columnar shuffle warehouse filter scala
+532,toys,88.0,metrics shuffle etl ui warehouse warehouse map partition etl
+533,electronics,57.2,reduce scala elt map columnar spark columnar etl join
+534,grocery,77.92,join map python filter shuffle
+535,toys,94.87,metrics columnar scala metrics aggregate elt columnar elt
+536,grocery,70.8,elt reduce etl partition reduce elt elt scala
+537,books,44.18,elt reduce columnar reduce elt warehouse elt columnar join filter plan etl
+538,toys,50.44,python shuffle elt join shuffle scala plan join filter partition data
+539,grocery,75.18,shuffle row partition plan row
+540,books,27.11,warehouse elt scala lake shuffle map scala plan aggregate
+541,books,66.11,metrics aggregate partition scala filter
+542,toys,9.0,plan lake ui filter row metrics etl elt etl
+543,grocery,99.34,columnar join metrics columnar filter spark row
+544,books,64.01,elt lake row plan reduce partition elt warehouse partition join
+545,books,60.48,scala warehouse lake data spark
+546,electronics,15.12,columnar join join ui filter scala lake partition scala partition metrics warehouse
+547,grocery,57.54,metrics ui lake lake partition python ui filter join join shuffle warehouse
+548,books,55.31,ui python row aggregate map map aggregate
+549,books,37.25,columnar filter lake partition plan shuffle python spark metrics join ui
+550,electronics,63.04,filter elt join reduce row data shuffle ui
+551,toys,23.07,partition data lake spark shuffle elt data python data map
+552,books,20.26,ui map partition filter data scala shuffle warehouse shuffle shuffle
+553,electronics,24.82,metrics map map join ui aggregate shuffle warehouse metrics
+554,grocery,0.19,warehouse aggregate row spark filter
+555,books,20.39,aggregate plan spark data metrics elt etl etl scala
+556,grocery,65.21,python filter data lake elt elt aggregate map
+557,electronics,18.34,plan join scala columnar scala elt shuffle scala lake reduce spark reduce
+558,electronics,47.11,filter row partition partition ui map shuffle warehouse data
+559,books,26.82,spark aggregate columnar metrics elt etl plan join
+560,books,50.78,aggregate partition columnar lake data partition
+561,electronics,35.26,etl columnar elt aggregate aggregate ui plan aggregate filter elt
+562,books,34.48,partition row lake python shuffle ui join map scala metrics metrics metrics
+563,grocery,8.8,elt filter warehouse ui scala etl partition columnar plan shuffle join
+564,books,11.69,lake warehouse row aggregate aggregate columnar
+565,toys,73.96,plan map lake ui spark
+566,toys,53.18,elt plan join metrics data
+567,grocery,75.15,plan join spark row partition map reduce join spark elt reduce
+568,toys,53.68,filter lake spark data partition spark row row columnar ui spark plan
+569,toys,43.11,scala map lake partition elt etl python join row
+570,grocery,21.61,scala aggregate scala row reduce aggregate join ui
+571,grocery,25.04,elt map python shuffle elt plan
+572,electronics,63.04,join spark plan filter reduce python spark ui join elt
+573,toys,35.98,etl metrics row columnar columnar filter elt data metrics
+574,toys,12.33,metrics warehouse row row plan python data shuffle scala
+575,electronics,83.65,row elt scala warehouse partition map data spark warehouse
+576,electronics,32.72,metrics plan lake lake lake spark spark
+577,books,21.35,warehouse python ui join lake shuffle plan reduce ui ui columnar
+578,grocery,27.05,elt data aggregate reduce python row lake reduce
+579,books,79.11,metrics partition shuffle metrics python filter aggregate metrics elt plan spark
+580,books,76.09,python shuffle shuffle partition metrics elt metrics map
+581,toys,85.14,plan map etl python columnar
+582,grocery,38.79,columnar python plan plan plan map data warehouse metrics partition
+583,electronics,45.33,columnar row etl elt lake spark spark columnar aggregate
+584,toys,59.82,elt reduce map data ui data columnar aggregate reduce partition plan
+585,grocery,0.98,scala scala metrics join warehouse shuffle metrics warehouse
+586,grocery,16.78,python filter map partition map data
+587,toys,54.13,warehouse shuffle ui warehouse data metrics partition columnar
+588,grocery,86.33,join partition reduce warehouse etl map metrics etl
+589,grocery,36.85,lake etl ui filter map join plan columnar shuffle python shuffle lake
+590,electronics,60.64,join python partition reduce map row spark data aggregate lake python
+591,electronics,42.37,ui shuffle join warehouse python spark elt partition warehouse warehouse
+592,books,29.71,join partition row row aggregate partition reduce map metrics
+593,books,99.26,etl python plan python metrics columnar warehouse map
+594,toys,29.64,etl filter row ui ui spark scala etl warehouse map
+595,electronics,5.66,aggregate ui scala partition join metrics reduce columnar shuffle map reduce spark
+596,grocery,85.33,map reduce warehouse map filter map map
+597,electronics,36.23,row partition etl spark join reduce python row scala map filter filter
+598,toys,89.99,join python scala shuffle lake partition reduce ui scala etl filter
+599,toys,80.96,metrics aggregate columnar python row metrics python
+600,grocery,29.71,shuffle row reduce row scala shuffle metrics shuffle
+601,books,85.82,warehouse join spark spark elt scala
+602,electronics,15.46,row reduce etl warehouse map row elt shuffle metrics filter
+603,toys,55.78,etl etl lake lake reduce
+604,toys,34.24,reduce ui ui join reduce data scala
+605,grocery,60.23,metrics etl map row map partition plan map join ui etl python
+606,toys,65.59,filter shuffle plan filter shuffle shuffle ui shuffle data partition join warehouse
+607,toys,80.14,columnar spark data columnar scala spark plan ui
+608,books,20.48,plan python map python aggregate scala ui
+609,toys,36.01,lake filter python columnar elt
+610,grocery,57.12,python scala data filter row plan metrics etl
+611,books,34.27,reduce columnar shuffle elt columnar data reduce data ui map
+612,books,70.02,lake spark columnar spark python elt shuffle
+613,toys,68.68,aggregate partition map aggregate columnar elt map spark map scala warehouse warehouse
+614,toys,0.33,columnar shuffle scala columnar aggregate
+615,grocery,31.69,aggregate filter reduce scala scala scala spark data python etl filter spark
+616,electronics,29.34,elt spark elt ui row
+617,books,99.76,scala partition aggregate aggregate data ui etl plan ui lake
+618,toys,39.28,row ui spark plan aggregate metrics scala spark aggregate aggregate
+619,grocery,27.38,spark reduce plan metrics join data shuffle filter data
+620,toys,40.27,shuffle elt lake partition reduce aggregate partition warehouse elt
+621,books,1.31,filter row partition aggregate shuffle ui warehouse metrics join metrics
+622,electronics,28.48,map warehouse filter lake aggregate partition join python python python scala shuffle
+623,grocery,45.53,elt shuffle scala row join lake plan reduce data ui shuffle partition
+624,electronics,93.21,etl reduce data join data python metrics spark filter etl aggregate row
+625,electronics,83.29,map partition scala columnar elt lake spark scala
+626,toys,49.42,ui row reduce columnar plan join lake elt elt shuffle
+627,electronics,55.57,ui ui aggregate map join etl python elt map partition data
+628,electronics,69.94,scala partition join row ui lake
+629,electronics,56.66,ui plan data shuffle plan join ui scala join
+630,toys,77.73,data row etl shuffle columnar etl shuffle elt scala python lake elt
+631,books,24.71,warehouse aggregate row join filter shuffle plan
+632,electronics,15.59,map plan lake lake lake scala partition
+633,toys,86.18,warehouse metrics python spark lake partition
+634,toys,73.89,filter lake ui reduce etl partition scala ui
+635,electronics,98.92,columnar aggregate partition aggregate partition aggregate python warehouse lake shuffle join
+636,grocery,23.09,python elt warehouse elt join filter
+637,books,2.63,reduce ui filter plan ui columnar
+638,books,45.88,scala columnar elt plan aggregate filter ui reduce row
+639,electronics,49.29,reduce ui map reduce join join columnar spark filter aggregate
+640,toys,21.71,elt lake elt aggregate columnar scala row warehouse map etl
+641,toys,4.36,reduce lake data data scala spark
+642,toys,67.34,plan elt data scala row metrics map plan row filter
+643,electronics,63.79,python filter map aggregate shuffle shuffle scala
+644,toys,15.45,metrics aggregate map lake metrics ui metrics reduce ui data
+645,electronics,55.77,partition spark columnar lake warehouse
+646,books,17.9,columnar scala elt etl etl warehouse etl python map
+647,toys,34.44,reduce map etl warehouse spark join spark
+648,grocery,92.47,spark scala join lake metrics shuffle columnar metrics row shuffle plan
+649,electronics,76.32,plan metrics columnar aggregate ui shuffle columnar join etl ui columnar
+650,toys,63.41,columnar map map elt filter map warehouse row row join ui
+651,books,44.92,ui data scala aggregate etl elt elt shuffle data
+652,toys,77.7,spark warehouse join join ui columnar row map ui etl elt data
+653,electronics,67.91,map columnar ui data shuffle warehouse scala scala etl filter
+654,grocery,73.28,elt map lake aggregate partition aggregate shuffle filter
+655,grocery,36.43,map elt metrics python partition
+656,electronics,79.65,filter map lake elt row row
+657,toys,80.17,scala spark etl spark data
+658,toys,18.86,data partition scala plan ui map python etl data metrics elt data
+659,grocery,87.62,aggregate ui plan python etl warehouse
+660,grocery,78.95,aggregate data map warehouse elt metrics partition map filter scala
+661,toys,7.52,data map partition shuffle shuffle map join filter python shuffle
+662,books,71.86,warehouse spark data join lake join spark etl metrics partition
+663,toys,8.7,metrics data warehouse spark warehouse scala aggregate plan
+664,grocery,24.98,map plan spark columnar python shuffle columnar ui join lake
+665,toys,48.78,reduce partition etl spark plan row filter
+666,books,92.8,lake spark shuffle scala reduce lake elt reduce plan filter
+667,grocery,11.35,python spark spark lake elt lake partition elt scala ui ui shuffle
+668,books,96.86,join shuffle partition spark aggregate data data
+669,grocery,66.67,warehouse python join map python lake warehouse aggregate ui
+670,books,82.73,filter partition aggregate warehouse python metrics
+671,electronics,66.71,ui map shuffle etl reduce warehouse
+672,toys,88.28,filter etl row python join elt metrics
+673,books,49.2,spark map spark metrics row columnar
+674,electronics,55.92,metrics data scala scala partition map python data row
+675,toys,69.98,aggregate data warehouse metrics plan warehouse python data columnar shuffle
+676,toys,33.64,python aggregate ui row join
+677,grocery,4.78,partition metrics filter python plan reduce ui
+678,electronics,13.64,join lake plan partition join scala
+679,books,70.44,join scala map python spark metrics metrics row data
+680,electronics,77.11,python reduce ui data lake filter spark data reduce shuffle row
+681,toys,39.33,metrics ui spark row plan columnar join partition scala join plan
+682,toys,21.28,filter lake elt etl plan aggregate lake filter shuffle plan plan spark
+683,grocery,28.86,columnar warehouse etl join warehouse etl data
+684,electronics,15.18,reduce plan ui etl metrics plan
+685,electronics,77.57,plan columnar columnar partition python
+686,toys,36.46,partition elt aggregate aggregate partition row etl plan partition map
+687,toys,65.76,scala plan partition data reduce
+688,grocery,15.29,elt data map map ui map
+689,books,90.0,row reduce spark aggregate plan map scala join aggregate elt
+690,grocery,76.82,columnar spark metrics filter ui metrics reduce map filter lake
+691,books,29.21,ui filter etl reduce plan data data reduce
+692,electronics,79.69,join partition columnar metrics filter partition data python aggregate
+693,books,36.11,row spark scala shuffle scala spark map columnar scala data row row
+694,toys,92.66,ui map lake aggregate scala
+695,toys,31.79,partition metrics etl join filter data
+696,electronics,85.8,elt scala columnar python metrics scala
+697,toys,21.86,columnar python scala map ui row spark aggregate data columnar etl python
+698,books,12.75,etl etl columnar lake spark metrics row
+699,grocery,67.85,shuffle etl partition ui lake lake filter etl filter python elt
+700,toys,5.22,join partition filter python join map warehouse elt ui ui filter aggregate
+701,toys,9.56,columnar lake join data metrics elt join
+702,electronics,69.05,filter plan elt map lake row filter elt
+703,toys,3.56,elt map plan data scala python row python map
+704,grocery,75.27,columnar elt warehouse etl etl map spark plan reduce ui filter ui
+705,books,51.92,spark map map lake row filter plan
+706,grocery,18.47,filter join aggregate metrics warehouse partition join reduce
+707,toys,17.15,spark etl elt etl elt scala
+708,electronics,18.34,plan lake elt data filter columnar partition shuffle etl
+709,books,89.74,join row columnar join spark partition warehouse reduce row row reduce
+710,grocery,22.05,columnar map map join join join row etl
+711,grocery,62.46,shuffle lake etl join row
+712,toys,39.73,partition data spark map warehouse row etl join columnar
+713,books,93.28,map etl scala lake python ui data columnar etl warehouse shuffle warehouse
+714,books,78.57,reduce scala columnar ui join plan etl elt
+715,books,30.23,warehouse elt python spark elt columnar elt lake reduce ui
+716,electronics,19.62,reduce lake lake scala scala partition row metrics row shuffle plan map
+717,grocery,51.11,python map warehouse metrics reduce join shuffle map shuffle plan lake
+718,books,1.21,spark columnar lake row scala filter reduce aggregate
+719,grocery,95.05,ui python data data etl columnar scala plan
+720,toys,73.96,row etl elt plan filter python spark spark filter ui
+721,electronics,44.97,ui join map scala scala data
+722,books,23.22,shuffle aggregate columnar aggregate elt python data reduce ui aggregate aggregate
+723,toys,74.2,aggregate scala python join metrics columnar columnar shuffle spark
+724,electronics,54.23,metrics aggregate python shuffle reduce row plan join
+725,electronics,67.61,spark etl map spark elt partition metrics filter data spark
+726,electronics,75.42,metrics metrics partition ui ui scala
+727,books,80.54,row warehouse warehouse spark partition shuffle plan
+728,electronics,79.08,filter reduce columnar etl spark map data reduce columnar elt map
+729,books,22.93,lake lake lake join python
+730,grocery,67.44,metrics elt elt shuffle etl data columnar elt spark etl plan scala
+731,electronics,16.33,join join row columnar scala lake scala
+732,grocery,34.84,row ui map lake map elt data
+733,grocery,27.3,row elt row columnar ui join shuffle reduce plan lake
+734,grocery,31.3,filter etl elt ui row metrics
+735,electronics,92.7,spark columnar shuffle etl partition warehouse map elt lake
+736,electronics,41.76,aggregate join reduce python filter
+737,toys,75.78,data row plan shuffle warehouse ui row etl
+738,toys,79.68,row plan join warehouse lake python
+739,electronics,49.24,plan shuffle aggregate plan reduce plan warehouse map reduce plan warehouse
+740,toys,23.45,shuffle aggregate lake columnar shuffle join elt
+741,toys,30.61,scala reduce warehouse ui elt
+742,electronics,29.41,join map spark ui elt scala row data warehouse columnar
+743,books,10.13,join scala spark filter plan warehouse python row spark warehouse
+744,books,63.61,metrics etl lake data shuffle join
+745,grocery,29.68,filter map row lake row warehouse reduce elt ui
+746,grocery,6.95,shuffle etl data map partition warehouse python columnar elt
+747,grocery,68.79,partition columnar aggregate spark columnar elt ui partition
+748,electronics,97.26,row elt metrics reduce lake scala row columnar spark ui
+749,grocery,45.81,scala partition warehouse scala python python data python partition warehouse partition
+750,electronics,89.33,metrics scala shuffle reduce elt
+751,grocery,87.52,partition row warehouse shuffle partition
+752,books,41.25,python elt reduce elt spark
+753,electronics,12.05,join map partition elt filter
+754,electronics,80.32,aggregate filter plan data row map data join lake map
+755,electronics,91.84,map metrics shuffle scala row etl metrics map
+756,grocery,35.32,elt columnar warehouse columnar columnar etl scala aggregate ui columnar data data
+757,grocery,51.6,scala join aggregate elt warehouse ui scala data aggregate aggregate join aggregate
+758,books,70.79,lake map map python columnar
+759,grocery,45.42,lake data join reduce metrics warehouse scala lake map etl
+760,grocery,62.31,lake metrics filter shuffle aggregate join map scala
+761,electronics,4.04,join shuffle map elt metrics join map elt aggregate join
+762,electronics,55.16,ui aggregate filter shuffle metrics map map elt filter
+763,grocery,66.9,spark etl join spark join metrics ui python ui lake lake
+764,toys,16.16,metrics filter filter row reduce etl row filter lake plan etl
+765,grocery,76.43,python scala map scala aggregate data ui ui filter aggregate python
+766,toys,10.96,filter partition plan map data aggregate elt python shuffle partition
+767,books,18.62,map shuffle aggregate lake filter shuffle etl filter map
+768,electronics,85.19,row filter metrics elt filter map map scala ui reduce
+769,grocery,39.65,filter spark elt etl columnar spark
+770,toys,75.17,columnar etl warehouse join reduce
+771,electronics,71.57,row reduce shuffle warehouse partition scala lake shuffle ui scala plan
+772,toys,26.38,reduce aggregate map python plan
+773,books,26.94,python data join reduce partition partition shuffle elt scala
+774,books,51.32,metrics reduce elt columnar map
+775,books,8.41,elt elt map map partition
+776,grocery,72.17,columnar metrics ui aggregate warehouse python warehouse warehouse aggregate data columnar
+777,grocery,29.66,scala elt warehouse join metrics
+778,books,58.61,etl shuffle lake metrics shuffle plan spark aggregate
+779,grocery,81.34,aggregate scala row aggregate filter lake ui
+780,electronics,82.97,elt reduce aggregate spark filter plan warehouse ui metrics reduce row
+781,electronics,77.98,filter metrics python warehouse ui ui filter columnar
+782,toys,81.39,spark join etl ui scala metrics
+783,toys,23.43,metrics reduce elt filter python shuffle
+784,toys,6.85,aggregate plan etl elt aggregate elt spark aggregate plan elt etl map
+785,books,91.18,columnar data map elt reduce scala plan spark shuffle reduce plan
+786,books,95.55,columnar python etl scala spark data plan reduce metrics
+787,books,38.55,filter lake elt etl python warehouse filter etl join
+788,books,98.88,row columnar data elt filter elt
+789,grocery,64.26,scala etl elt map row
+790,electronics,88.34,row columnar join scala aggregate
+791,toys,77.49,elt metrics aggregate lake partition join partition join data reduce lake
+792,toys,92.57,scala elt columnar metrics join
+793,toys,55.25,warehouse warehouse row python plan
+794,books,34.59,ui metrics spark filter reduce
+795,grocery,15.12,plan data aggregate join plan row metrics
+796,toys,21.15,metrics scala scala columnar shuffle python elt plan data partition filter python
+797,electronics,79.57,scala reduce columnar shuffle shuffle
+798,electronics,33.05,lake row plan shuffle scala partition scala shuffle data join partition
+799,toys,82.29,python partition columnar scala columnar plan reduce python lake scala lake ui
+800,electronics,82.19,aggregate partition columnar map elt row plan
+801,toys,38.09,spark plan spark scala shuffle columnar ui elt
+802,grocery,22.49,join spark join lake scala data plan shuffle
+803,grocery,51.8,data map data warehouse columnar
+804,toys,62.66,ui plan plan reduce filter plan columnar row join aggregate spark
+805,books,52.9,warehouse aggregate partition ui ui map metrics elt lake elt
+806,grocery,2.71,python scala row plan lake elt row lake shuffle
+807,grocery,99.03,warehouse shuffle map row reduce ui
+808,electronics,35.98,partition ui join reduce columnar
+809,grocery,95.64,metrics elt join spark partition join elt join partition
+810,books,30.87,filter warehouse lake data spark etl etl elt aggregate
+811,grocery,26.83,etl join warehouse join map aggregate scala spark row join ui elt
+812,grocery,65.26,spark python etl ui elt filter map map warehouse plan elt warehouse
+813,books,36.67,data ui ui lake etl aggregate metrics warehouse
+814,toys,49.79,join warehouse row row filter
+815,electronics,98.64,row etl aggregate shuffle partition elt filter reduce data aggregate reduce
+816,electronics,8.76,aggregate warehouse ui elt plan spark
+817,toys,37.83,scala row ui etl lake columnar join elt spark row reduce ui
+818,books,5.63,columnar reduce etl etl data
+819,grocery,73.04,plan warehouse scala shuffle filter metrics
+820,grocery,29.8,scala shuffle aggregate lake row metrics plan warehouse map etl join
+821,electronics,10.14,row etl join partition join aggregate metrics etl shuffle
+822,electronics,65.61,metrics etl reduce etl plan shuffle
+823,grocery,17.71,aggregate filter filter filter warehouse reduce
+824,toys,55.5,row columnar elt reduce warehouse metrics scala etl etl ui shuffle reduce
+825,books,30.72,elt scala join scala scala elt plan row plan lake spark lake
+826,electronics,94.04,elt reduce plan row reduce
+827,toys,28.27,join row metrics scala row row
+828,grocery,73.79,lake elt lake join aggregate etl plan ui row
+829,toys,83.7,reduce etl plan map spark shuffle columnar data
+830,books,62.86,row spark lake data columnar warehouse row map
+831,books,62.13,data data data python plan row
+832,toys,34.59,columnar join data aggregate plan plan filter
+833,toys,54.04,data ui columnar map reduce spark shuffle metrics spark
+834,books,2.47,filter partition elt data partition ui scala scala partition reduce join
+835,toys,63.13,data map elt scala join warehouse metrics warehouse row shuffle aggregate warehouse
+836,grocery,6.28,join etl shuffle row row scala elt spark lake lake scala
+837,toys,90.5,filter row reduce scala warehouse shuffle plan
+838,books,43.45,etl data partition scala aggregate scala etl warehouse columnar partition lake reduce
+839,electronics,89.89,data elt data ui metrics row
+840,toys,63.78,warehouse warehouse elt ui python join reduce
+841,books,50.02,data lake join lake shuffle
+842,toys,90.48,elt scala plan ui python
+843,toys,30.72,aggregate scala scala map etl filter filter plan shuffle
+844,electronics,86.76,warehouse data shuffle aggregate etl etl scala plan
+845,toys,33.26,spark python reduce aggregate ui scala row metrics columnar
+846,toys,87.28,filter map reduce metrics columnar metrics aggregate
+847,toys,17.84,elt etl python shuffle partition
+848,toys,18.07,scala elt scala elt spark lake data etl shuffle aggregate
+849,electronics,34.32,filter elt columnar aggregate spark row
+850,toys,26.24,etl etl lake partition warehouse ui etl join metrics scala
+851,toys,18.71,shuffle filter row elt metrics metrics
+852,electronics,4.18,ui row ui columnar metrics
+853,grocery,46.53,ui columnar join scala row filter
+854,electronics,46.07,elt metrics elt columnar plan map
+855,electronics,9.39,row map etl warehouse etl join spark row reduce
+856,toys,60.95,lake elt reduce filter plan data reduce scala python lake elt
+857,toys,92.57,join plan partition etl plan
+858,books,2.17,data row data aggregate map join spark aggregate data lake
+859,books,42.03,shuffle plan data lake reduce lake join columnar shuffle
+860,grocery,49.85,data plan filter data etl data reduce data metrics row shuffle
+861,grocery,43.27,columnar partition warehouse filter shuffle lake plan map
+862,toys,7.43,partition row row shuffle filter ui lake columnar etl
+863,books,43.42,columnar columnar lake python plan partition shuffle filter
+864,books,79.2,etl join warehouse warehouse scala columnar reduce aggregate join data
+865,toys,45.49,map partition scala join columnar columnar metrics plan row data aggregate lake
+866,books,11.59,reduce reduce shuffle plan warehouse join row shuffle
+867,toys,94.73,warehouse row metrics aggregate data lake elt plan warehouse
+868,grocery,98.3,data filter elt warehouse warehouse
+869,electronics,73.95,python lake warehouse elt map reduce elt
+870,electronics,26.68,elt row metrics aggregate plan filter
+871,grocery,5.43,map ui shuffle warehouse reduce
+872,electronics,11.97,shuffle python filter aggregate plan aggregate partition
+873,electronics,24.19,data data row join spark filter
+874,grocery,49.27,data data elt ui data warehouse partition partition elt reduce warehouse ui
+875,books,3.28,scala partition columnar map join reduce reduce map metrics python plan shuffle
+876,toys,92.08,shuffle elt etl spark shuffle scala join ui elt etl
+877,electronics,42.14,lake partition filter etl ui
+878,toys,44.98,shuffle ui elt shuffle warehouse lake data metrics scala aggregate shuffle python
+879,toys,55.41,filter plan spark join etl metrics ui
+880,books,58.65,data lake elt metrics lake map data data python join
+881,electronics,23.37,data metrics scala partition aggregate ui lake filter ui aggregate filter
+882,books,80.55,elt etl scala filter map shuffle row elt warehouse elt
+883,books,57.25,shuffle scala partition lake map
+884,electronics,45.38,join partition shuffle ui elt ui metrics map python partition
+885,books,64.74,partition ui plan map scala
+886,grocery,25.53,shuffle data shuffle python metrics data row row lake row plan filter
+887,toys,87.11,ui partition plan row shuffle plan ui join
+888,toys,85.62,metrics lake join python metrics metrics map elt scala ui
+889,toys,92.77,scala metrics join row python filter spark map shuffle python data
+890,grocery,21.39,spark aggregate plan plan scala row filter columnar elt plan
+891,grocery,47.67,row spark data spark join lake etl row scala
+892,books,38.96,metrics map filter ui python reduce filter lake data
+893,books,16.32,spark partition join metrics scala elt filter
+894,electronics,57.94,map shuffle aggregate join ui data etl row reduce map
+895,books,54.81,reduce row plan lake warehouse
+896,toys,79.01,row partition columnar warehouse scala
+897,electronics,80.85,join metrics warehouse columnar columnar join data partition reduce scala data
+898,toys,18.22,partition warehouse warehouse ui scala partition partition row aggregate python
+899,books,37.09,spark join python plan partition ui
+900,books,71.06,partition join lake warehouse shuffle scala join scala
+901,toys,17.85,etl join shuffle etl scala scala aggregate warehouse columnar warehouse
+902,electronics,11.23,scala warehouse etl metrics data ui join columnar
+903,electronics,51.78,etl reduce ui etl plan
+904,grocery,10.06,partition ui partition partition warehouse reduce
+905,books,98.24,aggregate elt scala python spark filter
+906,grocery,84.06,shuffle row shuffle partition plan etl columnar scala
+907,grocery,39.95,data elt lake lake partition ui ui warehouse warehouse
+908,books,39.26,warehouse filter python python scala metrics join
+909,books,15.72,ui reduce partition map spark
+910,books,80.79,join etl python filter aggregate
+911,grocery,1.91,map partition data reduce partition plan plan shuffle
+912,books,55.07,filter spark scala warehouse spark etl metrics scala spark ui
+913,grocery,57.24,data data aggregate scala ui reduce lake
+914,grocery,9.63,lake filter aggregate columnar map partition elt filter
+915,electronics,52.91,elt metrics warehouse ui reduce
+916,electronics,24.58,lake lake map partition spark plan elt metrics metrics map
+917,electronics,20.41,metrics scala scala row row spark join
+918,toys,6.43,map spark etl partition data warehouse spark data etl ui
+919,toys,76.33,spark filter aggregate shuffle columnar spark warehouse data metrics join aggregate metrics
+920,grocery,74.16,python spark shuffle partition columnar plan partition partition filter ui
+921,toys,28.23,metrics join etl python aggregate
+922,books,30.24,join python python elt reduce ui plan etl
+923,electronics,93.36,lake scala scala data row columnar map columnar lake spark scala
+924,electronics,93.51,partition map aggregate row metrics ui python
+925,grocery,30.68,python etl elt scala columnar scala scala lake map
+926,books,31.61,metrics python partition warehouse reduce etl spark elt
+927,electronics,79.05,python row data shuffle lake metrics
+928,toys,23.02,filter shuffle join plan partition filter
+929,toys,17.07,metrics elt scala join python plan metrics etl row data row
+930,toys,6.15,columnar aggregate partition partition reduce plan map elt
+931,grocery,87.86,metrics partition row ui aggregate metrics row python row ui scala plan
+932,grocery,95.91,scala plan row ui scala warehouse data warehouse
+933,electronics,68.89,row reduce metrics data python
+934,books,22.74,aggregate map etl elt metrics
+935,electronics,32.29,columnar scala shuffle data join
+936,electronics,90.31,partition plan plan ui filter filter reduce aggregate
+937,toys,92.56,ui spark partition elt warehouse columnar
+938,toys,58.98,etl etl ui plan partition
+939,grocery,68.41,ui filter elt lake join
+940,toys,56.3,partition scala columnar shuffle python plan row
+941,electronics,12.89,lake shuffle partition python join warehouse partition row data spark shuffle
+942,grocery,77.45,metrics aggregate aggregate join etl spark shuffle shuffle
+943,electronics,69.18,scala metrics plan data spark shuffle plan row scala plan row reduce
+944,toys,97.74,etl elt filter metrics data plan shuffle map scala columnar
+945,toys,53.42,metrics metrics filter filter aggregate join partition map row shuffle reduce plan
+946,books,34.18,row data join join elt etl aggregate
+947,grocery,82.53,aggregate reduce etl lake map spark
+948,grocery,87.73,elt plan join metrics aggregate data shuffle
+949,books,44.85,elt spark ui spark shuffle aggregate scala python spark map map
+950,grocery,40.23,filter warehouse partition metrics lake data filter metrics warehouse lake filter python
+951,books,50.46,lake row filter elt map etl elt python data partition filter plan
+952,toys,87.16,ui reduce shuffle join etl columnar row etl
+953,grocery,59.38,reduce row partition ui metrics metrics python reduce scala join lake
+954,toys,65.18,aggregate scala filter elt scala metrics elt data reduce etl
+955,electronics,92.38,elt reduce scala etl spark
+956,grocery,29.57,reduce join ui shuffle plan elt etl elt
+957,grocery,45.71,data data python warehouse shuffle python join columnar elt row plan elt
+958,electronics,65.58,row partition spark elt python warehouse ui scala data row data
+959,electronics,58.31,aggregate shuffle map shuffle shuffle python row filter plan etl
+960,books,55.96,etl ui join columnar columnar etl columnar spark python plan etl warehouse
+961,toys,38.72,plan reduce map aggregate reduce spark warehouse metrics
+962,grocery,92.23,plan map spark elt ui shuffle warehouse
+963,electronics,70.34,spark lake python metrics filter join spark
+964,electronics,88.51,aggregate python elt plan partition
+965,books,22.59,warehouse elt ui reduce aggregate
+966,electronics,87.92,etl map columnar aggregate aggregate join
+967,electronics,1.74,metrics python scala lake lake data reduce elt warehouse metrics
+968,electronics,53.87,partition python shuffle plan scala python
+969,electronics,87.1,lake reduce metrics join shuffle aggregate filter etl data ui
+970,grocery,97.91,filter metrics shuffle spark lake scala columnar partition spark
+971,grocery,83.95,python scala join shuffle reduce scala join spark reduce plan
+972,grocery,42.62,join reduce warehouse warehouse metrics spark ui scala partition
+973,books,44.79,reduce lake reduce partition lake
+974,books,6.38,row columnar ui aggregate plan reduce spark
+975,grocery,81.7,python scala reduce metrics columnar filter shuffle ui lake join warehouse
+976,toys,67.03,warehouse metrics join aggregate partition
+977,toys,12.07,spark reduce data elt row filter spark
+978,grocery,40.0,lake filter columnar metrics filter elt map data aggregate warehouse columnar join
+979,books,17.69,python scala map plan partition columnar aggregate spark filter aggregate
+980,grocery,26.63,aggregate metrics warehouse elt partition
+981,books,23.5,elt ui plan aggregate python aggregate partition map ui plan shuffle data
+982,books,65.89,python aggregate data join plan plan shuffle
+983,electronics,34.26,shuffle aggregate filter python shuffle columnar filter
+984,electronics,26.51,shuffle metrics aggregate data plan warehouse columnar scala etl columnar shuffle filter
+985,toys,75.81,python filter spark scala columnar scala shuffle join etl metrics metrics plan
+986,toys,8.79,shuffle data python lake ui row columnar columnar row partition
+987,electronics,82.37,metrics map scala elt join plan join columnar
+988,toys,85.1,join filter elt join warehouse scala join elt lake etl scala
+989,grocery,59.04,warehouse warehouse data columnar warehouse join row map data data columnar
+990,books,98.83,spark ui python metrics map data python aggregate partition
+991,books,89.08,elt metrics metrics scala data lake lake
+992,grocery,23.58,reduce lake reduce elt row elt data metrics join join metrics warehouse
+993,books,25.81,metrics row data join columnar lake shuffle row
+994,grocery,3.26,ui data aggregate plan join row row filter columnar
+995,books,14.51,lake scala data spark scala lake partition etl reduce shuffle
+996,books,26.96,warehouse elt shuffle warehouse metrics
+997,books,59.27,partition row etl shuffle etl
+998,grocery,81.41,etl shuffle etl reduce map ui scala filter plan filter filter
+999,electronics,35.8,partition shuffle plan reduce metrics partition aggregate columnar warehouse map
+1000,books,10.04,lake join partition plan etl metrics reduce row
+1001,electronics,14.91,plan reduce etl lake row row map columnar spark warehouse shuffle aggregate
+1002,electronics,55.5,reduce aggregate map lake lake scala columnar
+1003,electronics,13.21,data columnar warehouse plan python python data
+1004,toys,5.28,ui warehouse scala plan shuffle reduce shuffle reduce metrics shuffle python lake
+1005,grocery,47.79,ui warehouse scala python warehouse aggregate elt
+1006,electronics,56.14,reduce join partition ui shuffle ui ui
+1007,toys,53.9,python metrics warehouse aggregate ui shuffle etl metrics spark
+1008,books,3.97,reduce filter elt partition join join data python join row
+1009,books,60.39,row partition metrics etl columnar scala row etl shuffle reduce
+1010,toys,7.73,warehouse data reduce join plan plan join row partition reduce columnar
+1011,electronics,11.66,reduce python elt row metrics filter etl shuffle columnar plan row filter
+1012,electronics,10.06,filter lake spark join aggregate partition metrics
+1013,toys,12.63,columnar columnar lake join row partition metrics map partition etl filter
+1014,toys,88.16,warehouse data aggregate python ui spark spark
+1015,electronics,1.85,plan ui metrics aggregate ui
+1016,books,20.23,lake join spark row lake etl metrics lake metrics spark
+1017,toys,36.63,data warehouse spark plan partition reduce reduce ui partition plan
+1018,books,50.43,spark shuffle spark data aggregate etl scala etl
+1019,toys,21.4,map join partition aggregate columnar aggregate row etl etl warehouse data elt
+1020,electronics,79.2,python etl reduce metrics plan warehouse partition shuffle join etl etl filter
+1021,grocery,19.05,plan elt elt plan lake plan spark plan data
+1022,toys,77.56,etl elt data python row
+1023,books,78.54,columnar map aggregate scala reduce
+1024,grocery,81.83,data join join join ui join metrics
+1025,toys,75.72,lake map warehouse warehouse spark spark
+1026,grocery,13.91,partition metrics reduce plan scala join lake aggregate row python row
+1027,books,80.7,lake elt etl plan python warehouse map ui
+1028,electronics,65.99,plan spark etl metrics partition data data map filter partition
+1029,electronics,53.83,plan shuffle data shuffle lake row python lake partition partition
+1030,grocery,35.25,warehouse ui join scala partition filter metrics map ui spark row
+1031,electronics,42.82,plan data elt etl data map
+1032,grocery,63.69,plan join python plan etl etl lake row filter
+1033,electronics,73.62,elt plan map filter lake lake shuffle lake etl python
+1034,grocery,28.73,shuffle elt aggregate columnar plan filter columnar columnar warehouse
+1035,grocery,1.38,scala join shuffle shuffle row columnar partition metrics shuffle spark map spark
+1036,books,87.68,columnar shuffle partition scala shuffle reduce reduce map join python filter
+1037,toys,63.77,partition ui metrics ui data reduce
+1038,electronics,93.07,warehouse data plan metrics warehouse
+1039,books,89.03,lake data partition metrics etl row lake
+1040,electronics,66.64,map columnar map lake spark elt map map elt
+1041,grocery,97.88,filter ui warehouse shuffle lake aggregate spark elt
+1042,books,92.45,filter scala scala filter filter aggregate ui filter row
+1043,toys,28.95,ui filter filter partition partition warehouse row row reduce spark
+1044,electronics,8.55,warehouse partition metrics scala elt ui reduce data spark scala map filter
+1045,toys,2.31,python row join reduce filter filter elt scala ui
+1046,books,32.79,python metrics ui plan warehouse columnar row warehouse etl spark filter
+1047,electronics,40.18,aggregate reduce data aggregate plan row
+1048,books,97.64,plan map spark data plan
+1049,books,69.06,join lake metrics spark reduce etl
+1050,toys,27.86,data reduce aggregate etl lake reduce shuffle
+1051,toys,15.29,python row python map partition plan
+1052,toys,80.37,partition filter ui elt columnar etl partition data
+1053,toys,85.89,plan etl python spark ui row aggregate shuffle lake row partition
+1054,books,58.8,elt lake aggregate aggregate spark metrics warehouse reduce metrics ui
+1055,electronics,76.61,data ui partition etl etl partition elt columnar row aggregate join aggregate
+1056,grocery,68.17,filter scala etl data warehouse python ui map ui filter join join
+1057,books,11.08,map partition scala scala etl
+1058,grocery,35.47,columnar shuffle python row elt lake shuffle scala shuffle data
+1059,toys,72.6,reduce map scala filter map
+1060,books,87.51,data plan spark shuffle shuffle data
+1061,electronics,87.92,etl metrics python shuffle ui metrics
+1062,toys,25.7,python etl shuffle aggregate filter
+1063,grocery,61.56,columnar ui row spark reduce
+1064,toys,5.87,spark scala elt reduce reduce lake lake metrics row aggregate spark row
+1065,toys,37.45,row partition row scala ui partition metrics python data lake
+1066,electronics,34.6,shuffle metrics warehouse filter data
+1067,toys,0.15,shuffle scala spark columnar warehouse
+1068,toys,28.47,reduce shuffle scala columnar map
+1069,electronics,87.04,map etl scala etl python partition shuffle columnar
+1070,electronics,35.88,shuffle join scala partition spark spark
+1071,grocery,29.59,ui ui spark partition data elt scala shuffle reduce
+1072,electronics,80.46,spark columnar metrics python shuffle partition plan reduce reduce
+1073,toys,35.19,map partition plan etl etl etl etl row elt aggregate map partition
+1074,grocery,18.7,row warehouse ui columnar columnar elt lake
+1075,electronics,38.09,data warehouse aggregate scala join
+1076,books,91.2,spark columnar scala partition join shuffle spark columnar
+1077,toys,95.97,spark ui ui map etl row
+1078,toys,46.38,row row etl spark columnar
+1079,grocery,37.48,aggregate elt data warehouse data metrics ui
+1080,books,9.38,etl partition shuffle filter map etl metrics reduce etl
+1081,grocery,38.43,map metrics spark scala aggregate
+1082,grocery,89.25,ui filter filter aggregate warehouse metrics columnar
+1083,grocery,33.6,spark row columnar filter filter data ui shuffle map plan filter spark
+1084,grocery,77.48,spark columnar warehouse row etl metrics filter
+1085,toys,71.62,join metrics elt lake shuffle reduce data elt spark
+1086,books,2.66,columnar partition partition columnar reduce join reduce filter lake shuffle aggregate
+1087,toys,78.0,ui python warehouse elt join data plan columnar warehouse python shuffle plan
+1088,toys,54.95,lake etl shuffle shuffle lake filter elt shuffle filter scala metrics columnar
+1089,books,76.54,filter spark scala scala map partition metrics lake
+1090,toys,67.12,ui shuffle row lake partition reduce data map join
+1091,toys,34.64,row map lake metrics lake join
+1092,books,77.78,shuffle scala reduce reduce filter shuffle spark row etl
+1093,electronics,45.75,ui lake partition columnar shuffle spark shuffle spark scala
+1094,grocery,28.46,warehouse shuffle metrics map scala shuffle reduce scala data scala map join
+1095,toys,44.07,join filter elt filter reduce data map warehouse partition spark scala aggregate
+1096,books,97.18,map join row elt row elt columnar ui
+1097,electronics,61.66,scala warehouse join shuffle lake aggregate metrics spark python
+1098,grocery,45.69,elt etl row filter shuffle metrics shuffle scala aggregate warehouse etl
+1099,grocery,44.56,elt map data scala python plan scala join ui partition columnar elt
+1100,toys,21.1,warehouse scala data ui filter spark python lake data shuffle join map
+1101,grocery,5.82,partition warehouse data spark reduce ui aggregate metrics python lake python shuffle
+1102,toys,89.28,metrics lake data ui map warehouse row reduce spark reduce aggregate metrics
+1103,toys,13.39,partition scala ui filter spark reduce data
+1104,grocery,37.75,reduce lake data etl shuffle lake map scala aggregate columnar filter
+1105,grocery,64.41,partition elt lake aggregate elt data spark etl lake scala warehouse spark
+1106,electronics,30.76,spark python join ui lake lake plan
+1107,grocery,74.48,row filter partition data elt row warehouse row
+1108,electronics,41.22,etl columnar lake map warehouse lake etl filter
+1109,books,29.07,ui elt data warehouse columnar
+1110,books,19.37,join data spark scala partition plan partition spark reduce join scala spark
+1111,grocery,78.84,partition python map partition python elt scala
+1112,books,72.37,map ui columnar ui shuffle reduce lake etl metrics scala lake shuffle
+1113,electronics,94.56,elt join warehouse data columnar data shuffle
+1114,toys,69.57,shuffle partition row scala data filter ui ui reduce
+1115,grocery,23.11,columnar etl filter filter plan spark lake row plan etl
+1116,grocery,63.12,map elt plan join elt
+1117,grocery,77.89,spark data plan spark shuffle filter metrics
+1118,grocery,84.33,map elt shuffle lake etl lake partition
+1119,toys,58.84,spark warehouse join elt elt warehouse etl python row partition
+1120,books,59.9,columnar warehouse data python python
+1121,grocery,27.22,shuffle partition metrics python elt spark aggregate shuffle spark ui
+1122,grocery,38.5,data lake aggregate warehouse elt partition reduce aggregate lake etl
+1123,grocery,58.02,scala join plan plan aggregate python metrics reduce map
+1124,toys,96.71,aggregate elt join data elt partition python map elt aggregate elt
+1125,toys,62.71,etl aggregate filter python ui join metrics columnar join join elt aggregate
+1126,books,77.91,row elt ui lake filter columnar lake lake filter data spark
+1127,toys,45.71,warehouse warehouse warehouse data metrics reduce
+1128,toys,66.44,partition plan spark ui etl elt ui scala python elt row
+1129,grocery,61.62,metrics scala partition row reduce python plan
+1130,toys,88.58,etl lake partition columnar ui etl elt
+1131,books,79.26,ui python filter lake reduce filter reduce filter
+1132,grocery,60.55,plan aggregate map elt shuffle plan ui spark map partition shuffle
+1133,books,16.29,map partition warehouse plan map map scala reduce warehouse map
+1134,books,47.03,columnar row columnar shuffle metrics columnar ui
+1135,electronics,2.46,data row row columnar aggregate shuffle
+1136,grocery,76.87,ui etl plan spark join etl aggregate aggregate shuffle plan
+1137,grocery,82.43,etl etl ui elt metrics columnar reduce map metrics shuffle elt
+1138,toys,46.6,lake lake row partition aggregate spark
+1139,toys,51.54,reduce etl columnar lake filter columnar scala
+1140,grocery,84.79,plan lake plan map python warehouse plan
+1141,toys,36.82,row scala filter ui map etl elt row etl elt data shuffle
+1142,toys,4.58,data join reduce map aggregate
+1143,toys,71.47,partition filter columnar lake columnar join join python scala
+1144,toys,46.86,shuffle spark ui aggregate filter columnar spark columnar
+1145,toys,67.13,metrics filter metrics warehouse spark metrics join
+1146,toys,25.49,row spark metrics aggregate scala metrics aggregate map
+1147,toys,28.61,plan lake reduce ui ui shuffle lake join columnar elt metrics elt
+1148,electronics,10.45,data data lake plan plan scala spark map aggregate plan
+1149,books,38.17,map elt shuffle aggregate map lake etl warehouse
+1150,toys,21.83,partition warehouse map etl aggregate columnar partition metrics map metrics
+1151,grocery,55.2,row row ui scala filter etl lake lake
+1152,electronics,91.49,aggregate columnar lake map lake map
+1153,books,46.64,spark elt aggregate python map row
+1154,electronics,51.28,plan partition lake partition row ui partition row scala ui join metrics
+1155,books,11.34,row filter filter scala join warehouse data columnar python warehouse spark
+1156,electronics,19.44,metrics etl elt warehouse shuffle row columnar aggregate warehouse aggregate lake
+1157,grocery,19.75,etl data data spark scala partition ui
+1158,books,34.18,warehouse partition row shuffle row shuffle etl scala lake python
+1159,grocery,54.97,warehouse warehouse row reduce metrics metrics row join metrics join
+1160,electronics,3.69,metrics row etl spark aggregate filter warehouse aggregate map metrics
+1161,grocery,80.65,filter ui reduce ui filter
+1162,electronics,98.68,elt row warehouse plan aggregate elt python aggregate scala partition columnar aggregate
+1163,books,71.0,plan partition columnar etl map etl row reduce map row
+1164,electronics,60.21,row lake reduce reduce map lake ui metrics join
+1165,grocery,15.28,data columnar warehouse data reduce metrics etl
+1166,books,98.46,data lake map join python ui join row metrics metrics
+1167,grocery,16.67,aggregate columnar map join scala data lake reduce etl
+1168,books,6.62,etl ui spark shuffle plan
+1169,toys,53.67,scala data map map warehouse reduce elt
+1170,books,92.85,shuffle reduce plan scala ui reduce lake join map aggregate aggregate warehouse
+1171,toys,87.65,filter metrics elt lake spark shuffle partition
+1172,grocery,67.49,plan partition aggregate plan warehouse etl lake elt ui python
+1173,toys,95.56,aggregate filter ui warehouse partition metrics row ui etl scala filter lake
+1174,toys,83.67,metrics partition ui scala spark row elt plan columnar map data
+1175,grocery,20.41,data warehouse scala shuffle columnar ui etl ui partition etl data aggregate
+1176,toys,50.08,scala spark plan ui row reduce map
+1177,toys,55.04,filter columnar etl warehouse ui plan python columnar row scala
+1178,toys,2.91,reduce elt ui partition scala join warehouse scala etl scala data
+1179,grocery,41.15,shuffle python lake ui map filter warehouse partition metrics spark
+1180,electronics,10.23,metrics reduce filter row columnar data python scala shuffle
+1181,grocery,21.64,filter elt map partition ui warehouse ui reduce columnar map columnar
+1182,toys,85.63,lake columnar columnar reduce warehouse etl spark columnar map
+1183,grocery,81.83,aggregate warehouse python lake elt plan join data metrics
+1184,grocery,61.9,join scala scala shuffle partition shuffle columnar row etl
+1185,books,78.76,warehouse reduce plan columnar shuffle map reduce filter data
+1186,books,76.6,python filter columnar columnar map
+1187,electronics,91.71,data data data scala columnar partition filter etl python join scala
+1188,electronics,33.91,elt partition python columnar map scala aggregate
+1189,books,15.26,join shuffle reduce python spark reduce columnar scala scala scala shuffle columnar
+1190,books,59.88,etl spark filter data warehouse map plan reduce
+1191,toys,0.56,spark aggregate lake aggregate data warehouse metrics join etl etl python
+1192,grocery,68.58,row warehouse data aggregate etl filter elt
+1193,toys,52.23,plan warehouse lake data etl python
+1194,electronics,44.75,warehouse columnar partition row aggregate scala spark metrics filter partition join
+1195,toys,22.8,columnar aggregate reduce join ui
+1196,grocery,63.26,join data data filter plan map shuffle filter
+1197,toys,96.91,elt aggregate ui aggregate metrics aggregate warehouse
+1198,books,17.18,etl aggregate python columnar map
+1199,electronics,42.46,data etl columnar partition partition plan
+1200,books,24.97,partition etl plan ui elt columnar data elt spark plan row join
+1201,toys,84.27,reduce warehouse ui shuffle spark map lake join scala map elt join
+1202,electronics,4.03,metrics columnar elt columnar shuffle shuffle metrics warehouse map
+1203,toys,70.55,spark scala shuffle join row ui reduce
+1204,books,21.43,metrics row filter lake data aggregate elt
+1205,electronics,37.09,metrics shuffle reduce partition metrics python scala
+1206,books,80.27,ui columnar partition scala join partition row
+1207,electronics,8.94,aggregate elt reduce scala filter
+1208,toys,44.93,columnar columnar map ui metrics reduce row warehouse partition etl
+1209,toys,88.27,reduce lake columnar filter warehouse join lake
+1210,grocery,37.11,join data shuffle reduce warehouse python elt partition
+1211,electronics,96.42,join metrics row python plan aggregate data columnar metrics filter
+1212,toys,43.29,python python warehouse etl aggregate
+1213,electronics,35.26,partition columnar warehouse join reduce lake map columnar etl
+1214,books,74.47,partition partition etl elt filter data partition partition data
+1215,toys,72.97,columnar etl row map metrics python warehouse
+1216,books,10.2,data columnar python metrics etl metrics
+1217,grocery,11.86,python etl python python elt lake scala
+1218,books,70.87,shuffle columnar columnar lake scala lake join scala row
+1219,grocery,37.52,columnar lake join elt ui elt ui plan scala row elt
+1220,books,39.22,etl spark row shuffle reduce spark lake lake shuffle spark spark partition
+1221,books,69.51,warehouse map reduce lake scala elt
+1222,grocery,72.9,etl scala spark filter filter metrics plan row shuffle
+1223,electronics,24.84,spark python reduce data reduce
+1224,books,96.97,shuffle aggregate shuffle aggregate python columnar columnar python partition
+1225,grocery,14.05,lake aggregate spark ui columnar elt map shuffle reduce python spark
+1226,toys,25.54,aggregate partition aggregate elt join scala row metrics etl
+1227,toys,14.23,join warehouse map plan aggregate map
+1228,grocery,13.42,ui map lake filter spark partition map
+1229,toys,95.82,lake etl aggregate filter partition filter lake elt ui reduce aggregate
+1230,toys,30.51,python filter python reduce plan spark row python row map
+1231,electronics,37.02,lake partition scala columnar spark data aggregate join ui filter
+1232,books,4.23,map reduce reduce data plan lake map warehouse ui metrics spark metrics
+1233,books,89.91,plan ui plan reduce data plan metrics python map filter etl
+1234,grocery,41.1,plan partition ui metrics columnar partition
+1235,toys,51.25,elt plan filter partition filter shuffle python metrics join
+1236,electronics,24.78,elt python elt partition join plan
+1237,grocery,5.55,columnar aggregate ui row elt warehouse shuffle row etl partition python
+1238,toys,55.5,map aggregate ui shuffle reduce python aggregate
+1239,electronics,85.17,elt join spark columnar map elt metrics partition
+1240,grocery,20.45,columnar map scala join plan aggregate map
+1241,books,77.25,python map python partition metrics
+1242,books,76.69,aggregate data data columnar ui spark
+1243,books,36.05,metrics row scala spark metrics warehouse etl python row row metrics columnar
+1244,toys,38.69,aggregate aggregate ui metrics columnar spark
+1245,toys,15.98,elt warehouse warehouse plan partition
+1246,toys,88.04,plan elt data row filter filter
+1247,grocery,1.79,ui reduce python aggregate reduce etl etl lake ui filter
+1248,grocery,83.83,columnar map aggregate lake partition partition python lake map scala reduce row
+1249,electronics,25.22,reduce etl plan aggregate scala elt
+1250,toys,24.32,partition spark warehouse python reduce metrics spark python ui warehouse map
+1251,books,82.92,etl shuffle filter join shuffle partition warehouse
+1252,books,12.25,partition lake join spark map scala etl python etl
+1253,electronics,86.44,shuffle map shuffle lake shuffle row
+1254,toys,74.44,warehouse shuffle lake python ui map scala shuffle row aggregate warehouse
+1255,books,32.72,spark plan spark columnar scala ui
+1256,grocery,80.3,filter join row lake join ui data join ui scala python warehouse
+1257,grocery,81.35,plan aggregate ui aggregate shuffle elt map etl
+1258,grocery,41.68,lake row spark plan map aggregate python filter row spark
+1259,toys,69.42,aggregate lake ui row map
+1260,grocery,87.63,map ui metrics warehouse columnar etl join metrics
+1261,electronics,56.98,filter scala spark warehouse reduce
+1262,toys,94.69,partition aggregate data scala spark lake join join join python python
+1263,grocery,70.79,ui elt reduce lake filter columnar plan columnar map elt
+1264,books,80.09,partition etl filter reduce lake spark
+1265,grocery,69.49,plan map scala data map partition elt warehouse warehouse etl
+1266,electronics,2.18,data join shuffle lake lake etl partition reduce
+1267,toys,29.03,row plan data columnar aggregate map etl plan python
+1268,toys,23.42,elt lake shuffle columnar metrics reduce ui spark metrics warehouse row
+1269,toys,37.8,spark elt ui columnar filter map
+1270,books,16.88,lake etl aggregate aggregate metrics ui
+1271,electronics,38.19,columnar shuffle elt shuffle scala reduce shuffle reduce python plan warehouse
+1272,electronics,54.8,reduce reduce metrics filter reduce partition
+1273,toys,90.57,etl data partition join map columnar ui
+1274,toys,25.26,shuffle data scala columnar ui partition
+1275,toys,79.74,warehouse lake ui scala row scala elt spark etl join warehouse lake
+1276,toys,21.28,map scala row python spark filter scala
+1277,books,46.87,row warehouse data aggregate metrics warehouse scala filter scala etl join
+1278,books,23.54,aggregate map metrics filter plan lake partition columnar partition join
+1279,grocery,59.71,plan row plan lake columnar
+1280,electronics,81.76,lake partition filter python python data warehouse etl
+1281,books,99.98,ui etl plan ui python metrics scala scala etl spark
+1282,grocery,96.89,metrics reduce map map columnar shuffle filter
+1283,books,89.56,metrics metrics aggregate scala map aggregate reduce warehouse scala lake
+1284,books,33.48,shuffle etl plan columnar scala join aggregate spark
+1285,books,41.7,shuffle reduce aggregate partition python aggregate spark python metrics
+1286,electronics,96.25,filter columnar spark scala python aggregate python filter warehouse row shuffle
+1287,books,34.07,columnar shuffle python data metrics python row warehouse scala aggregate reduce
+1288,electronics,59.48,metrics join filter shuffle spark scala
+1289,grocery,1.18,plan row lake reduce warehouse data spark shuffle
+1290,toys,75.07,join spark warehouse warehouse lake etl shuffle columnar
+1291,books,10.82,metrics scala warehouse metrics row shuffle join lake plan columnar data
+1292,electronics,97.99,plan aggregate data ui row columnar ui filter partition warehouse
+1293,books,51.63,partition lake partition lake scala lake metrics warehouse
+1294,toys,61.3,plan etl partition ui reduce etl
+1295,books,30.89,join etl ui etl data columnar reduce row filter
+1296,grocery,5.26,columnar ui reduce reduce reduce ui lake
+1297,books,31.52,columnar plan elt shuffle scala ui
+1298,books,27.18,etl elt columnar data ui data
+1299,toys,21.24,plan partition shuffle plan plan elt shuffle python elt metrics
+1300,grocery,98.66,python ui spark map partition
+1301,electronics,35.29,map filter filter scala reduce shuffle filter scala map data
+1302,electronics,87.03,map reduce partition metrics aggregate
+1303,grocery,67.06,join elt shuffle join join ui elt metrics filter lake etl warehouse
+1304,electronics,3.96,partition ui warehouse aggregate metrics
+1305,books,62.39,aggregate elt metrics python warehouse shuffle row ui etl plan ui
+1306,grocery,4.25,lake shuffle partition row reduce python aggregate shuffle columnar
+1307,electronics,5.45,reduce data columnar data lake map aggregate row lake reduce join
+1308,books,31.9,python row lake metrics filter elt metrics python map warehouse warehouse
+1309,electronics,31.73,elt metrics reduce join warehouse etl spark scala shuffle etl warehouse
+1310,grocery,11.06,lake map lake plan map warehouse etl warehouse ui
+1311,books,39.98,python reduce partition ui scala partition shuffle scala map map warehouse aggregate
+1312,toys,94.36,elt lake filter join shuffle lake
+1313,books,6.12,filter elt filter aggregate reduce warehouse
+1314,electronics,0.32,columnar plan metrics lake plan
+1315,toys,52.95,warehouse spark ui lake plan shuffle filter lake filter scala reduce shuffle
+1316,electronics,12.14,partition metrics join data data plan map metrics join data elt ui
+1317,toys,58.92,data filter map columnar ui reduce columnar etl
+1318,grocery,76.64,plan metrics scala reduce reduce python columnar partition join filter warehouse
+1319,grocery,13.35,map ui spark reduce reduce lake python scala etl metrics plan
+1320,books,3.84,filter filter lake plan python aggregate plan reduce python row etl
+1321,grocery,3.62,python aggregate ui reduce partition python warehouse spark scala ui
+1322,books,60.52,etl lake partition ui columnar lake partition data python shuffle map
+1323,electronics,99.25,ui join scala filter row shuffle shuffle row partition partition filter
+1324,grocery,24.44,python etl ui elt ui scala aggregate map map data filter
+1325,books,74.1,shuffle columnar metrics join filter warehouse reduce filter join row plan
+1326,grocery,93.8,reduce elt filter aggregate row filter etl python scala columnar columnar spark
+1327,books,14.6,spark warehouse elt map aggregate row join
+1328,electronics,87.07,row shuffle filter aggregate spark spark partition elt ui
+1329,grocery,80.41,ui aggregate filter reduce scala reduce map warehouse scala
+1330,electronics,79.33,aggregate lake plan partition data metrics elt metrics join map data shuffle
+1331,toys,0.79,python python plan columnar map python join
+1332,toys,3.83,data filter ui columnar reduce spark reduce
+1333,electronics,72.21,scala scala elt lake aggregate data map plan lake map columnar
+1334,toys,13.7,row spark lake join partition scala partition filter ui map plan
+1335,grocery,35.13,filter spark metrics python columnar aggregate plan elt join map elt spark
+1336,toys,89.49,shuffle python plan partition scala plan warehouse spark python shuffle
+1337,electronics,54.27,scala shuffle elt map partition python data shuffle row lake map
+1338,electronics,8.89,python scala plan metrics map map columnar join columnar etl data row
+1339,grocery,55.67,row reduce spark filter spark warehouse
+1340,books,91.77,data data join reduce warehouse plan etl map
+1341,grocery,92.17,elt map plan lake aggregate data metrics filter lake data join
+1342,electronics,55.71,lake metrics python lake reduce columnar aggregate partition lake reduce map
+1343,books,31.86,etl shuffle partition reduce map
+1344,grocery,75.77,lake metrics spark ui spark data
+1345,toys,76.02,shuffle join map elt metrics columnar
+1346,electronics,92.85,python map filter filter row lake warehouse row metrics join row map
+1347,books,89.05,etl shuffle elt aggregate lake aggregate scala
+1348,toys,78.62,join spark plan data shuffle ui partition
+1349,books,16.6,join plan aggregate lake ui map elt warehouse reduce
+1350,electronics,54.94,ui aggregate warehouse metrics partition elt scala scala partition plan partition aggregate
+1351,grocery,1.47,elt filter aggregate columnar shuffle plan ui
+1352,toys,84.01,etl data reduce metrics columnar spark spark row columnar
+1353,grocery,76.83,shuffle filter shuffle shuffle shuffle lake lake
+1354,electronics,49.11,partition filter warehouse ui elt elt reduce metrics aggregate map plan row
+1355,grocery,5.05,elt ui row plan filter reduce data
+1356,grocery,98.93,partition aggregate shuffle columnar aggregate spark ui map map lake data partition
+1357,books,20.88,ui filter data etl metrics
+1358,grocery,7.94,metrics partition scala python reduce plan columnar
+1359,books,18.66,warehouse filter reduce lake etl
+1360,grocery,66.08,shuffle spark scala map lake filter filter columnar lake
+1361,grocery,27.06,data ui lake reduce spark plan python ui python aggregate columnar
+1362,grocery,55.09,etl ui map lake metrics scala elt row
+1363,toys,46.63,lake filter warehouse reduce join
+1364,books,89.6,columnar lake ui join data etl row python reduce
+1365,books,94.07,lake join row reduce lake row map partition partition plan plan
+1366,toys,24.0,elt elt data scala python row partition
+1367,toys,30.81,elt row scala reduce reduce row elt etl
+1368,electronics,73.82,spark partition columnar lake columnar elt elt aggregate lake elt shuffle
+1369,electronics,33.35,aggregate map ui aggregate python elt columnar filter
+1370,grocery,36.67,row join python plan columnar lake filter filter scala warehouse data ui
+1371,toys,10.42,lake ui filter reduce filter
+1372,books,74.29,aggregate python warehouse map warehouse aggregate reduce warehouse
+1373,grocery,20.59,python columnar warehouse reduce partition filter lake warehouse columnar elt
+1374,grocery,0.63,shuffle etl spark aggregate spark elt
+1375,toys,68.61,reduce filter scala plan spark aggregate lake shuffle lake shuffle partition
+1376,electronics,72.14,join metrics spark partition ui plan warehouse warehouse
+1377,electronics,42.74,reduce partition metrics columnar aggregate reduce data
+1378,electronics,37.64,elt metrics ui columnar metrics lake join filter
+1379,electronics,26.8,filter scala lake aggregate scala map elt warehouse columnar
+1380,books,56.72,filter reduce metrics python data elt
+1381,electronics,8.98,join scala filter elt scala partition columnar
+1382,grocery,73.86,spark row scala shuffle reduce row partition join
+1383,electronics,0.39,elt partition map python columnar ui elt
+1384,books,8.71,metrics columnar metrics lake join elt etl reduce ui partition
+1385,books,42.5,scala lake aggregate metrics join map
+1386,grocery,19.38,elt ui spark metrics metrics
+1387,toys,82.49,lake data partition spark ui python filter
+1388,toys,12.56,partition plan metrics shuffle reduce filter
+1389,toys,70.56,ui ui etl plan aggregate lake row filter lake etl
+1390,books,97.83,ui partition reduce aggregate join partition partition columnar elt join ui data
+1391,electronics,26.6,data lake columnar warehouse join etl warehouse metrics plan
+1392,toys,81.19,data map aggregate ui columnar ui warehouse ui join ui
+1393,books,36.17,lake partition elt shuffle elt scala filter data lake scala filter partition
+1394,grocery,67.64,warehouse etl etl row warehouse map elt ui shuffle row elt
+1395,electronics,23.67,map python join lake elt partition
+1396,electronics,52.05,join shuffle spark row scala python
+1397,toys,64.26,filter partition spark plan data row elt columnar join
+1398,books,26.91,partition metrics spark partition ui elt reduce ui
+1399,grocery,78.7,shuffle etl filter data warehouse
+1400,grocery,20.36,aggregate metrics python columnar columnar warehouse partition map
+1401,electronics,10.47,partition aggregate spark filter metrics python row metrics spark aggregate
+1402,electronics,47.77,reduce metrics lake etl join join scala spark spark scala
+1403,grocery,1.03,etl spark row ui aggregate metrics map join elt aggregate plan
+1404,toys,79.62,row plan reduce scala partition
+1405,toys,81.34,join partition map warehouse lake map row filter warehouse metrics
+1406,toys,44.58,reduce row row plan aggregate plan
+1407,toys,17.2,aggregate lake data reduce columnar join metrics warehouse columnar
+1408,grocery,93.77,scala warehouse lake map shuffle warehouse aggregate
+1409,toys,70.82,reduce aggregate partition lake lake
+1410,grocery,69.85,map map warehouse lake reduce
+1411,books,34.58,map spark columnar map elt python metrics ui
+1412,toys,79.4,aggregate ui etl scala python map join spark plan metrics
+1413,grocery,60.27,warehouse plan metrics warehouse elt row warehouse shuffle row filter
+1414,grocery,64.0,aggregate shuffle plan ui spark
+1415,grocery,53.56,partition shuffle join join spark metrics lake
+1416,grocery,58.22,data scala filter scala data join spark join scala join plan
+1417,grocery,96.41,filter filter aggregate reduce data metrics ui data spark row lake
+1418,toys,69.98,reduce plan python metrics partition scala spark python
+1419,books,36.61,aggregate columnar partition data spark scala warehouse lake reduce
+1420,toys,57.84,join lake spark join spark
+1421,grocery,71.29,scala ui metrics lake plan metrics
+1422,books,83.95,filter partition aggregate lake reduce etl row shuffle etl warehouse
+1423,electronics,99.25,partition filter etl join python
+1424,toys,4.1,warehouse reduce elt partition lake scala join etl map shuffle
+1425,books,49.51,data filter partition lake metrics spark
+1426,electronics,64.35,filter etl partition scala join data scala spark row
+1427,electronics,22.53,join plan filter python lake
+1428,books,79.98,warehouse warehouse elt metrics lake spark lake map python
+1429,electronics,51.85,ui shuffle metrics elt warehouse etl spark
+1430,books,26.96,map join etl warehouse scala plan columnar warehouse elt scala reduce
+1431,grocery,68.58,elt lake partition filter shuffle shuffle ui shuffle filter etl
+1432,toys,44.57,partition data lake join metrics elt spark join shuffle etl warehouse spark
+1433,electronics,13.38,join spark lake map filter scala join shuffle filter metrics
+1434,electronics,58.68,metrics etl spark columnar columnar spark filter columnar ui aggregate
+1435,books,49.43,shuffle map row columnar plan columnar metrics reduce
+1436,books,39.34,warehouse ui ui data data join map columnar spark
+1437,books,90.33,scala shuffle reduce row etl lake spark scala reduce warehouse spark warehouse
+1438,toys,2.44,metrics lake join elt columnar filter row row scala scala python metrics
+1439,electronics,48.24,metrics shuffle python join plan join
+1440,toys,5.48,scala plan map data row partition shuffle filter reduce partition
+1441,grocery,28.18,data ui map partition shuffle
+1442,books,47.28,aggregate map etl row shuffle warehouse shuffle reduce
+1443,grocery,85.25,row plan plan spark etl spark columnar reduce join shuffle reduce elt
+1444,toys,23.15,scala partition ui lake join
+1445,electronics,58.95,etl elt metrics reduce filter columnar
+1446,toys,34.98,aggregate row filter spark spark data partition ui scala python python join
+1447,grocery,28.24,columnar python ui scala shuffle spark aggregate row reduce reduce metrics
+1448,grocery,51.04,etl partition row scala python spark etl scala python data map partition
+1449,electronics,28.68,partition warehouse metrics reduce data metrics
+1450,books,58.76,metrics metrics partition elt scala warehouse scala spark join reduce partition ui
+1451,grocery,39.55,scala aggregate columnar reduce map data aggregate data shuffle join metrics plan
+1452,grocery,58.59,ui python elt reduce filter metrics reduce warehouse
+1453,grocery,44.13,scala python lake python shuffle plan columnar metrics reduce
+1454,electronics,29.84,python shuffle columnar warehouse columnar metrics
+1455,grocery,50.75,map partition aggregate etl columnar map columnar partition map scala partition
+1456,toys,8.44,ui plan plan shuffle elt partition scala row row python
+1457,books,90.75,ui elt etl map aggregate lake
+1458,grocery,29.52,row partition map columnar warehouse
+1459,toys,36.55,warehouse data map ui filter partition columnar scala
+1460,grocery,35.5,map elt plan ui filter warehouse scala
+1461,books,54.44,scala ui ui map reduce python scala shuffle join columnar
+1462,grocery,72.5,reduce filter filter lake scala spark lake join python
+1463,books,93.57,columnar lake data partition plan
+1464,grocery,16.44,ui row join metrics join warehouse spark filter lake aggregate reduce partition
+1465,electronics,79.4,metrics map map lake shuffle data
+1466,toys,28.77,spark spark partition lake python filter row elt reduce join spark
+1467,toys,17.29,columnar ui shuffle lake map join plan join lake scala etl python
+1468,toys,34.01,filter elt aggregate warehouse plan
+1469,books,8.19,filter plan plan join spark shuffle row python
+1470,electronics,93.01,aggregate spark reduce partition map ui map ui plan shuffle
+1471,books,21.58,lake filter data join row reduce reduce
+1472,electronics,18.07,scala shuffle map row partition row data warehouse python filter plan plan
+1473,grocery,98.42,partition python filter map metrics
+1474,electronics,67.81,python elt python data warehouse scala python filter map elt
+1475,books,73.71,plan aggregate lake reduce reduce warehouse warehouse python lake ui ui
+1476,toys,72.08,lake row columnar elt shuffle scala metrics scala data lake
+1477,grocery,60.5,row join etl elt data scala reduce lake filter warehouse etl
+1478,grocery,93.76,partition map spark elt aggregate partition
+1479,grocery,74.4,ui warehouse scala shuffle data spark data spark ui etl python
+1480,grocery,58.76,lake warehouse row row reduce join lake partition columnar
+1481,toys,28.36,elt row warehouse row row metrics plan
+1482,electronics,30.71,reduce metrics warehouse data scala map spark join lake map partition
+1483,electronics,52.75,python spark ui map scala metrics shuffle plan elt aggregate python
+1484,grocery,64.62,data map reduce python python partition partition
+1485,books,34.37,metrics partition aggregate partition partition filter ui metrics columnar ui reduce lake
+1486,electronics,94.01,spark warehouse metrics spark partition metrics
+1487,grocery,84.2,warehouse warehouse aggregate lake reduce elt etl scala ui
+1488,grocery,78.18,scala warehouse shuffle data lake lake scala reduce spark
+1489,books,7.05,aggregate columnar etl metrics etl partition python warehouse join filter python scala
+1490,electronics,20.21,elt scala metrics reduce spark columnar ui row shuffle
+1491,toys,79.93,plan join partition spark ui python elt columnar
+1492,toys,14.1,warehouse reduce map spark join map scala reduce data python
+1493,toys,15.3,spark map shuffle elt ui ui data data warehouse
+1494,electronics,85.5,filter spark scala elt columnar lake plan filter
+1495,grocery,33.92,partition map map map aggregate python scala ui
+1496,books,46.7,aggregate etl lake plan columnar metrics shuffle scala warehouse
+1497,electronics,10.41,lake metrics etl join filter map
+1498,toys,55.26,shuffle data elt etl filter filter shuffle metrics metrics join shuffle
+1499,books,31.26,shuffle partition ui ui elt

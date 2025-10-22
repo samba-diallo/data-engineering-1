@@ -1,0 +1,5 @@
+run_id,task,note,files_read,input_size_bytes,shuffle_read_bytes,shuffle_write_bytes,timestamp
+r1,topN_rdd,, , , , , 
+r1,topN_df,, , , , , 
+r1,projection_all_cols,, , , , , 
+r1,projection_min_cols,, , , , , 
