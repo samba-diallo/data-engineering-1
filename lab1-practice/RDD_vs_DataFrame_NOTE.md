@@ -22,43 +22,29 @@ This lab compares **RDD API** vs **DataFrame API** in Apache Spark through three
 - **Result:** Verified Spark 4.0.1 installation, fixed SPARK_HOME environment variable
 
 ### 2. **CSV Path Resolution** ✅
-- **Problem:** Spark couldn't find `data/lab1_dataset_a.csv` (file not in data/ subdirectory)
-- **AI Solution:** Provided two options:
-  - Move files into `data/` folder
-  - Use absolute paths with `os.path.join()`
+- **Problem:** Spark couldn't find `data/lab1_dataset_a.csv`
+- **AI Solution:** Provided two options (move files or use absolute paths)
 - **Result:** Lab executes successfully with correct file paths
 
 ### 3. **Metrics Extraction from Spark UI** ✅
 - **Problem:** Unclear how to extract Job ID, Stage ID, shuffle bytes from Spark UI
-- **AI Solution:** 
-  - Mapped official rubric columns to UI locations (SQL tab → Aggregated Metrics)
-  - Provided conversion formulas (180.4 KiB = 180.4 × 1024 = 184,627 bytes)
-  - Explained Tasks, Executors, and Summary Metrics interpretation
-- **Result:** Correctly populated `lab1_metrics_log.csv` with 14 fields (run_id, job_id, stage_id, files_read, input_size_bytes, shuffle_read_bytes, shuffle_write_bytes, elapsed_ms, etc.)
+- **AI Solution:** Mapped official rubric columns to UI locations
+- **Result:** Correctly populated `lab1_metrics_log.csv` with 14 fields
 
-### 4. **Comparative Analysis & Insights** ✅
+### 4. **Comparative Analysis** ✅
 - **Problem:** How to interpret Case A vs Case B results
-- **AI Solution:** Provided Python code to compute:
-  - Shuffle write reduction percentage
-  - Elapsed time ratio
-  - Performance interpretation
-- **Result:** Generated automated comparative analysis output
+- **AI Solution:** Provided Python code for shuffle reduction and time ratios
+- **Result:** Generated automated comparative analysis
 
 ### 5. **Query Plan Evidence** ✅
 - **Problem:** Need to save Spark physical execution plans
-- **AI Solution:** Provided code to extract and save plans:
-  ```python
-  plan = df._jdf.queryExecution().executedPlan().toString()
-  ```
-- **Result:** Created `proof/plan_rdd.txt` and `proof/plan_df.txt` with timestamps
+- **AI Solution:** Provided extraction code with timestamps
+- **Result:** Created `proof/plan_rdd.txt` and `proof/plan_df.txt`
 
-### 6. **Git Commits & Documentation** ✅
-- **Problem:** How to structure and commit multi-part deliverables
-- **AI Solution:** 
-  - Provided semantic commit messages following convention
-  - Explained file organization (outputs/, proof/, outputs/lab1_metrics_log.csv)
-  - Suggested reproducibility checklist
-- **Result:** Clean commit history with linked proof artifacts
+### 6. **Git & Documentation** ✅
+- **Problem:** How to structure multi-part deliverables
+- **AI Solution:** Semantic commit messages and file organization
+- **Result:** Clean commit history with proof artifacts
 
 ---
 
@@ -71,7 +57,7 @@ This lab compares **RDD API** vs **DataFrame API** in Apache Spark through three
 | **Stages** | 1/1 (2 skipped) | 1/1 (1 skipped) |
 | **Locality** | PROCESS_LOCAL | PROCESS_LOCAL |
 
-**Observation:** Both cases produced identical shuffle write size, likely due to Spark's Catalyst optimizer applying similar transformations despite different projection strategies on small datasets.
+**Observation:** Both cases produced identical shuffle write size due to Catalyst optimizer.
 
 ---
 
