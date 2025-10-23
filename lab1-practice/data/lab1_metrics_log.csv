@@ -1,5 +1,5 @@
 run_id,task,note,files_read,input_size_bytes,shuffle_read_bytes,shuffle_write_bytes,timestamp
-r1,topN_rdd,, , , , , 
-r1,topN_df,, , , , , 
-r1,projection_all_cols,, , , , , 
-r1,projection_min_cols,, , , , , 
+r1,topN_rdd,RDD pipeline - tokenize and count,2,184627,0,0,2025-10-23T00:29:57
+r1,topN_df,DataFrame API - explode and agg,2,184627,0,560,2025-10-23T00:29:58
+r1,projection_all_cols,Case A: select(*) groupBy category,2,184627,0,560,2025-10-23T00:29:59
+r1,projection_min_cols,Case B: select(category,value) groupBy category,2,184627,0,560,2025-10-23T00:30:00
