@@ -1,0 +1,21 @@
+2025-10-29 20:27:03.911364
+AdaptiveSparkPlan isFinalPlan=false
++- Project [order_id#17, abs(xxhash64(date#95, 42)) AS date_sk#96L, abs(xxhash64(customer_id#14, 42)) AS customer_sk#97L, abs(xxhash64(oi_product_id#94, 42)) AS product_sk#98L, quantity#19, unit_price#20, (cast(quantity#19 as double) * unit_price#20) AS subtotal#101, year(date#95) AS year#102, month(date#95) AS month#103]
+   +- Project [customer_id#14, order_id#17, oi_product_id#94, quantity#19, unit_price#20, cast(order_date#15 as date) AS date#95]
+      +- BroadcastHashJoin [customer_id#14], [customer_id#0], Inner, BuildRight, false
+         :- Project [order_id#17, oi_product_id#94, quantity#19, unit_price#20, customer_id#14, order_date#15]
+         :  +- BroadcastHashJoin [order_id#17], [order_id#13], Inner, BuildRight, false
+         :     :- Project [order_id#17, oi_product_id#94, quantity#19, unit_price#20]
+         :     :  +- BroadcastHashJoin [oi_product_id#94], [product_id#8], Inner, BuildRight, false
+         :     :     :- Project [order_id#17, product_id#18 AS oi_product_id#94, quantity#19, unit_price#20]
+         :     :     :  +- Filter (isnotnull(product_id#18) AND isnotnull(order_id#17))
+         :     :     :     +- FileScan csv [order_id#17,product_id#18,quantity#19,unit_price#20] Batched: false, DataFilters: [isnotnull(product_id#18), isnotnull(order_id#17)], Format: CSV, Location: InMemoryFileIndex(1 paths)[file:/home/sable/Documents/data engineering1/lab2-practice/data/lab2_o..., PartitionFilters: [], PushedFilters: [IsNotNull(product_id), IsNotNull(order_id)], ReadSchema: struct<order_id:int,product_id:int,quantity:int,unit_price:double>
+         :     :     +- BroadcastExchange HashedRelationBroadcastMode(List(cast(input[0, int, false] as bigint)),false), [plan_id=295]
+         :     :        +- Filter isnotnull(product_id#8)
+         :     :           +- FileScan csv [product_id#8] Batched: false, DataFilters: [isnotnull(product_id#8)], Format: CSV, Location: InMemoryFileIndex(1 paths)[file:/home/sable/Documents/data engineering1/lab2-practice/data/lab2_p..., PartitionFilters: [], PushedFilters: [IsNotNull(product_id)], ReadSchema: struct<product_id:int>
+         :     +- BroadcastExchange HashedRelationBroadcastMode(List(cast(input[0, int, false] as bigint)),false), [plan_id=299]
+         :        +- Filter (isnotnull(order_id#13) AND isnotnull(customer_id#14))
+         :           +- FileScan csv [order_id#13,customer_id#14,order_date#15] Batched: false, DataFilters: [isnotnull(order_id#13), isnotnull(customer_id#14)], Format: CSV, Location: InMemoryFileIndex(1 paths)[file:/home/sable/Documents/data engineering1/lab2-practice/data/lab2_o..., PartitionFilters: [], PushedFilters: [IsNotNull(order_id), IsNotNull(customer_id)], ReadSchema: struct<order_id:int,customer_id:int,order_date:timestamp>
+         +- BroadcastExchange HashedRelationBroadcastMode(List(cast(input[0, int, false] as bigint)),false), [plan_id=303]
+            +- Filter isnotnull(customer_id#0)
+               +- FileScan csv [customer_id#0] Batched: false, DataFilters: [isnotnull(customer_id#0)], Format: CSV, Location: InMemoryFileIndex(1 paths)[file:/home/sable/Documents/data engineering1/lab2-practice/data/lab2_c..., PartitionFilters: [], PushedFilters: [IsNotNull(customer_id)], ReadSchema: struct<customer_id:int>

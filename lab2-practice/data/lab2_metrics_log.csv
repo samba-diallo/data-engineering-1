@@ -1,0 +1,5 @@
+run_id,task,note,files_read,input_size_bytes,shuffle_read_bytes,shuffle_write_bytes,timestamp
+r1,ingest_plan,, , , , , 
+r1,fact_join,, , , , , 
+r1,caseA_join_then_project,, , , , , 
+r1,caseB_project_then_join,, , , , , 

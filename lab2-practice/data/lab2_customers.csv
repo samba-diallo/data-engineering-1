@@ -1,0 +1,25 @@
+customer_id,name,email,created_at
+1,Customer 1,c001@example.com,2025-01-02T10:00:00
+2,Customer 2,c002@example.com,2025-01-03T10:00:00
+3,Customer 3,c003@example.com,2025-01-04T10:00:00
+4,Customer 4,c004@example.com,2025-01-05T10:00:00
+5,Customer 5,c005@example.com,2025-01-06T10:00:00
+6,Customer 6,c006@example.com,2025-01-07T10:00:00
+7,Customer 7,c007@example.com,2025-01-08T10:00:00
+8,Customer 8,c008@example.com,2025-01-09T10:00:00
+9,Customer 9,c009@example.com,2025-01-10T10:00:00
+10,Customer 10,c010@example.com,2025-01-11T10:00:00
+11,Customer 11,c011@example.com,2025-01-12T10:00:00
+12,Customer 12,c012@example.com,2025-01-13T10:00:00
+13,Customer 13,c013@example.com,2025-01-14T10:00:00
+14,Customer 14,c014@example.com,2025-01-15T10:00:00
+15,Customer 15,c015@example.com,2025-01-16T10:00:00
+16,Customer 16,c016@example.com,2025-01-17T10:00:00
+17,Customer 17,c017@example.com,2025-01-18T10:00:00
+18,Customer 18,c018@example.com,2025-01-19T10:00:00
+19,Customer 19,c019@example.com,2025-01-20T10:00:00
+20,Customer 20,c020@example.com,2025-01-21T10:00:00
+21,Customer 21,c021@example.com,2025-01-22T10:00:00
+22,Customer 22,c022@example.com,2025-01-23T10:00:00
+23,Customer 23,c023@example.com,2025-01-24T10:00:00
+24,Customer 24,c024@example.com,2025-01-25T10:00:00
