@@ -7,16 +7,3 @@ lab2-practice/retail_dw_20250826/
 
 # Large dump file
 lab2-practice/retail_schema_ownerless_full.dump
-
-# Large parquet files (too large for GitHub)
-lab2-practice/retail_dw_20250826/
-
-# Large dump file
-lab2-practice/retail_schema_ownerless_full.dump
-=======
->>>>>>> dfb0611 (refactor: Réorganisation du dépôt - suppression des doublons, ajout de la documentation genai, conservation des outputs)
-=======
-
-# Large parquet files (too large for GitHub)
-lab2-practice/retail_dw_20250826/
->>>>>>> f7abe62 (refactor: Réorganisation du dépôt (sans fichiers lourds) - suppression des doublons, ajout de la documentation genai)
