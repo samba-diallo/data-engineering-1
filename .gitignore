@@ -1,21 +1,12 @@
 # Python
 __pycache__/
 *.py[cod]
-*$py.class
-.ipynb_checkpoints/
 
-# Virtual Environment
-de1-env/
-venv/
+# Large parquet files (too large for GitHub)
+lab2-practice/retail_dw_20250826/
 
-# IDE
-.vscode/
-.idea/
-
-# Spark
-spark-warehouse/
-*.log
-<<<<<<< HEAD
+# Large dump file
+lab2-practice/retail_schema_ownerless_full.dump
 
 # Large parquet files (too large for GitHub)
 lab2-practice/retail_dw_20250826/
@@ -24,3 +15,8 @@ lab2-practice/retail_dw_20250826/
 lab2-practice/retail_schema_ownerless_full.dump
 =======
 >>>>>>> dfb0611 (refactor: Réorganisation du dépôt - suppression des doublons, ajout de la documentation genai, conservation des outputs)
+=======
+
+# Large parquet files (too large for GitHub)
+lab2-practice/retail_dw_20250826/
+>>>>>>> f7abe62 (refactor: Réorganisation du dépôt (sans fichiers lourds) - suppression des doublons, ajout de la documentation genai)
