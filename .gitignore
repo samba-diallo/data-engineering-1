@@ -16,3 +16,11 @@ venv/
 spark-warehouse/
 *.log
 derby.log
+# Exclude large project files
+projet-final/data/clickstream/
+projet-final/outputs/project/bronze/*.csv
+projet-final/outputs/project/silver/*.parquet
+projet-final/outputs/project/silver_optimized/*.parquet
+lab2-practice/retail_dw_20250826/
+lab2-practice/retail_schema_ownerless_full.dump
+lab3-practice/outputs/
