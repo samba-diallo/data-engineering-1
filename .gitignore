@@ -15,4 +15,9 @@ venv/
 # Spark
 spark-warehouse/
 *.log
-derby.log
+
+# Large parquet files (too large for GitHub)
+lab2-practice/retail_dw_20250826/
+
+# Large dump file
+lab2-practice/retail_schema_ownerless_full.dump
