@@ -16,32 +16,32 @@ This lab compares **RDD API** vs **DataFrame API** in Apache Spark through three
 
 ## How Claude Haiku 4.5 Assisted
 
-### 1. **Setup & Environment Issues** ✅
+### 1. **Setup & Environment Issues** 
 - **Problem:** FileNotFoundError for SPARK_HOME path (`/path/to/spark-4.0.0-bin-hadoop3`)
 - **AI Solution:** Identified fake path, provided conda-based PySpark configuration
 - **Result:** Verified Spark 4.0.1 installation, fixed SPARK_HOME environment variable
 
-### 2. **CSV Path Resolution** ✅
+### 2. **CSV Path Resolution** 
 - **Problem:** Spark couldn't find `data/lab1_dataset_a.csv`
 - **AI Solution:** Provided two options (move files or use absolute paths)
 - **Result:** Lab executes successfully with correct file paths
 
-### 3. **Metrics Extraction from Spark UI** ✅
+### 3. **Metrics Extraction from Spark UI** 
 - **Problem:** Unclear how to extract Job ID, Stage ID, shuffle bytes from Spark UI
 - **AI Solution:** Mapped official rubric columns to UI locations
 - **Result:** Correctly populated `lab1_metrics_log.csv` with 14 fields
 
-### 4. **Comparative Analysis** ✅
+### 4. **Comparative Analysis** 
 - **Problem:** How to interpret Case A vs Case B results
 - **AI Solution:** Provided Python code for shuffle reduction and time ratios
 - **Result:** Generated automated comparative analysis
 
-### 5. **Query Plan Evidence** ✅
+### 5. **Query Plan Evidence** 
 - **Problem:** Need to save Spark physical execution plans
 - **AI Solution:** Provided extraction code with timestamps
 - **Result:** Created `proof/plan_rdd.txt` and `proof/plan_df.txt`
 
-### 6. **Git & Documentation** ✅
+### 6. **Git & Documentation** 
 - **Problem:** How to structure multi-part deliverables
 - **AI Solution:** Semantic commit messages and file organization
 - **Result:** Clean commit history with proof artifacts
@@ -63,12 +63,12 @@ This lab compares **RDD API** vs **DataFrame API** in Apache Spark through three
 
 ## Deliverables
 
-- ✅ `DE1_Lab1_Notebook_EN.ipynb` — Complete notebook with 5 sections
-- ✅ `outputs/top10_rdd.csv` — RDD-based word counts
-- ✅ `outputs/top10_df.csv` — DataFrame-based word counts
-- ✅ `outputs/lab1_metrics_log.csv` — Spark UI metrics (14 fields)
-- ✅ `proof/plan_rdd.txt` — RDD physical execution plan
-- ✅ `proof/plan_df.txt` — DataFrame physical execution plan
+-  `DE1_Lab1_Notebook_EN.ipynb` — Complete notebook with 5 sections
+-  `outputs/top10_rdd.csv` — RDD-based word counts
+-  `outputs/top10_df.csv` — DataFrame-based word counts
+-  `outputs/lab1_metrics_log.csv` — Spark UI metrics (14 fields)
+-  `proof/plan_rdd.txt` — RDD physical execution plan
+-  `proof/plan_df.txt` — DataFrame physical execution plan
 
 ---
 
