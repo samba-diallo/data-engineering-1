@@ -1,5 +1,6 @@
 run_id,task,note,files_read,input_size_bytes,shuffle_read_bytes,shuffle_write_bytes,timestamp
-r1,ingest_plan,, , , , , 
-r1,fact_join,, , , , , 
-r1,caseA_join_then_project,, , , , , 
-r1,caseB_project_then_join,, , , , , 
+r1,ingest_data,Ingestion des données sources CSV,50,123238,20750,20750,2025-12-21T18:22:31.884544
+r1,dim_creation,Création des tables de dimensions avec surrogate keys,50,123238,20750,20750,2025-12-21T18:23:26.699089
+r1,fact_join,Création de fact_sales avec jointures et transformations,50,123238,20750,20750,2025-12-21T18:23:58.456895
+r1,caseA_join_then_project,Case A: jointures puis projection,70,194012,35811,35811,2025-12-21T18:25:02.525833
+r1,caseB_project_then_join,Case B: projection puis jointures (optimisé),70,194012,35811,35811,2025-12-21T18:25:02.553873
