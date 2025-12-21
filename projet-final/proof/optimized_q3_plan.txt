@@ -1,0 +1,13 @@
+2025-12-20 20:57:01.205707
+Optimizations: 7 partitions, sorted by n desc
+AdaptiveSparkPlan isFinalPlan=false
++- Sort [total_clicks#242L DESC NULLS LAST], true, 0
+   +- Exchange rangepartitioning(total_clicks#242L DESC NULLS LAST, 200), ENSURE_REQUIREMENTS, [plan_id=1598]
+      +- HashAggregate(keys=[type#220], functions=[sum(n#221), avg(n#221), count(distinct curr#219)], output=[type#220, unique_pages#241L, total_clicks#242L, avg_clicks_per_pair#243])
+         +- Exchange hashpartitioning(type#220, 200), ENSURE_REQUIREMENTS, [plan_id=1595]
+            +- HashAggregate(keys=[type#220], functions=[merge_sum(n#221), merge_avg(n#221), partial_count(distinct curr#219)], output=[type#220, sum#248L, sum#251, count#252L, count#255L])
+               +- HashAggregate(keys=[type#220, curr#219], functions=[merge_sum(n#221), merge_avg(n#221)], output=[type#220, curr#219, sum#248L, sum#251, count#252L])
+                  +- Exchange hashpartitioning(type#220, curr#219, 200), ENSURE_REQUIREMENTS, [plan_id=1591]
+                     +- HashAggregate(keys=[type#220, curr#219], functions=[partial_sum(n#221), partial_avg(n#221)], output=[type#220, curr#219, sum#248L, sum#251, count#252L])
+                        +- Exchange RoundRobinPartitioning(7), REPARTITION_BY_NUM, [plan_id=1584]
+                           +- FileScan parquet [curr#219,type#220,n#221] Batched: true, DataFilters: [], Format: Parquet, Location: InMemoryFileIndex(1 paths)[file:/home/sable/Documents/data engineering1/projet-final/outputs/proj..., PartitionFilters: [], PushedFilters: [], ReadSchema: struct<curr:string,type:string,n:int>

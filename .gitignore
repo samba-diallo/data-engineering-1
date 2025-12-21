@@ -15,9 +15,12 @@ venv/
 # Spark
 spark-warehouse/
 *.log
+<<<<<<< HEAD
 
 # Large parquet files (too large for GitHub)
 lab2-practice/retail_dw_20250826/
 
 # Large dump file
 lab2-practice/retail_schema_ownerless_full.dump
+=======
+>>>>>>> dfb0611 (refactor: Réorganisation du dépôt - suppression des doublons, ajout de la documentation genai, conservation des outputs)
