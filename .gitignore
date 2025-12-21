@@ -15,12 +15,9 @@ venv/
 # Spark
 spark-warehouse/
 *.log
-derby.log
-# Exclude large project files
-projet-final/data/clickstream/
-projet-final/outputs/project/bronze/*.csv
-projet-final/outputs/project/silver/*.parquet
-projet-final/outputs/project/silver_optimized/*.parquet
+
+# Large parquet files (too large for GitHub)
 lab2-practice/retail_dw_20250826/
+
+# Large dump file
 lab2-practice/retail_schema_ownerless_full.dump
-lab3-practice/outputs/
