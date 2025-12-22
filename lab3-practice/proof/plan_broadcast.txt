@@ -1,0 +1,16 @@
+2025-12-20 14:48:51.981686
+AdaptiveSparkPlan isFinalPlan=false
++- Sort [total_n#1257L DESC NULLS LAST], true, 0
+   +- Exchange rangepartitioning(total_n#1257L DESC NULLS LAST, 200), ENSURE_REQUIREMENTS, [plan_id=295]
+      +- HashAggregate(keys=[curr_category#1138], functions=[sum(n#795)], output=[curr_category#1138, total_n#1257L])
+         +- Exchange hashpartitioning(curr_category#1138, 200), ENSURE_REQUIREMENTS, [plan_id=292]
+            +- HashAggregate(keys=[curr_category#1138], functions=[partial_sum(n#795)], output=[curr_category#1138, sum#1373L])
+               +- Project [n#795, curr_category#1138]
+                  +- BroadcastHashJoin [curr_title#793], [curr_title#1137], LeftOuter, BuildRight, false
+                     :- InMemoryTableScan [curr_title#793, n#795]
+                     :     +- InMemoryRelation [prev_title#792, curr_title#793, type#794, n#795, ts#796, year#797, month#798], StorageLevel(disk, memory, deserialized, 1 replicas)
+                     :           +- *(1) ColumnarToRow
+                     :              +- FileScan parquet [prev_title#792,curr_title#793,type#794,n#795,ts#796,year#797,month#798] Batched: true, DataFilters: [], Format: Parquet, Location: InMemoryFileIndex(1 paths)[file:/home/sable/Documents/data engineering1/lab3-practice/outputs/lab..., PartitionFilters: [], PushedFilters: [], ReadSchema: struct<prev_title:string,curr_title:string,type:string,n:int,ts:timestamp>
+                     +- BroadcastExchange HashedRelationBroadcastMode(List(input[0, string, false]),false), [plan_id=287]
+                        +- Filter isnotnull(curr_title#1137)
+                           +- FileScan csv [curr_title#1137,curr_category#1138] Batched: false, DataFilters: [isnotnull(curr_title#1137)], Format: CSV, Location: InMemoryFileIndex(1 paths)[file:/home/sable/Documents/data engineering1/lab3-practice/data/lab3_d..., PartitionFilters: [], PushedFilters: [IsNotNull(curr_title)], ReadSchema: struct<curr_title:string,curr_category:string>
