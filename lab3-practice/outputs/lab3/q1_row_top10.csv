@@ -1,0 +1,11 @@
+year,month,prev_title,curr_title,n
+2025,7,ETL,Dataframe,14116
+2025,7,ELT,PySpark,13957
+2025,5,Apache_Spark,Dataframe,13948
+2025,6,ELT,Data_warehouse,13923
+2025,7,ELT,RDD,13603
+2025,5,ETL,MapReduce,13380
+2025,5,Python_(programming_language),MapReduce,13365
+2025,5,Python_(programming_language),Lakehouse,13360
+2025,6,Main_Page,Data_warehouse,13342
+2025,5,Data_engineering,Category:Big_data,13126

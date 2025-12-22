@@ -1,0 +1,13 @@
+curr_title,curr_category
+Apache_Spark,engine
+PySpark,engine
+Dataframe,concept
+RDD,concept
+MapReduce,concept
+Lakehouse,architecture
+Data_warehouse,architecture
+Feature_store,ml_platform
+Partition_(databases),storage
+Broadcast_join,execution
+SQL,language
+Category:Big_data,category
