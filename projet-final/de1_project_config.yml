@@ -9,7 +9,6 @@ project:
   name: "DE1 Local Lakehouse Project"
   dataset: "Wikipedia Clickstream (Nov 2024)"
   dataset_size: "10M rows / 450MB"
-  team: "Badr TAJINI"
 
 paths:
   # Raw data input
