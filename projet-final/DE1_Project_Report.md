@@ -98,6 +98,10 @@ Quatre règles de validation appliquées en silver :
 
 1. **Clics non nuls** (erreur) : Rejeter les enregistrements avec clics nuls
 2. **Clics positifs** (erreur) : Rejeter les valeurs négatives (n >= 0)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7454cbd (quelques mofications)
 3. **Nom de page valide** (erreur) : Rejeter les noms de page vides
 4. **Type valide** (avertissement) : Journaliser les types de lien inattendus
 

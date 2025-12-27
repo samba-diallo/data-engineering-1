@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 # Documentation d’Utilisation de l’IA Générative
 
+=======
+
+# Documentation d’Utilisation de l’IA Générative
+
+>>>>>>> 7454cbd (quelques mofications)
 **Projet :** Projet Final DE1 - Lakehouse Local  
 **Auteurs :** DIALLO Samba & DIOP Mouhamed  
 **Date :** Décembre 2025  
@@ -143,6 +149,10 @@ L’IA générative a permis un gain de temps significatif (environ 40% sur le c
 
 ---
 
+<<<<<<< HEAD
 **Signature :** DIALLO Samba & DIOP Mouhamed  
 **Date :** [Date de soumission]  
 **Affirmation :** Nous affirmons que ce document reflète fidèlement l’usage de l’IA générative dans ce projet.
+=======
+**Signature :** DIALLO Samba & DIOP Mouhamed 
+>>>>>>> 7454cbd (quelques mofications)
