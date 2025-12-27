@@ -11,7 +11,7 @@ Ce dépôt contient les travaux pratiques et le projet final du cours Data Engin
 
 ## Note sur les fichiers volumineux
 
-⚠️ **Fichiers non inclus sur GitHub** : Les fichiers Parquet générés dans `lab2-practice/retail_dw_20250826/` (~2,5 GB, 800+ fichiers) sont exclus du dépôt GitHub en raison de leur taille. Ces fichiers sont générés localement lors de l'exécution des notebooks PySpark et restent disponibles dans votre environnement local.
+**Fichiers non inclus sur GitHub** : Les fichiers Parquet générés dans `lab2-practice/retail_dw_20250826/` (~2,5 GB, 800+ fichiers) sont exclus du dépôt GitHub en raison de leur taille. Ces fichiers sont générés localement lors de l'exécution des notebooks PySpark et restent disponibles dans votre environnement local.
 
 Pour régénérer ces fichiers localement, exécutez les notebooks dans le dossier `lab2-practice/`.
 

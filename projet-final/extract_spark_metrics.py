@@ -202,7 +202,7 @@ def main():
         writer.writeheader()
         writer.writerows(csv_rows)
     
-    print(f"\n✅ Metrics saved to {csv_file}")
+    print(f"\nMetrics saved to {csv_file}")
     print(f"   Total rows: {len(csv_rows)}")
 
 if __name__ == "__main__":
