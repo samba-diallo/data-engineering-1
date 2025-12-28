@@ -19,17 +19,17 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: website/quartz-min
+        working-directory: ./website/quartz-min
 
       - name: Build Quartz site
         run: npx quartz build
-        working-directory: website/quartz-min
+        working-directory: ./website/quartz-min
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: website/quartz-min/public
+          publish_dir: ./website/quartz-min/public
           publish_branch: gh-pages
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
