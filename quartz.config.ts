@@ -53,6 +53,7 @@ const config: QuartzConfig = {
       },
     },
   },
+
   plugins: {
     transformers: [
       Plugin.FrontMatter(),
@@ -73,25 +74,38 @@ const config: QuartzConfig = {
       Plugin.Description(),
       Plugin.Latex({ renderEngine: "katex" }),
     ],
-    filters: [Plugin.RemoveDrafts()],
+
+    filters: [
+      Plugin.RemoveDrafts(),
+    ],
+
+    // 🔑 ORDRE CORRECT DES EMITTERS (CRITIQUE)
     emitters: [
       Plugin.AliasRedirects(),
       Plugin.ComponentResources(),
+
+      // ✅ Assets AVANT la génération des pages
+      Plugin.Assets(),
+      Plugin.Static(),
+
+      // Pages Quartz
       Plugin.ContentPage(),
       Plugin.FolderPage(),
       Plugin.TagPage(),
+
       Plugin.ContentIndex({
         enableSiteMap: true,
         enableRSS: true,
       }),
-      Plugin.Assets(),
-      Plugin.Static(),
+
       Plugin.Favicon(),
       Plugin.NotFoundPage(),
-      // Comment out CustomOgImages to speed up build time
-      Plugin.CustomOgImages(),
+
+      // Optionnel (lent, tu peux le laisser commenté)
+      // Plugin.CustomOgImages(),
     ],
   },
 }
 
 export default config
+
