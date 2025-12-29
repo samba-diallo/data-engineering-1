@@ -1,0 +1,12 @@
+2025-12-20 14:35:56.191084
+AdaptiveSparkPlan isFinalPlan=false
++- TakeOrderedAndProject(limit=50, orderBy=[n#396L DESC NULLS LAST], output=[year#6,month#7,prev_title#0,curr_title#1,n#396L])
+   +- HashAggregate(keys=[year#6, month#7, prev_title#0, curr_title#1], functions=[sum(n#3)], output=[year#6, month#7, prev_title#0, curr_title#1, n#396L])
+      +- Exchange hashpartitioning(year#6, month#7, prev_title#0, curr_title#1, 200), ENSURE_REQUIREMENTS, [plan_id=85]
+         +- HashAggregate(keys=[year#6, month#7, prev_title#0, curr_title#1], functions=[partial_sum(n#3)], output=[year#6, month#7, prev_title#0, curr_title#1, sum#511L])
+            +- Project [prev_title#0, curr_title#1, n#3, year#6, month#7]
+               +- Filter (isnotnull(type#2) AND (type#2 = link))
+                  +- InMemoryTableScan [curr_title#1, month#7, n#3, prev_title#0, type#2, year#6], [isnotnull(type#2), (type#2 = link)]
+                        +- InMemoryRelation [prev_title#0, curr_title#1, type#2, n#3, ts#4, year#6, month#7], StorageLevel(disk, memory, deserialized, 1 replicas)
+                              +- *(1) Project [prev_title#0, curr_title#1, type#2, n#3, ts#4, year(cast(ts#4 as date)) AS year#6, month(cast(ts#4 as date)) AS month#7]
+                                 +- FileScan csv [prev_title#0,curr_title#1,type#2,n#3,ts#4] Batched: false, DataFilters: [], Format: CSV, Location: InMemoryFileIndex(3 paths)[file:/home/sable/Documents/data engineering1/lab3-practice/data/lab3_c..., PartitionFilters: [], PushedFilters: [], ReadSchema: struct<prev_title:string,curr_title:string,type:string,n:int,ts:timestamp>

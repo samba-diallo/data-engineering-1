@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-# Fichier de configuration principal du projet-final
-# (Contenu réel du fichier à insérer ici)
-=======
+
 # DE1 Project Configuration
 # Author: DIALLO Samba, DIOP Mouhamed - Data Engineering I - ESIEE 2025-2026
 
@@ -120,4 +117,3 @@ optimization:
     - "Target 128MB file size"
     - "Enable AQE"
     - "Coalesce small files"
->>>>>>> dfb0611 (refactor: Réorganisation du dépôt - suppression des doublons, ajout de la documentation genai, conservation des outputs)

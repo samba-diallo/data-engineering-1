@@ -1,0 +1,9 @@
+2025-12-20 20:57:01.145828
+Optimizations: 7 partitions, sorted by n desc
+AdaptiveSparkPlan isFinalPlan=false
++- TakeOrderedAndProject(limit=20, orderBy=[total_clicks#232L DESC NULLS LAST], output=[page#231,total_clicks#232L])
+   +- HashAggregate(keys=[curr#219], functions=[sum(n#221)], output=[page#231, total_clicks#232L])
+      +- Exchange hashpartitioning(curr#219, 200), ENSURE_REQUIREMENTS, [plan_id=1534]
+         +- HashAggregate(keys=[curr#219], functions=[partial_sum(n#221)], output=[curr#219, sum#235L])
+            +- Exchange RoundRobinPartitioning(7), REPARTITION_BY_NUM, [plan_id=1529]
+               +- FileScan parquet [curr#219,n#221] Batched: true, DataFilters: [], Format: Parquet, Location: InMemoryFileIndex(1 paths)[file:/home/sable/Documents/data engineering1/projet-final/outputs/proj..., PartitionFilters: [], PushedFilters: [], ReadSchema: struct<curr:string,n:int>
