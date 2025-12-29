@@ -4,11 +4,20 @@ title: Lab 3 – Data Engineering
 
 # Lab 3 – Data Engineering
 
-<iframe src="/content/labs/lab3/lab3.html" width="100%" height="900px"></iframe>
+
+
+
+## Notebook : assignment3_esiee
+{% include "labs/lab3/assets/assignment3_esiee.md" %}
+
+---
+
+## Notebook : DE1_Lab3_Notebook_EN
+{% include "labs/lab3/assets/DE1_Lab3_Notebook_EN.md" %}
 
 ## 📊 Proof / Outputs
 
 ### Text files
-- [plan_broadcast.txt](assets/plan_broadcast.txt)
-- [plan_column.txt](assets/plan_column.txt)
-- [plan_row.txt](assets/plan_row.txt)
+- [plan_broadcast.txt](labs/lab3/assets/plan_broadcast.txt)
+- [plan_column.txt](labs/lab3/assets/plan_column.txt)
+- [plan_row.txt](labs/lab3/assets/plan_row.txt)

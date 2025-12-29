@@ -46,9 +46,10 @@ title: $title
 
 # $title
 
-<iframe src="/$html_file" width="100%" height="900px"></iframe>
+<iframe src="./$html_file" width="100%" height="900px"></iframe>
 
-## 📊 Proof / Outputs
+
+## Proof / Outputs
 EOL
 
     # Images

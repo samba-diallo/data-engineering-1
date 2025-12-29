@@ -4,18 +4,28 @@ title: Lab 2 – Data Engineering
 
 # Lab 2 – Data Engineering
 
-<iframe src="/content/labs/lab2/lab2.html" width="100%" height="900px"></iframe>
+
+
+## Notebook : assignment2_esiee
+
+{% include "labs/lab2/assets/assignment2_esiee.md" %}
+
+---
+
+## Notebook : DE1_Lab2_Notebook_EN
+
+{% include "labs/lab2/assets/DE1_Lab2_Notebook_EN.md" %}
 
 ## 📊 Proof / Outputs
-- ![details metrics.png](assets/details metrics.png)
-- ![details_sql_query.png](assets/details_sql_query.png)
-- ![details_stage.png](assets/details_stage.png)
-- ![metrics.png](assets/metrics.png)
-- ![spark_sql.png](assets/spark_sql.png)
-- ![spark_ui_jobs_overview.png.png](assets/spark_ui_jobs_overview.png.png)
-- ![spark_ui_stages_overview.png.png](assets/spark_ui_stages_overview.png.png)
+- ![details metrics.png](labs/lab2/assets/details metrics.png)
+- ![details_sql_query.png](labs/lab2/assets/details_sql_query.png)
+- ![details_stage.png](labs/lab2/assets/details_stage.png)
+- ![metrics.png](labs/lab2/assets/metrics.png)
+- ![spark_sql.png](labs/lab2/assets/spark_sql.png)
+- ![spark_ui_jobs_overview.png.png](labs/lab2/assets/spark_ui_jobs_overview.png.png)
+- ![spark_ui_stages_overview.png.png](labs/lab2/assets/spark_ui_stages_overview.png.png)
 
 ### Text files
-- [assignment2_genai.md](assets/assignment2_genai.md)
-- [plan_fact_join.txt](assets/plan_fact_join.txt)
-- [plan_ingest.txt](assets/plan_ingest.txt)
+- [assignment2_genai.md](labs/lab2/assets/assignment2_genai.md)
+- [plan_fact_join.txt](labs/lab2/assets/plan_fact_join.txt)
+- [plan_ingest.txt](labs/lab2/assets/plan_ingest.txt)
