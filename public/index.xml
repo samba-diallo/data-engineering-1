@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>Quartz 4</title>
+      <link>https://quartz.jzhao.xyz</link>
+      <description>Last 10 notes on Quartz 4</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>DE1_Lab3_Notebook_EN</title>
+    <link>https://quartz.jzhao.xyz/labs/lab3/assets/DE1_Lab3_Notebook_EN</link>
+    <guid>https://quartz.jzhao.xyz/labs/lab3/assets/DE1_Lab3_Notebook_EN</guid>
+    <description><![CDATA[ DE1 — Lab 3: Physical Representations and Batch II Costs Author : Badr TAJINI - Data Engineering I - ESIEE 2025-2026 Execute all cells. ]]></description>
+    <pubDate>Mon, 29 Dec 2025 04:11:06 GMT</pubDate>
+  </item><item>
+    <title>assignment1_esiee</title>
+    <link>https://quartz.jzhao.xyz/labs/lab1/assets/assignment1_esiee</link>
+    <guid>https://quartz.jzhao.xyz/labs/lab1/assets/assignment1_esiee</guid>
+    <description><![CDATA[ ESIEE Paris — Data Engineering I — Assignment 1 Author : Badr TAJINI Academic year: 2025–2026 Program: Data &amp; Applications - Engineering - (FD) Course: Data Engineering I In this assignment, you’ll make sure that you’ve correctly set up your local Spark environment. ]]></description>
+    <pubDate>Mon, 29 Dec 2025 03:56:35 GMT</pubDate>
+  </item><item>
+    <title>DE1_Project_Notebook_EN</title>
+    <link>https://quartz.jzhao.xyz/project/assets/DE1_Project_Notebook_EN</link>
+    <guid>https://quartz.jzhao.xyz/project/assets/DE1_Project_Notebook_EN</guid>
+    <description><![CDATA[ DE1 — Final Project Notebook Professor : Badr TAJINI - Data Engineering I - ESIEE 2025-2026 Students : DIALLO Samba &amp; DIOP Mouhamed This is the primary executable artifact. ]]></description>
+    <pubDate>Mon, 29 Dec 2025 03:54:19 GMT</pubDate>
+  </item><item>
+    <title>assignment3_esiee</title>
+    <link>https://quartz.jzhao.xyz/labs/lab3/assets/assignment3_esiee</link>
+    <guid>https://quartz.jzhao.xyz/labs/lab3/assets/assignment3_esiee</guid>
+    <description><![CDATA[ ESIEE Paris — Data Engineering I — Assignment 3 Author : Badr TAJINI Academic year: 2025–2026 Program: Data &amp; Applications - Engineering - (FD) Course: Data Engineering I Learning goals Analyze with SQL and DataFrames. ]]></description>
+    <pubDate>Mon, 29 Dec 2025 03:54:13 GMT</pubDate>
+  </item><item>
+    <title>DE1_Lab2_Notebook_EN</title>
+    <link>https://quartz.jzhao.xyz/labs/lab2/assets/DE1_Lab2_Notebook_EN</link>
+    <guid>https://quartz.jzhao.xyz/labs/lab2/assets/DE1_Lab2_Notebook_EN</guid>
+    <description><![CDATA[ DE1 — Lab 2: PostgreSQL → Star Schema ETL Author : Badr TAJINI - Data Engineering I - ESIEE 2025-2026 Students : DIALLO Samba &amp; DIOP Mouhamed Execute all cells. ]]></description>
+    <pubDate>Mon, 29 Dec 2025 03:54:07 GMT</pubDate>
+  </item><item>
+    <title>assignment2_esiee</title>
+    <link>https://quartz.jzhao.xyz/labs/lab2/assets/assignment2_esiee</link>
+    <guid>https://quartz.jzhao.xyz/labs/lab2/assets/assignment2_esiee</guid>
+    <description><![CDATA[ Assignment 2: Data Engineering with PySpark Overview This assignment focuses on building a data engineering pipeline using PySpark to process and analyze user activity data. ]]></description>
+    <pubDate>Mon, 29 Dec 2025 03:54:00 GMT</pubDate>
+  </item><item>
+    <title>DE1_Lab1_Notebook_EN</title>
+    <link>https://quartz.jzhao.xyz/labs/lab1/assets/DE1_Lab1_Notebook_EN</link>
+    <guid>https://quartz.jzhao.xyz/labs/lab1/assets/DE1_Lab1_Notebook_EN</guid>
+    <description><![CDATA[ DE1 — Lab 1: PySpark Warmup and Reading Plans Author : Badr TAJINI - Data Engineering I - ESIEE 2025-2026 This notebook is the student deliverable. ]]></description>
+    <pubDate>Mon, 29 Dec 2025 03:53:53 GMT</pubDate>
+  </item><item>
+    <title>Lab 1 – Data Engineering</title>
+    <link>https://quartz.jzhao.xyz/labs/lab1/</link>
+    <guid>https://quartz.jzhao.xyz/labs/lab1/</guid>
+    <description><![CDATA[ Lab 1 – Data Engineering Notebook : assignment1_esiee {% include “labs/lab1/assets/assignment1_esiee.md” %} Notebook : DE1_Lab1_Notebook_EN {% include “labs/lab1/assets/DE1_Lab1_Notebook_EN.md” %} 📊 Proof / Outputs Text files assignment1_genai.md plan_df.txt plan_rdd.txt RDD_vs_DataFrame_NOTE.md RE... ]]></description>
+    <pubDate>Mon, 29 Dec 2025 02:21:00 GMT</pubDate>
+  </item><item>
+    <title>Lab 2 – Data Engineering</title>
+    <link>https://quartz.jzhao.xyz/labs/lab2/</link>
+    <guid>https://quartz.jzhao.xyz/labs/lab2/</guid>
+    <description><![CDATA[ Lab 2 – Data Engineering Notebook : assignment2_esiee {% include “labs/lab2/assets/assignment2_esiee.md” %} Notebook : DE1_Lab2_Notebook_EN {% include “labs/lab2/assets/DE1_Lab2_Notebook_EN.md” %} 📊 Proof / Outputs ![details metrics.png](labs/lab2/assets/details metrics.png) Text files assignment2_... ]]></description>
+    <pubDate>Mon, 29 Dec 2025 02:21:00 GMT</pubDate>
+  </item><item>
+    <title>Lab 3 – Data Engineering</title>
+    <link>https://quartz.jzhao.xyz/labs/lab3/</link>
+    <guid>https://quartz.jzhao.xyz/labs/lab3/</guid>
+    <description><![CDATA[ Lab 3 – Data Engineering Notebook : assignment3_esiee {% include “labs/lab3/assets/assignment3_esiee.md” %} Notebook : DE1_Lab3_Notebook_EN {% include “labs/lab3/assets/DE1_Lab3_Notebook_EN.md” %} 📊 Proof / Outputs Text files plan_broadcast.txt plan_column.txt plan_row.txt . ]]></description>
+    <pubDate>Mon, 29 Dec 2025 02:21:00 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>
