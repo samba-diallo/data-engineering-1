@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>DE1_Project_Notebook_EN</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>DE1_Lab2_Notebook_EN</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7511,415 +7511,113 @@ a.anchor-link {
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d7f58b7a">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f98ac24d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="DE1-%E2%80%94-Final-Project-Notebook">DE1 — Final Project Notebook<a class="anchor-link" href="#DE1-%E2%80%94-Final-Project-Notebook">¶</a></h1><blockquote>
-<p>Professor : Badr TAJINI - Data Engineering I - ESIEE 2025-2026</p>
+<h1 id="DE1-%E2%80%94-Lab-2:-PostgreSQL-%E2%86%92-Star-Schema-ETL">DE1 — Lab 2: PostgreSQL → Star Schema ETL<a class="anchor-link" href="#DE1-%E2%80%94-Lab-2:-PostgreSQL-%E2%86%92-Star-Schema-ETL">¶</a></h1><blockquote>
+<p>Author : Badr TAJINI - Data Engineering I - ESIEE 2025-2026</p>
 </blockquote>
 <hr/>
 <blockquote>
 <p>Students : DIALLO Samba &amp; DIOP Mouhamed</p>
 </blockquote>
 <hr/>
-<p>This is the primary executable artifact. Fill config, run baseline, then optimized pipeline, and record evidence.</p>
+<p>Execute all cells. Attach evidence and fill metrics.</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=be911342">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0b3c9a8f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="0.-Load-config">0. Load config<a class="anchor-link" href="#0.-Load-config">¶</a></h2>
+<h2 id="0.-Setup-and-schemas">0. Setup and schemas<a class="anchor-link" href="#0.-Setup-and-schemas">¶</a></h2>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=6a5e716c">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=180378ca">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span><span class="o">,</span><span class="w"> </span><span class="nn">pathlib</span><span class="o">,</span><span class="w"> </span><span class="nn">datetime</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.sql</span><span class="w"> </span><span class="kn">import</span> <span class="n">SparkSession</span><span class="p">,</span> <span class="n">functions</span> <span class="k">as</span> <span class="n">F</span><span class="p">,</span> <span class="n">types</span> <span class="k">as</span> <span class="n">T</span>
-
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"de1_project_config.yml"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">CFG</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-
-<span class="n">spark</span> <span class="o">=</span> <span class="p">(</span><span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span>
-    <span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s2">"de1-lakehouse-project"</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">"spark.sql.adaptive.enabled"</span><span class="p">,</span> <span class="s2">"true"</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">"spark.sql.adaptive.coalescePartitions.enabled"</span><span class="p">,</span> <span class="s2">"true"</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">"spark.driver.memory"</span><span class="p">,</span> <span class="s2">"4g"</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">"spark.executor.memory"</span><span class="p">,</span> <span class="s2">"4g"</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">"spark.memory.fraction"</span><span class="p">,</span> <span class="s2">"0.6"</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">"spark.memory.storageFraction"</span><span class="p">,</span> <span class="s2">"0.3"</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">getOrCreate</span><span class="p">())</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Spark version: </span><span class="si">{</span><span class="n">spark</span><span class="o">.</span><span class="n">version</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Project: </span><span class="si">{</span><span class="n">CFG</span><span class="p">[</span><span class="s1">'project'</span><span class="p">][</span><span class="s1">'name'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="n">CFG</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.sql</span><span class="w"> </span><span class="kn">import</span> <span class="n">SparkSession</span><span class="p">,</span> <span class="n">functions</span> <span class="k">as</span> <span class="n">F</span><span class="p">,</span> <span class="n">types</span> <span class="k">as</span> <span class="n">T</span>
+<span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s2">"de1-lab2"</span><span class="p">)</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+<span class="n">base</span> <span class="o">=</span> <span class="s2">"data/"</span>
+<span class="c1"># Explicit schemas</span>
+<span class="n">customers_schema</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">StructType</span><span class="p">([</span>
+    <span class="n">T</span><span class="o">.</span><span class="n">StructField</span><span class="p">(</span><span class="s2">"customer_id"</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">IntegerType</span><span class="p">(),</span> <span class="kc">False</span><span class="p">),</span>
+    <span class="n">T</span><span class="o">.</span><span class="n">StructField</span><span class="p">(</span><span class="s2">"name"</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">StringType</span><span class="p">(),</span> <span class="kc">True</span><span class="p">),</span>
+    <span class="n">T</span><span class="o">.</span><span class="n">StructField</span><span class="p">(</span><span class="s2">"email"</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">StringType</span><span class="p">(),</span> <span class="kc">True</span><span class="p">),</span>
+    <span class="n">T</span><span class="o">.</span><span class="n">StructField</span><span class="p">(</span><span class="s2">"created_at"</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">TimestampType</span><span class="p">(),</span> <span class="kc">True</span><span class="p">),</span>
+<span class="p">])</span>
+<span class="n">brands_schema</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">StructType</span><span class="p">([</span>
+    <span class="n">T</span><span class="o">.</span><span class="n">StructField</span><span class="p">(</span><span class="s2">"brand_id"</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">IntegerType</span><span class="p">(),</span> <span class="kc">False</span><span class="p">),</span>
+    <span class="n">T</span><span class="o">.</span><span class="n">StructField</span><span class="p">(</span><span class="s2">"brand_name"</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">StringType</span><span class="p">(),</span> <span class="kc">True</span><span class="p">),</span>
+<span class="p">])</span>
+<span class="n">categories_schema</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">StructType</span><span class="p">([</span>
+    <span class="n">T</span><span class="o">.</span><span class="n">StructField</span><span class="p">(</span><span class="s2">"category_id"</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">IntegerType</span><span class="p">(),</span> <span class="kc">False</span><span class="p">),</span>
+    <span class="n">T</span><span class="o">.</span><span class="n">StructField</span><span class="p">(</span><span class="s2">"category_name"</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">StringType</span><span class="p">(),</span> <span class="kc">True</span><span class="p">),</span>
+<span class="p">])</span>
+<span class="n">products_schema</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">StructType</span><span class="p">([</span>
+    <span class="n">T</span><span class="o">.</span><span class="n">StructField</span><span class="p">(</span><span class="s2">"product_id"</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">IntegerType</span><span class="p">(),</span> <span class="kc">False</span><span class="p">),</span>
+    <span class="n">T</span><span class="o">.</span><span class="n">StructField</span><span class="p">(</span><span class="s2">"product_name"</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">StringType</span><span class="p">(),</span> <span class="kc">True</span><span class="p">),</span>
+    <span class="n">T</span><span class="o">.</span><span class="n">StructField</span><span class="p">(</span><span class="s2">"brand_id"</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">IntegerType</span><span class="p">(),</span> <span class="kc">True</span><span class="p">),</span>
+    <span class="n">T</span><span class="o">.</span><span class="n">StructField</span><span class="p">(</span><span class="s2">"category_id"</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">IntegerType</span><span class="p">(),</span> <span class="kc">True</span><span class="p">),</span>
+    <span class="n">T</span><span class="o">.</span><span class="n">StructField</span><span class="p">(</span><span class="s2">"price"</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">DoubleType</span><span class="p">(),</span> <span class="kc">True</span><span class="p">),</span>
+<span class="p">])</span>
+<span class="n">orders_schema</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">StructType</span><span class="p">([</span>
+    <span class="n">T</span><span class="o">.</span><span class="n">StructField</span><span class="p">(</span><span class="s2">"order_id"</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">IntegerType</span><span class="p">(),</span> <span class="kc">False</span><span class="p">),</span>
+    <span class="n">T</span><span class="o">.</span><span class="n">StructField</span><span class="p">(</span><span class="s2">"customer_id"</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">IntegerType</span><span class="p">(),</span> <span class="kc">True</span><span class="p">),</span>
+    <span class="n">T</span><span class="o">.</span><span class="n">StructField</span><span class="p">(</span><span class="s2">"order_date"</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">TimestampType</span><span class="p">(),</span> <span class="kc">True</span><span class="p">),</span>
+<span class="p">])</span>
+<span class="n">order_items_schema</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">StructType</span><span class="p">([</span>
+    <span class="n">T</span><span class="o">.</span><span class="n">StructField</span><span class="p">(</span><span class="s2">"order_item_id"</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">IntegerType</span><span class="p">(),</span> <span class="kc">False</span><span class="p">),</span>
+    <span class="n">T</span><span class="o">.</span><span class="n">StructField</span><span class="p">(</span><span class="s2">"order_id"</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">IntegerType</span><span class="p">(),</span> <span class="kc">True</span><span class="p">),</span>
+    <span class="n">T</span><span class="o">.</span><span class="n">StructField</span><span class="p">(</span><span class="s2">"product_id"</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">IntegerType</span><span class="p">(),</span> <span class="kc">True</span><span class="p">),</span>
+    <span class="n">T</span><span class="o">.</span><span class="n">StructField</span><span class="p">(</span><span class="s2">"quantity"</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">IntegerType</span><span class="p">(),</span> <span class="kc">True</span><span class="p">),</span>
+    <span class="n">T</span><span class="o">.</span><span class="n">StructField</span><span class="p">(</span><span class="s2">"unit_price"</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">DoubleType</span><span class="p">(),</span> <span class="kc">True</span><span class="p">),</span>
+<span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>WARNING: Using incubator modules: jdk.incubator.vector
-Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
-25/12/20 20:51:51 WARN Utils: Your hostname, sable-ThinkPad-X1-Yoga-3rd, resolves to a loopback address: 127.0.1.1; using 10.192.33.105 instead (on interface wlp2s0)
-25/12/20 20:51:51 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
-Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
-25/12/20 20:51:51 WARN Utils: Your hostname, sable-ThinkPad-X1-Yoga-3rd, resolves to a loopback address: 127.0.1.1; using 10.192.33.105 instead (on interface wlp2s0)
-25/12/20 20:51:51 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
-Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
-Setting default log level to "WARN".
-To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
-Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
-Setting default log level to "WARN".
-To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
-25/12/20 20:51:52 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-25/12/20 20:51:52 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Spark version: 4.0.1
-Project: DE1 Local Lakehouse Project
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[1]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>{'project': {'name': 'DE1 Local Lakehouse Project',
-  'dataset': 'Wikipedia Clickstream (Nov 2024)',
-  'dataset_size': '10M rows / 450MB',
-  'team': 'Badr TAJINI'},
- 'paths': {'raw_csv_glob': 'data/clickstream/clickstream-10M.tsv',
-  'bronze': 'outputs/project/bronze',
-  'silver': 'outputs/project/silver',
-  'gold': 'outputs/project/gold',
-  'proof': 'proof',
-  'metrics_log': 'project_metrics_log.csv'},
- 'slo': {'freshness_hours': 2,
-  'q1_latency_p95_seconds': 4,
-  'storage_ratio_max': 0.6},
- 'hardware': {'cpu': 'Intel Core i7',
-  'ram_gb': 16,
-  'disk_type': 'SSD',
-  'spark_version': '4.0.0'},
- 'layout': {'partition_by': [],
-  'sort_by': [],
-  'target_file_size_mb': 128,
-  'max_files_per_partition': 10},
- 'queries': {'q1': {'description': 'Top 20 most visited pages',
-   'sql': 'SELECT curr as page, \n       SUM(n) as total_clicks\nFROM silver\nGROUP BY curr\nORDER BY total_clicks DESC\nLIMIT 20\n'},
-  'q2': {'description': 'Top 20 referrer pages',
-   'sql': "SELECT prev as referrer, \n       SUM(n) as total_clicks\nFROM silver\nWHERE prev != 'other-empty'\nGROUP BY prev\nORDER BY total_clicks DESC\nLIMIT 20\n"},
-  'q3': {'description': 'Click patterns by type (external/internal/link)',
-   'sql': 'SELECT type,\n       COUNT(DISTINCT curr) as unique_pages,\n       SUM(n) as total_clicks,\n       AVG(n) as avg_clicks_per_pair\nFROM silver\nGROUP BY type\nORDER BY total_clicks DESC\n'}},
- 'silver_schema': {'columns': [{'name': 'prev',
-    'type': 'StringType',
-    'nullable': False},
-   {'name': 'curr', 'type': 'StringType', 'nullable': False},
-   {'name': 'type', 'type': 'StringType', 'nullable': False},
-   {'name': 'n', 'type': 'IntegerType', 'nullable': False}]},
- 'data_quality': {'rules': [{'name': 'Non-null clicks',
-    'check': 'n IS NOT NULL',
-    'severity': 'error'},
-   {'name': 'Positive clicks', 'check': 'n &gt;= 0', 'severity': 'error'},
-   {'name': 'Valid page names',
-    'check': 'LENGTH(curr) &gt; 0',
-    'severity': 'error'},
-   {'name': 'Valid type',
-    'check': "type IN ('link', 'external', 'other')",
-    'severity': 'warning'}]},
- 'optimization': {'baseline': ['No partitioning',
-   'No sorting',
-   'Default file sizes',
-   'Full table scans'],
-  'optimized': ['Repartition by computed hash',
-   'Sort by clicks (n) descending',
-   'Target 128MB file size',
-   'Enable AQE',
-   'Coalesce small files']}}</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3485bc1e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7de1f670">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="1.-Bronze-%E2%80%94-landing-raw-data">1. Bronze — landing raw data<a class="anchor-link" href="#1.-Bronze-%E2%80%94-landing-raw-data">¶</a></h2>
+<h2 id="1.-Ingest-operational-tables-(from-CSV-exports)">1. Ingest operational tables (from CSV exports)<a class="anchor-link" href="#1.-Ingest-operational-tables-(from-CSV-exports)">¶</a></h2>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b70b077b">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=65d23b3d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">raw_glob</span> <span class="o">=</span> <span class="n">CFG</span><span class="p">[</span><span class="s2">"paths"</span><span class="p">][</span><span class="s2">"raw_csv_glob"</span><span class="p">]</span>
-<span class="n">bronze</span> <span class="o">=</span> <span class="n">CFG</span><span class="p">[</span><span class="s2">"paths"</span><span class="p">][</span><span class="s2">"bronze"</span><span class="p">]</span>
-<span class="n">proof</span> <span class="o">=</span> <span class="n">CFG</span><span class="p">[</span><span class="s2">"paths"</span><span class="p">][</span><span class="s2">"proof"</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">customers</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="n">customers_schema</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">"header"</span><span class="p">,</span><span class="s2">"true"</span><span class="p">)</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="n">base</span><span class="o">+</span><span class="s2">"lab2_customers.csv"</span><span class="p">)</span>
+<span class="n">brands</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="n">brands_schema</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">"header"</span><span class="p">,</span><span class="s2">"true"</span><span class="p">)</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="n">base</span><span class="o">+</span><span class="s2">"lab2_brands.csv"</span><span class="p">)</span>
+<span class="n">categories</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="n">categories_schema</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">"header"</span><span class="p">,</span><span class="s2">"true"</span><span class="p">)</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="n">base</span><span class="o">+</span><span class="s2">"lab2_categories.csv"</span><span class="p">)</span>
+<span class="n">products</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="n">products_schema</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">"header"</span><span class="p">,</span><span class="s2">"true"</span><span class="p">)</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="n">base</span><span class="o">+</span><span class="s2">"lab2_products.csv"</span><span class="p">)</span>
+<span class="n">orders</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="n">orders_schema</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">"header"</span><span class="p">,</span><span class="s2">"true"</span><span class="p">)</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="n">base</span><span class="o">+</span><span class="s2">"lab2_orders.csv"</span><span class="p">)</span>
+<span class="n">order_items</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="n">order_items_schema</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">"header"</span><span class="p">,</span><span class="s2">"true"</span><span class="p">)</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="n">base</span><span class="o">+</span><span class="s2">"lab2_order_items.csv"</span><span class="p">)</span>
 
-<span class="n">df_raw</span> <span class="o">=</span> <span class="p">(</span><span class="n">spark</span><span class="o">.</span><span class="n">read</span>
-    <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">"header"</span><span class="p">,</span> <span class="s2">"false"</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">"inferSchema"</span><span class="p">,</span> <span class="s2">"false"</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">"delimiter"</span><span class="p">,</span> <span class="s2">"</span><span class="se">\t</span><span class="s2">"</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="n">raw_glob</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">toDF</span><span class="p">(</span><span class="s2">"prev"</span><span class="p">,</span> <span class="s2">"curr"</span><span class="p">,</span> <span class="s2">"type"</span><span class="p">,</span> <span class="s2">"n"</span><span class="p">))</span>
-
-<span class="n">row_count</span> <span class="o">=</span> <span class="n">df_raw</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
-<span class="n">df_raw</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="s2">"overwrite"</span><span class="p">)</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="n">bronze</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Bronze written: </span><span class="si">{</span><span class="n">bronze</span><span class="si">}</span><span class="s2">, rows: </span><span class="si">{</span><span class="n">row_count</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>[Stage 4:============================================&gt;              (6 + 2) / 8]</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Bronze written: outputs/project/bronze, rows: 10,000,000
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>                                                                                </pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=db84f2f2">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="2.-Silver-%E2%80%94-cleaning-and-typing">2. Silver — cleaning and typing<a class="anchor-link" href="#2.-Silver-%E2%80%94-cleaning-and-typing">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=2632c45c">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">silver</span> <span class="o">=</span> <span class="n">CFG</span><span class="p">[</span><span class="s2">"paths"</span><span class="p">][</span><span class="s2">"silver"</span><span class="p">]</span>
-
-<span class="n">df_silver</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_raw</span>
-    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">"n"</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"n"</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s2">"integer"</span><span class="p">))</span>
-    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"n"</span><span class="p">)</span><span class="o">.</span><span class="n">isNotNull</span><span class="p">())</span>
-    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"n"</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">length</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"curr"</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">dropDuplicates</span><span class="p">())</span>
-
-<span class="n">silver_count</span> <span class="o">=</span> <span class="n">df_silver</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
-<span class="n">df_silver</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="s2">"overwrite"</span><span class="p">)</span><span class="o">.</span><span class="n">parquet</span><span class="p">(</span><span class="n">silver</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Silver written: </span><span class="si">{</span><span class="n">silver</span><span class="si">}</span><span class="s2">, rows: </span><span class="si">{</span><span class="n">silver_count</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>[Stage 13:===================================================&gt;      (8 + 1) / 9]</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Silver written: outputs/project/silver, rows: 10,000,000
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>                                                                                </pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b80aca31">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="3.-Gold-%E2%80%94-analytics-tables">3. Gold — analytics tables<a class="anchor-link" href="#3.-Gold-%E2%80%94-analytics-tables">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a07fd046">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">gold</span> <span class="o">=</span> <span class="n">CFG</span><span class="p">[</span><span class="s2">"paths"</span><span class="p">][</span><span class="s2">"gold"</span><span class="p">]</span>
-<span class="n">queries</span> <span class="o">=</span> <span class="n">CFG</span><span class="p">[</span><span class="s2">"queries"</span><span class="p">]</span>
-
-<span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">gold</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">df_silver</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">"silver"</span><span class="p">)</span>
-
-<span class="n">df_q1</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">queries</span><span class="p">[</span><span class="s2">"q1"</span><span class="p">][</span><span class="s2">"sql"</span><span class="p">])</span>
-<span class="n">q1_count</span> <span class="o">=</span> <span class="n">df_q1</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
-<span class="n">df_q1</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="s2">"overwrite"</span><span class="p">)</span><span class="o">.</span><span class="n">parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">gold</span><span class="si">}</span><span class="s2">/q1_daily_aggregation"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Q1 written, rows: </span><span class="si">{</span><span class="n">q1_count</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-
-<span class="n">df_q2</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">queries</span><span class="p">[</span><span class="s2">"q2"</span><span class="p">][</span><span class="s2">"sql"</span><span class="p">])</span>
-<span class="n">q2_count</span> <span class="o">=</span> <span class="n">df_q2</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
-<span class="n">df_q2</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="s2">"overwrite"</span><span class="p">)</span><span class="o">.</span><span class="n">parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">gold</span><span class="si">}</span><span class="s2">/q2_top_referrers"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Q2 written, rows: </span><span class="si">{</span><span class="n">q2_count</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-
-<span class="n">df_q3</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">queries</span><span class="p">[</span><span class="s2">"q3"</span><span class="p">][</span><span class="s2">"sql"</span><span class="p">])</span>
-<span class="n">q3_count</span> <span class="o">=</span> <span class="n">df_q3</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
-<span class="n">df_q3</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="s2">"overwrite"</span><span class="p">)</span><span class="o">.</span><span class="n">parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">gold</span><span class="si">}</span><span class="s2">/q3_filtered_analysis"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Q3 written, rows: </span><span class="si">{</span><span class="n">q3_count</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Gold written: </span><span class="si">{</span><span class="n">gold</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>                                                                                </pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Q1 written, rows: 20
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>                                                                                </pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Q2 written, rows: 20
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>                                                                                </pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Q3 written, rows: 3
-Gold written: outputs/project/gold
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=06d72a4a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="4.-Baseline-plans-and-metrics">4. Baseline plans and metrics<a class="anchor-link" href="#4.-Baseline-plans-and-metrics">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=81d3388e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">proof</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">df_q1_baseline</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">queries</span><span class="p">[</span><span class="s2">"q1"</span><span class="p">][</span><span class="s2">"sql"</span><span class="p">])</span>
-<span class="n">plan_q1</span> <span class="o">=</span> <span class="n">df_q1_baseline</span><span class="o">.</span><span class="n">_jdf</span><span class="o">.</span><span class="n">queryExecution</span><span class="p">()</span><span class="o">.</span><span class="n">executedPlan</span><span class="p">()</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">proof</span><span class="si">}</span><span class="s2">/baseline_q1_plan.txt"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">plan_q1</span><span class="p">)</span>
-
-<span class="n">df_q2_baseline</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">queries</span><span class="p">[</span><span class="s2">"q2"</span><span class="p">][</span><span class="s2">"sql"</span><span class="p">])</span>
-<span class="n">plan_q2</span> <span class="o">=</span> <span class="n">df_q2_baseline</span><span class="o">.</span><span class="n">_jdf</span><span class="o">.</span><span class="n">queryExecution</span><span class="p">()</span><span class="o">.</span><span class="n">executedPlan</span><span class="p">()</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">proof</span><span class="si">}</span><span class="s2">/baseline_q2_plan.txt"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">plan_q2</span><span class="p">)</span>
-
-<span class="n">df_q3_baseline</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">queries</span><span class="p">[</span><span class="s2">"q3"</span><span class="p">][</span><span class="s2">"sql"</span><span class="p">])</span>
-<span class="n">plan_q3</span> <span class="o">=</span> <span class="n">df_q3_baseline</span><span class="o">.</span><span class="n">_jdf</span><span class="o">.</span><span class="n">queryExecution</span><span class="p">()</span><span class="o">.</span><span class="n">executedPlan</span><span class="p">()</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">proof</span><span class="si">}</span><span class="s2">/baseline_q3_plan.txt"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">plan_q3</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Saved baseline plans. Record Spark UI metrics now."</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">df</span> <span class="ow">in</span> <span class="p">[(</span><span class="s2">"customers"</span><span class="p">,</span><span class="n">customers</span><span class="p">),(</span><span class="s2">"brands"</span><span class="p">,</span><span class="n">brands</span><span class="p">),(</span><span class="s2">"categories"</span><span class="p">,</span><span class="n">categories</span><span class="p">),(</span><span class="s2">"products"</span><span class="p">,</span><span class="n">products</span><span class="p">),(</span><span class="s2">"orders"</span><span class="p">,</span><span class="n">orders</span><span class="p">),(</span><span class="s2">"order_items"</span><span class="p">,</span><span class="n">order_items</span><span class="p">)]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -7932,70 +7630,48 @@ Gold written: outputs/project/gold
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Saved baseline plans. Record Spark UI metrics now.
+<pre>customers 24
+brands 8
+categories 9
+products 60
+orders 220
+order_items 638
+products 60
+orders 220
+order_items 638
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7535edef">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cfd37c64">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="5.-Optimization-%E2%80%94-layout-and-joins">5. Optimization — layout and joins<a class="anchor-link" href="#5.-Optimization-%E2%80%94-layout-and-joins">¶</a></h2>
+<h3 id="Evidence:-ingestion-plan">Evidence: ingestion plan<a class="anchor-link" href="#Evidence:-ingestion-plan">¶</a></h3>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b3c5adef">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d9b10f87">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">layout</span> <span class="o">=</span> <span class="n">CFG</span><span class="p">[</span><span class="s2">"layout"</span><span class="p">]</span>
-<span class="n">target_size_mb</span> <span class="o">=</span> <span class="n">layout</span><span class="p">[</span><span class="s2">"target_file_size_mb"</span><span class="p">]</span>
-
-<span class="n">df_silver_reloaded</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">parquet</span><span class="p">(</span><span class="n">silver</span><span class="p">)</span>
-<span class="n">total_bytes</span> <span class="o">=</span> <span class="n">df_silver_reloaded</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span>
-<span class="n">num_partitions</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">total_bytes</span> <span class="o">/</span> <span class="p">(</span><span class="n">target_size_mb</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">)))</span>
-
-<span class="n">df_silver_opt</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_silver_reloaded</span>
-    <span class="o">.</span><span class="n">repartition</span><span class="p">(</span><span class="n">num_partitions</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">sortWithinPartitions</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">desc</span><span class="p">(</span><span class="s2">"n"</span><span class="p">)))</span>
-
-<span class="n">silver_opt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">silver</span><span class="si">}</span><span class="s2">_optimized"</span>
-<span class="n">df_silver_opt</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="s2">"overwrite"</span><span class="p">)</span><span class="o">.</span><span class="n">parquet</span><span class="p">(</span><span class="n">silver_opt</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Optimized silver written: </span><span class="si">{</span><span class="n">silver_opt</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-
-<span class="n">df_silver_opt</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">"silver"</span><span class="p">)</span>
-
-<span class="n">df_q1_opt</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">queries</span><span class="p">[</span><span class="s2">"q1"</span><span class="p">][</span><span class="s2">"sql"</span><span class="p">])</span>
-<span class="n">plan_q1_opt</span> <span class="o">=</span> <span class="n">df_q1_opt</span><span class="o">.</span><span class="n">_jdf</span><span class="o">.</span><span class="n">queryExecution</span><span class="p">()</span><span class="o">.</span><span class="n">executedPlan</span><span class="p">()</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">proof</span><span class="si">}</span><span class="s2">/optimized_q1_plan.txt"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Optimizations: </span><span class="si">{</span><span class="n">num_partitions</span><span class="si">}</span><span class="s2"> partitions, sorted by n desc</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">plan_q1_opt</span><span class="p">)</span>
-
-<span class="n">df_q2_opt</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">queries</span><span class="p">[</span><span class="s2">"q2"</span><span class="p">][</span><span class="s2">"sql"</span><span class="p">])</span>
-<span class="n">plan_q2_opt</span> <span class="o">=</span> <span class="n">df_q2_opt</span><span class="o">.</span><span class="n">_jdf</span><span class="o">.</span><span class="n">queryExecution</span><span class="p">()</span><span class="o">.</span><span class="n">executedPlan</span><span class="p">()</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">proof</span><span class="si">}</span><span class="s2">/optimized_q2_plan.txt"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Optimizations: </span><span class="si">{</span><span class="n">num_partitions</span><span class="si">}</span><span class="s2"> partitions, sorted by n desc</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">plan_q2_opt</span><span class="p">)</span>
-
-<span class="n">df_q3_opt</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">queries</span><span class="p">[</span><span class="s2">"q3"</span><span class="p">][</span><span class="s2">"sql"</span><span class="p">])</span>
-<span class="n">plan_q3_opt</span> <span class="o">=</span> <span class="n">df_q3_opt</span><span class="o">.</span><span class="n">_jdf</span><span class="o">.</span><span class="n">queryExecution</span><span class="p">()</span><span class="o">.</span><span class="n">executedPlan</span><span class="p">()</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">proof</span><span class="si">}</span><span class="s2">/optimized_q3_plan.txt"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Optimizations: </span><span class="si">{</span><span class="n">num_partitions</span><span class="si">}</span><span class="s2"> partitions, sorted by n desc</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">plan_q3_opt</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Saved optimized plans. Record Spark UI metrics now."</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">ingest</span> <span class="o">=</span> <span class="n">orders</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">order_items</span><span class="p">,</span> <span class="s2">"order_id"</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">"order_id"</span><span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span>
+<span class="n">ingest</span><span class="o">.</span><span class="n">explain</span><span class="p">(</span><span class="s2">"formatted"</span><span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span> <span class="k">as</span> <span class="n">_dt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
+<span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">"proof"</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"proof/plan_ingest.txt"</span><span class="p">,</span><span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">_dt</span><span class="o">.</span><span class="n">now</span><span class="p">())</span><span class="o">+</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">ingest</span><span class="o">.</span><span class="n">_jdf</span><span class="o">.</span><span class="n">queryExecution</span><span class="p">()</span><span class="o">.</span><span class="n">executedPlan</span><span class="p">()</span><span class="o">.</span><span class="n">toString</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Saved proof/plan_ingest.txt"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8007,43 +7683,812 @@ Gold written: outputs/project/gold
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>[Stage 77:&gt;                                                         (0 + 7) / 7]</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Optimized silver written: outputs/project/silver_optimized
-Saved optimized plans. Record Spark UI metrics now.
+<pre>== Physical Plan ==
+AdaptiveSparkPlan (11)
++- HashAggregate (10)
+   +- Exchange (9)
+      +- HashAggregate (8)
+         +- Project (7)
+            +- BroadcastHashJoin Inner BuildLeft (6)
+               :- BroadcastExchange (3)
+               :  +- Filter (2)
+               :     +- Scan csv  (1)
+               +- Filter (5)
+                  +- Scan csv  (4)
+
+
+(1) Scan csv 
+Output [1]: [order_id#196]
+Batched: false
+Location: InMemoryFileIndex [file:/home/sable/Documents/data engineering1/lab2-practice/data/lab2_orders.csv]
+PushedFilters: [IsNotNull(order_id)]
+ReadSchema: struct&lt;order_id:int&gt;
+
+(2) Filter
+Input [1]: [order_id#196]
+Condition : isnotnull(order_id#196)
+
+(3) BroadcastExchange
+Input [1]: [order_id#196]
+Arguments: HashedRelationBroadcastMode(List(cast(input[0, int, false] as bigint)),false), [plan_id=1812]
+
+(4) Scan csv 
+Output [1]: [order_id#200]
+Batched: false
+Location: InMemoryFileIndex [file:/home/sable/Documents/data engineering1/lab2-practice/data/lab2_order_items.csv]
+PushedFilters: [IsNotNull(order_id)]
+ReadSchema: struct&lt;order_id:int&gt;
+
+(5) Filter
+Input [1]: [order_id#200]
+Condition : isnotnull(order_id#200)
+
+(6) BroadcastHashJoin
+Left keys [1]: [order_id#196]
+Right keys [1]: [order_id#200]
+Join type: Inner
+Join condition: None
+
+(7) Project
+Output [1]: [order_id#196]
+Input [2]: [order_id#196, order_id#200]
+
+(8) HashAggregate
+Input [1]: [order_id#196]
+Keys [1]: [order_id#196]
+Functions: []
+Aggregate Attributes: []
+Results [1]: [order_id#196]
+
+(9) Exchange
+Input [1]: [order_id#196]
+Arguments: hashpartitioning(order_id#196, 200), ENSURE_REQUIREMENTS, [plan_id=1817]
+
+(10) HashAggregate
+Input [1]: [order_id#196]
+Keys [1]: [order_id#196]
+Functions: []
+Aggregate Attributes: []
+Results [1]: [order_id#196]
+
+(11) AdaptiveSparkPlan
+Output [1]: [order_id#196]
+Arguments: isFinalPlan=false
+
+
+Saved proof/plan_ingest.txt
 </pre>
 </div>
 </div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>                                                                                </pre>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=14ee5bbd">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=76aecd36">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="6.-Cleanup">6. Cleanup<a class="anchor-link" href="#6.-Cleanup">¶</a></h2>
+<h2 id="2.-Surrogate-key-function">2. Surrogate key function<a class="anchor-link" href="#2.-Surrogate-key-function">¶</a></h2>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9bbc1dfe">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=f3c80ffc">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sk</span><span class="p">(</span><span class="n">cols</span><span class="p">):</span>
+    <span class="c1"># stable 64-bit positive surrogate key from natural keys</span>
+    <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">xxhash64</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4a89556f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="3.-Build-dimensions">3. Build dimensions<a class="anchor-link" href="#3.-Build-dimensions">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=23a35bc4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dim_customer</span> <span class="o">=</span> <span class="n">customers</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+    <span class="n">sk</span><span class="p">([</span><span class="s2">"customer_id"</span><span class="p">])</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"customer_sk"</span><span class="p">),</span>
+    <span class="s2">"customer_id"</span><span class="p">,</span><span class="s2">"name"</span><span class="p">,</span><span class="s2">"email"</span><span class="p">,</span><span class="s2">"created_at"</span>
+<span class="p">)</span>
+
+<span class="n">dim_brand</span> <span class="o">=</span> <span class="n">brands</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+    <span class="n">sk</span><span class="p">([</span><span class="s2">"brand_id"</span><span class="p">])</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"brand_sk"</span><span class="p">),</span>
+    <span class="s2">"brand_id"</span><span class="p">,</span><span class="s2">"brand_name"</span>
+<span class="p">)</span>
+
+<span class="n">dim_category</span> <span class="o">=</span> <span class="n">categories</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+    <span class="n">sk</span><span class="p">([</span><span class="s2">"category_id"</span><span class="p">])</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"category_sk"</span><span class="p">),</span>
+    <span class="s2">"category_id"</span><span class="p">,</span><span class="s2">"category_name"</span>
+<span class="p">)</span>
+
+<span class="n">dim_product</span> <span class="o">=</span> <span class="n">products</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+    <span class="n">sk</span><span class="p">([</span><span class="s2">"product_id"</span><span class="p">])</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"product_sk"</span><span class="p">),</span>
+    <span class="s2">"product_id"</span><span class="p">,</span><span class="s2">"product_name"</span><span class="p">,</span>
+    <span class="n">sk</span><span class="p">([</span><span class="s2">"brand_id"</span><span class="p">])</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"brand_sk"</span><span class="p">),</span>
+    <span class="n">sk</span><span class="p">([</span><span class="s2">"category_id"</span><span class="p">])</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"category_sk"</span><span class="p">),</span>
+    <span class="s2">"price"</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=64b9c334">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="4.-Build-date-dimension">4. Build date dimension<a class="anchor-link" href="#4.-Build-date-dimension">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=4d735896">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.sql</span><span class="w"> </span><span class="kn">import</span> <span class="n">Window</span> <span class="k">as</span> <span class="n">W</span>
+<span class="n">dates</span> <span class="o">=</span> <span class="n">orders</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">to_date</span><span class="p">(</span><span class="s2">"order_date"</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"date"</span><span class="p">))</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span>
+<span class="n">dim_date</span> <span class="o">=</span> <span class="n">dates</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+    <span class="n">sk</span><span class="p">([</span><span class="s2">"date"</span><span class="p">])</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"date_sk"</span><span class="p">),</span>
+    <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"date"</span><span class="p">),</span>
+    <span class="n">F</span><span class="o">.</span><span class="n">year</span><span class="p">(</span><span class="s2">"date"</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"year"</span><span class="p">),</span>
+    <span class="n">F</span><span class="o">.</span><span class="n">month</span><span class="p">(</span><span class="s2">"date"</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"month"</span><span class="p">),</span>
+    <span class="n">F</span><span class="o">.</span><span class="n">dayofmonth</span><span class="p">(</span><span class="s2">"date"</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"day"</span><span class="p">),</span>
+    <span class="n">F</span><span class="o">.</span><span class="n">date_format</span><span class="p">(</span><span class="s2">"date"</span><span class="p">,</span><span class="s2">"E"</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"dow"</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0efc1584">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="5.-Build-fact_sales-with-broadcast-joins-where-appropriate">5. Build fact_sales with broadcast joins where appropriate<a class="anchor-link" href="#5.-Build-fact_sales-with-broadcast-joins-where-appropriate">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5161c03d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Renomme la colonne product_id dans order_items AVANT le join</span>
+<span class="n">oi</span> <span class="o">=</span> <span class="n">order_items</span><span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="s2">"product_id"</span><span class="p">,</span> <span class="s2">"oi_product_id"</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"oi"</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">products</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"p"</span><span class="p">)</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">orders</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"o"</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">customers</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"c"</span><span class="p">)</span>
+
+<span class="n">df_fact</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">oi</span>
+    <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"oi.oi_product_id"</span><span class="p">)</span> <span class="o">==</span> <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"p.product_id"</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="s2">"order_id"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="s2">"customer_id"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">"date"</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">to_date</span><span class="p">(</span><span class="s2">"order_date"</span><span class="p">))</span>
+<span class="p">)</span>
+
+<span class="n">df_fact</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_fact</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">"date_sk"</span><span class="p">,</span> <span class="n">sk</span><span class="p">([</span><span class="s2">"date"</span><span class="p">]))</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">"customer_sk"</span><span class="p">,</span> <span class="n">sk</span><span class="p">([</span><span class="s2">"customer_id"</span><span class="p">]))</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">"product_sk"</span><span class="p">,</span> <span class="n">sk</span><span class="p">([</span><span class="s2">"oi_product_id"</span><span class="p">]))</span>  <span class="c1"># plus d'ambiguïté ici</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">"quantity"</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"quantity"</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s2">"int"</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">"unit_price"</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"unit_price"</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s2">"double"</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">"subtotal"</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"quantity"</span><span class="p">)</span> <span class="o">*</span> <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"unit_price"</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">"year"</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">year</span><span class="p">(</span><span class="s2">"date"</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">"month"</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">month</span><span class="p">(</span><span class="s2">"date"</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">"order_id"</span><span class="p">,</span> <span class="s2">"date_sk"</span><span class="p">,</span> <span class="s2">"customer_sk"</span><span class="p">,</span> <span class="s2">"product_sk"</span><span class="p">,</span> <span class="s2">"quantity"</span><span class="p">,</span> <span class="s2">"unit_price"</span><span class="p">,</span> <span class="s2">"subtotal"</span><span class="p">,</span> <span class="s2">"year"</span><span class="p">,</span> <span class="s2">"month"</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">df_fact</span><span class="o">.</span><span class="n">explain</span><span class="p">(</span><span class="s2">"formatted"</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"proof/plan_fact_join.txt"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span> <span class="k">as</span> <span class="n">_dt</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">_dt</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">df_fact</span><span class="o">.</span><span class="n">_jdf</span><span class="o">.</span><span class="n">queryExecution</span><span class="p">()</span><span class="o">.</span><span class="n">executedPlan</span><span class="p">()</span><span class="o">.</span><span class="n">toString</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Saved proof/plan_fact_join.txt"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>== Physical Plan ==
+AdaptiveSparkPlan (20)
++- Project (19)
+   +- Project (18)
+      +- BroadcastHashJoin Inner BuildRight (17)
+         :- Project (13)
+         :  +- BroadcastHashJoin Inner BuildRight (12)
+         :     :- Project (8)
+         :     :  +- BroadcastHashJoin Inner BuildRight (7)
+         :     :     :- Project (3)
+         :     :     :  +- Filter (2)
+         :     :     :     +- Scan csv  (1)
+         :     :     +- BroadcastExchange (6)
+         :     :        +- Filter (5)
+         :     :           +- Scan csv  (4)
+         :     +- BroadcastExchange (11)
+         :        +- Filter (10)
+         :           +- Scan csv  (9)
+         +- BroadcastExchange (16)
+            +- Filter (15)
+               +- Scan csv  (14)
+
+
+(1) Scan csv 
+Output [4]: [order_id#200, product_id#201, quantity#202, unit_price#203]
+Batched: false
+Location: InMemoryFileIndex [file:/home/sable/Documents/data engineering1/lab2-practice/data/lab2_order_items.csv]
+PushedFilters: [IsNotNull(product_id), IsNotNull(order_id)]
+ReadSchema: struct&lt;order_id:int,product_id:int,quantity:int,unit_price:double&gt;
+
+(2) Filter
+Input [4]: [order_id#200, product_id#201, quantity#202, unit_price#203]
+Condition : (isnotnull(product_id#201) AND isnotnull(order_id#200))
+
+(3) Project
+Output [4]: [order_id#200, product_id#201 AS oi_product_id#267, quantity#202, unit_price#203]
+Input [4]: [order_id#200, product_id#201, quantity#202, unit_price#203]
+
+(4) Scan csv 
+Output [1]: [product_id#191]
+Batched: false
+Location: InMemoryFileIndex [file:/home/sable/Documents/data engineering1/lab2-practice/data/lab2_products.csv]
+PushedFilters: [IsNotNull(product_id)]
+ReadSchema: struct&lt;product_id:int&gt;
+
+(5) Filter
+Input [1]: [product_id#191]
+Condition : isnotnull(product_id#191)
+
+(6) BroadcastExchange
+Input [1]: [product_id#191]
+Arguments: HashedRelationBroadcastMode(List(cast(input[0, int, false] as bigint)),false), [plan_id=1886]
+
+(7) BroadcastHashJoin
+Left keys [1]: [oi_product_id#267]
+Right keys [1]: [product_id#191]
+Join type: Inner
+Join condition: None
+
+(8) Project
+Output [4]: [order_id#200, oi_product_id#267, quantity#202, unit_price#203]
+Input [5]: [order_id#200, oi_product_id#267, quantity#202, unit_price#203, product_id#191]
+
+(9) Scan csv 
+Output [3]: [order_id#196, customer_id#197, order_date#198]
+Batched: false
+Location: InMemoryFileIndex [file:/home/sable/Documents/data engineering1/lab2-practice/data/lab2_orders.csv]
+PushedFilters: [IsNotNull(order_id), IsNotNull(customer_id)]
+ReadSchema: struct&lt;order_id:int,customer_id:int,order_date:timestamp&gt;
+
+(10) Filter
+Input [3]: [order_id#196, customer_id#197, order_date#198]
+Condition : (isnotnull(order_id#196) AND isnotnull(customer_id#197))
+
+(11) BroadcastExchange
+Input [3]: [order_id#196, customer_id#197, order_date#198]
+Arguments: HashedRelationBroadcastMode(List(cast(input[0, int, false] as bigint)),false), [plan_id=1890]
+
+(12) BroadcastHashJoin
+Left keys [1]: [order_id#200]
+Right keys [1]: [order_id#196]
+Join type: Inner
+Join condition: None
+
+(13) Project
+Output [6]: [order_id#200, oi_product_id#267, quantity#202, unit_price#203, customer_id#197, order_date#198]
+Input [7]: [order_id#200, oi_product_id#267, quantity#202, unit_price#203, order_id#196, customer_id#197, order_date#198]
+
+(14) Scan csv 
+Output [1]: [customer_id#183]
+Batched: false
+Location: InMemoryFileIndex [file:/home/sable/Documents/data engineering1/lab2-practice/data/lab2_customers.csv]
+PushedFilters: [IsNotNull(customer_id)]
+ReadSchema: struct&lt;customer_id:int&gt;
+
+(15) Filter
+Input [1]: [customer_id#183]
+Condition : isnotnull(customer_id#183)
+
+(16) BroadcastExchange
+Input [1]: [customer_id#183]
+Arguments: HashedRelationBroadcastMode(List(cast(input[0, int, false] as bigint)),false), [plan_id=1894]
+
+(17) BroadcastHashJoin
+Left keys [1]: [customer_id#197]
+Right keys [1]: [customer_id#183]
+Join type: Inner
+Join condition: None
+
+(18) Project
+Output [6]: [customer_id#197, order_id#200, oi_product_id#267, quantity#202, unit_price#203, cast(order_date#198 as date) AS date#268]
+Input [7]: [order_id#200, oi_product_id#267, quantity#202, unit_price#203, customer_id#197, order_date#198, customer_id#183]
+
+(19) Project
+Output [9]: [order_id#200, abs(xxhash64(date#268, 42)) AS date_sk#269L, abs(xxhash64(customer_id#197, 42)) AS customer_sk#270L, abs(xxhash64(oi_product_id#267, 42)) AS product_sk#271L, quantity#202, unit_price#203, (cast(quantity#202 as double) * unit_price#203) AS subtotal#274, year(date#268) AS year#275, month(date#268) AS month#276]
+Input [6]: [customer_id#197, order_id#200, oi_product_id#267, quantity#202, unit_price#203, date#268]
+
+(20) AdaptiveSparkPlan
+Output [9]: [order_id#200, date_sk#269L, customer_sk#270L, product_sk#271L, quantity#202, unit_price#203, subtotal#274, year#275, month#276]
+Arguments: isFinalPlan=false
+
+
+Saved proof/plan_fact_join.txt
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ea20f7dd">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="6.-Write-Parquet-outputs-(partitioned-by-year,-month)">6. Write Parquet outputs (partitioned by year, month)<a class="anchor-link" href="#6.-Write-Parquet-outputs-(partitioned-by-year,-month)">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=2d7b1569">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">base_out</span> <span class="o">=</span> <span class="s2">"outputs/lab2"</span>
+<span class="p">(</span><span class="n">dim_customer</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="s2">"overwrite"</span><span class="p">)</span><span class="o">.</span><span class="n">parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_out</span><span class="si">}</span><span class="s2">/dim_customer"</span><span class="p">))</span>
+<span class="p">(</span><span class="n">dim_brand</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="s2">"overwrite"</span><span class="p">)</span><span class="o">.</span><span class="n">parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_out</span><span class="si">}</span><span class="s2">/dim_brand"</span><span class="p">))</span>
+<span class="p">(</span><span class="n">dim_category</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="s2">"overwrite"</span><span class="p">)</span><span class="o">.</span><span class="n">parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_out</span><span class="si">}</span><span class="s2">/dim_category"</span><span class="p">))</span>
+<span class="p">(</span><span class="n">dim_product</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="s2">"overwrite"</span><span class="p">)</span><span class="o">.</span><span class="n">parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_out</span><span class="si">}</span><span class="s2">/dim_product"</span><span class="p">))</span>
+<span class="p">(</span><span class="n">dim_date</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="s2">"overwrite"</span><span class="p">)</span><span class="o">.</span><span class="n">parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_out</span><span class="si">}</span><span class="s2">/dim_date"</span><span class="p">))</span>
+<span class="p">(</span><span class="n">df_fact</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="s2">"overwrite"</span><span class="p">)</span><span class="o">.</span><span class="n">partitionBy</span><span class="p">(</span><span class="s2">"year"</span><span class="p">,</span><span class="s2">"month"</span><span class="p">)</span><span class="o">.</span><span class="n">parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_out</span><span class="si">}</span><span class="s2">/fact_sales"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Parquet written under outputs/lab2/"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Parquet written under outputs/lab2/
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3199f717">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="7.-Plan-comparison:-projection-and-layout">7. Plan comparison: projection and layout<a class="anchor-link" href="#7.-Plan-comparison:-projection-and-layout">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3f2cfab3">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Case A: join and then project</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">orders</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">order_items</span><span class="p">,</span> <span class="s2">"order_id"</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">products</span><span class="p">,</span> <span class="s2">"product_id"</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">to_date</span><span class="p">(</span><span class="s2">"order_date"</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"d"</span><span class="p">))</span>
+            <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"quantity"</span><span class="p">)</span><span class="o">*</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"price"</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"gmv"</span><span class="p">)))</span>
+<span class="n">a</span><span class="o">.</span><span class="n">explain</span><span class="p">(</span><span class="s2">"formatted"</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="c1"># Case B: project early</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">orders</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">"order_id"</span><span class="p">,</span><span class="s2">"order_date"</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">order_items</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">"order_id"</span><span class="p">,</span><span class="s2">"product_id"</span><span class="p">,</span><span class="s2">"quantity"</span><span class="p">),</span> <span class="s2">"order_id"</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">products</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">"product_id"</span><span class="p">,</span><span class="s2">"price"</span><span class="p">),</span> <span class="s2">"product_id"</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">to_date</span><span class="p">(</span><span class="s2">"order_date"</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"d"</span><span class="p">))</span>
+            <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"quantity"</span><span class="p">)</span><span class="o">*</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"price"</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"gmv"</span><span class="p">)))</span>
+<span class="n">b</span><span class="o">.</span><span class="n">explain</span><span class="p">(</span><span class="s2">"formatted"</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Record Spark UI metrics for both runs in lab2_metrics_log.csv"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>== Physical Plan ==
+AdaptiveSparkPlan (16)
++- HashAggregate (15)
+   +- Exchange (14)
+      +- HashAggregate (13)
+         +- Project (12)
+            +- BroadcastHashJoin Inner BuildRight (11)
+               :- Project (7)
+               :  +- BroadcastHashJoin Inner BuildLeft (6)
+               :     :- BroadcastExchange (3)
+               :     :  +- Filter (2)
+               :     :     +- Scan csv  (1)
+               :     +- Filter (5)
+               :        +- Scan csv  (4)
+               +- BroadcastExchange (10)
+                  +- Filter (9)
+                     +- Scan csv  (8)
+
+
+(1) Scan csv 
+Output [2]: [order_id#196, order_date#198]
+Batched: false
+Location: InMemoryFileIndex [file:/home/sable/Documents/data engineering1/lab2-practice/data/lab2_orders.csv]
+PushedFilters: [IsNotNull(order_id)]
+ReadSchema: struct&lt;order_id:int,order_date:timestamp&gt;
+
+(2) Filter
+Input [2]: [order_id#196, order_date#198]
+Condition : isnotnull(order_id#196)
+
+(3) BroadcastExchange
+Input [2]: [order_id#196, order_date#198]
+Arguments: HashedRelationBroadcastMode(List(cast(input[0, int, false] as bigint)),false), [plan_id=2342]
+
+(4) Scan csv 
+Output [3]: [order_id#200, product_id#201, quantity#202]
+Batched: false
+Location: InMemoryFileIndex [file:/home/sable/Documents/data engineering1/lab2-practice/data/lab2_order_items.csv]
+PushedFilters: [IsNotNull(order_id), IsNotNull(product_id)]
+ReadSchema: struct&lt;order_id:int,product_id:int,quantity:int&gt;
+
+(5) Filter
+Input [3]: [order_id#200, product_id#201, quantity#202]
+Condition : (isnotnull(order_id#200) AND isnotnull(product_id#201))
+
+(6) BroadcastHashJoin
+Left keys [1]: [order_id#196]
+Right keys [1]: [order_id#200]
+Join type: Inner
+Join condition: None
+
+(7) Project
+Output [3]: [order_date#198, product_id#201, quantity#202]
+Input [5]: [order_id#196, order_date#198, order_id#200, product_id#201, quantity#202]
+
+(8) Scan csv 
+Output [2]: [product_id#191, price#195]
+Batched: false
+Location: InMemoryFileIndex [file:/home/sable/Documents/data engineering1/lab2-practice/data/lab2_products.csv]
+PushedFilters: [IsNotNull(product_id)]
+ReadSchema: struct&lt;product_id:int,price:double&gt;
+
+(9) Filter
+Input [2]: [product_id#191, price#195]
+Condition : isnotnull(product_id#191)
+
+(10) BroadcastExchange
+Input [2]: [product_id#191, price#195]
+Arguments: HashedRelationBroadcastMode(List(cast(input[0, int, false] as bigint)),false), [plan_id=2346]
+
+(11) BroadcastHashJoin
+Left keys [1]: [product_id#201]
+Right keys [1]: [product_id#191]
+Join type: Inner
+Join condition: None
+
+(12) Project
+Output [3]: [quantity#202, price#195, cast(order_date#198 as date) AS _groupingexpression#314]
+Input [5]: [order_date#198, product_id#201, quantity#202, product_id#191, price#195]
+
+(13) HashAggregate
+Input [3]: [quantity#202, price#195, _groupingexpression#314]
+Keys [1]: [_groupingexpression#314]
+Functions [1]: [partial_sum((cast(quantity#202 as double) * price#195))]
+Aggregate Attributes [1]: [sum#315]
+Results [2]: [_groupingexpression#314, sum#316]
+
+(14) Exchange
+Input [2]: [_groupingexpression#314, sum#316]
+Arguments: hashpartitioning(_groupingexpression#314, 200), ENSURE_REQUIREMENTS, [plan_id=2351]
+
+(15) HashAggregate
+Input [2]: [_groupingexpression#314, sum#316]
+Keys [1]: [_groupingexpression#314]
+Functions [1]: [sum((cast(quantity#202 as double) * price#195))]
+Aggregate Attributes [1]: [sum((cast(quantity#202 as double) * price#195))#313]
+Results [2]: [_groupingexpression#314 AS d#300, sum((cast(quantity#202 as double) * price#195))#313 AS gmv#301]
+
+(16) AdaptiveSparkPlan
+Output [2]: [d#300, gmv#301]
+Arguments: isFinalPlan=false
+
+
+== Physical Plan ==
+AdaptiveSparkPlan (16)
++- HashAggregate (15)
+   +- Exchange (14)
+      +- HashAggregate (13)
+         +- Project (12)
+            +- BroadcastHashJoin Inner BuildRight (11)
+               :- Project (7)
+               :  +- BroadcastHashJoin Inner BuildLeft (6)
+               :     :- BroadcastExchange (3)
+               :     :  +- Filter (2)
+               :     :     +- Scan csv  (1)
+               :     +- Filter (5)
+               :        +- Scan csv  (4)
+               +- BroadcastExchange (10)
+                  +- Filter (9)
+                     +- Scan csv  (8)
+
+
+(1) Scan csv 
+Output [2]: [order_id#196, order_date#198]
+Batched: false
+Location: InMemoryFileIndex [file:/home/sable/Documents/data engineering1/lab2-practice/data/lab2_orders.csv]
+PushedFilters: [IsNotNull(order_id)]
+ReadSchema: struct&lt;order_id:int,order_date:timestamp&gt;
+
+(2) Filter
+Input [2]: [order_id#196, order_date#198]
+Condition : isnotnull(order_id#196)
+
+(3) BroadcastExchange
+Input [2]: [order_id#196, order_date#198]
+Arguments: HashedRelationBroadcastMode(List(cast(input[0, int, false] as bigint)),false), [plan_id=2717]
+
+(4) Scan csv 
+Output [3]: [order_id#200, product_id#201, quantity#202]
+Batched: false
+Location: InMemoryFileIndex [file:/home/sable/Documents/data engineering1/lab2-practice/data/lab2_order_items.csv]
+PushedFilters: [IsNotNull(order_id), IsNotNull(product_id)]
+ReadSchema: struct&lt;order_id:int,product_id:int,quantity:int&gt;
+
+(5) Filter
+Input [3]: [order_id#200, product_id#201, quantity#202]
+Condition : (isnotnull(order_id#200) AND isnotnull(product_id#201))
+
+(6) BroadcastHashJoin
+Left keys [1]: [order_id#196]
+Right keys [1]: [order_id#200]
+Join type: Inner
+Join condition: None
+
+(7) Project
+Output [3]: [order_date#198, product_id#201, quantity#202]
+Input [5]: [order_id#196, order_date#198, order_id#200, product_id#201, quantity#202]
+
+(8) Scan csv 
+Output [2]: [product_id#191, price#195]
+Batched: false
+Location: InMemoryFileIndex [file:/home/sable/Documents/data engineering1/lab2-practice/data/lab2_products.csv]
+PushedFilters: [IsNotNull(product_id)]
+ReadSchema: struct&lt;product_id:int,price:double&gt;
+
+(9) Filter
+Input [2]: [product_id#191, price#195]
+Condition : isnotnull(product_id#191)
+
+(10) BroadcastExchange
+Input [2]: [product_id#191, price#195]
+Arguments: HashedRelationBroadcastMode(List(cast(input[0, int, false] as bigint)),false), [plan_id=2721]
+
+(11) BroadcastHashJoin
+Left keys [1]: [product_id#201]
+Right keys [1]: [product_id#191]
+Join type: Inner
+Join condition: None
+
+(12) Project
+Output [3]: [quantity#202, price#195, cast(order_date#198 as date) AS _groupingexpression#337]
+Input [5]: [order_date#198, product_id#201, quantity#202, product_id#191, price#195]
+
+(13) HashAggregate
+Input [3]: [quantity#202, price#195, _groupingexpression#337]
+Keys [1]: [_groupingexpression#337]
+Functions [1]: [partial_sum((cast(quantity#202 as double) * price#195))]
+Aggregate Attributes [1]: [sum#338]
+Results [2]: [_groupingexpression#337, sum#339]
+
+(14) Exchange
+Input [2]: [_groupingexpression#337, sum#339]
+Arguments: hashpartitioning(_groupingexpression#337, 200), ENSURE_REQUIREMENTS, [plan_id=2726]
+
+(15) HashAggregate
+Input [2]: [_groupingexpression#337, sum#339]
+Keys [1]: [_groupingexpression#337]
+Functions [1]: [sum((cast(quantity#202 as double) * price#195))]
+Aggregate Attributes [1]: [sum((cast(quantity#202 as double) * price#195))#336]
+Results [2]: [_groupingexpression#337 AS d#329, sum((cast(quantity#202 as double) * price#195))#336 AS gmv#330]
+
+(16) AdaptiveSparkPlan
+Output [2]: [d#329, gmv#330]
+Arguments: isFinalPlan=false
+
+
+== Physical Plan ==
+AdaptiveSparkPlan (16)
++- HashAggregate (15)
+   +- Exchange (14)
+      +- HashAggregate (13)
+         +- Project (12)
+            +- BroadcastHashJoin Inner BuildRight (11)
+               :- Project (7)
+               :  +- BroadcastHashJoin Inner BuildLeft (6)
+               :     :- BroadcastExchange (3)
+               :     :  +- Filter (2)
+               :     :     +- Scan csv  (1)
+               :     +- Filter (5)
+               :        +- Scan csv  (4)
+               +- BroadcastExchange (10)
+                  +- Filter (9)
+                     +- Scan csv  (8)
+
+
+(1) Scan csv 
+Output [2]: [order_id#196, order_date#198]
+Batched: false
+Location: InMemoryFileIndex [file:/home/sable/Documents/data engineering1/lab2-practice/data/lab2_orders.csv]
+PushedFilters: [IsNotNull(order_id)]
+ReadSchema: struct&lt;order_id:int,order_date:timestamp&gt;
+
+(2) Filter
+Input [2]: [order_id#196, order_date#198]
+Condition : isnotnull(order_id#196)
+
+(3) BroadcastExchange
+Input [2]: [order_id#196, order_date#198]
+Arguments: HashedRelationBroadcastMode(List(cast(input[0, int, false] as bigint)),false), [plan_id=2717]
+
+(4) Scan csv 
+Output [3]: [order_id#200, product_id#201, quantity#202]
+Batched: false
+Location: InMemoryFileIndex [file:/home/sable/Documents/data engineering1/lab2-practice/data/lab2_order_items.csv]
+PushedFilters: [IsNotNull(order_id), IsNotNull(product_id)]
+ReadSchema: struct&lt;order_id:int,product_id:int,quantity:int&gt;
+
+(5) Filter
+Input [3]: [order_id#200, product_id#201, quantity#202]
+Condition : (isnotnull(order_id#200) AND isnotnull(product_id#201))
+
+(6) BroadcastHashJoin
+Left keys [1]: [order_id#196]
+Right keys [1]: [order_id#200]
+Join type: Inner
+Join condition: None
+
+(7) Project
+Output [3]: [order_date#198, product_id#201, quantity#202]
+Input [5]: [order_id#196, order_date#198, order_id#200, product_id#201, quantity#202]
+
+(8) Scan csv 
+Output [2]: [product_id#191, price#195]
+Batched: false
+Location: InMemoryFileIndex [file:/home/sable/Documents/data engineering1/lab2-practice/data/lab2_products.csv]
+PushedFilters: [IsNotNull(product_id)]
+ReadSchema: struct&lt;product_id:int,price:double&gt;
+
+(9) Filter
+Input [2]: [product_id#191, price#195]
+Condition : isnotnull(product_id#191)
+
+(10) BroadcastExchange
+Input [2]: [product_id#191, price#195]
+Arguments: HashedRelationBroadcastMode(List(cast(input[0, int, false] as bigint)),false), [plan_id=2721]
+
+(11) BroadcastHashJoin
+Left keys [1]: [product_id#201]
+Right keys [1]: [product_id#191]
+Join type: Inner
+Join condition: None
+
+(12) Project
+Output [3]: [quantity#202, price#195, cast(order_date#198 as date) AS _groupingexpression#337]
+Input [5]: [order_date#198, product_id#201, quantity#202, product_id#191, price#195]
+
+(13) HashAggregate
+Input [3]: [quantity#202, price#195, _groupingexpression#337]
+Keys [1]: [_groupingexpression#337]
+Functions [1]: [partial_sum((cast(quantity#202 as double) * price#195))]
+Aggregate Attributes [1]: [sum#338]
+Results [2]: [_groupingexpression#337, sum#339]
+
+(14) Exchange
+Input [2]: [_groupingexpression#337, sum#339]
+Arguments: hashpartitioning(_groupingexpression#337, 200), ENSURE_REQUIREMENTS, [plan_id=2726]
+
+(15) HashAggregate
+Input [2]: [_groupingexpression#337, sum#339]
+Keys [1]: [_groupingexpression#337]
+Functions [1]: [sum((cast(quantity#202 as double) * price#195))]
+Aggregate Attributes [1]: [sum((cast(quantity#202 as double) * price#195))#336]
+Results [2]: [_groupingexpression#337 AS d#329, sum((cast(quantity#202 as double) * price#195))#336 AS gmv#330]
+
+(16) AdaptiveSparkPlan
+Output [2]: [d#329, gmv#330]
+Arguments: isFinalPlan=false
+
+
+Record Spark UI metrics for both runs in lab2_metrics_log.csv
+Record Spark UI metrics for both runs in lab2_metrics_log.csv
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=efa5e4d4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="8.-Cleanup">8. Cleanup<a class="anchor-link" href="#8.-Cleanup">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d04b0bab">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>

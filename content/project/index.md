@@ -4,7 +4,7 @@ title: Final Project – Data Engineering 1
 
 # Final Project – Data Engineering 1
 
-<iframe src="./project.html" width="100%" height="900px"></iframe>
+<iframe src="/content/project/project.html" width="100%" height="900px"></iframe>
 
 ## 📊 Proof / Outputs
 - ![metrics_10.png](assets/metrics_10.png)

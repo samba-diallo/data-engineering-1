@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>DE1_Project_Notebook_EN</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>DE1_Lab1_Notebook_EN</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7511,62 +7511,150 @@ a.anchor-link {
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d7f58b7a">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=277c690a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="DE1-%E2%80%94-Final-Project-Notebook">DE1 — Final Project Notebook<a class="anchor-link" href="#DE1-%E2%80%94-Final-Project-Notebook">¶</a></h1><blockquote>
-<p>Professor : Badr TAJINI - Data Engineering I - ESIEE 2025-2026</p>
+<h1 id="DE1-%E2%80%94-Lab-1:-PySpark-Warmup-and-Reading-Plans">DE1 — Lab 1: PySpark Warmup and Reading Plans<a class="anchor-link" href="#DE1-%E2%80%94-Lab-1:-PySpark-Warmup-and-Reading-Plans">¶</a></h1><blockquote>
+<p>Author : Badr TAJINI - Data Engineering I - ESIEE 2025-2026</p>
 </blockquote>
 <hr/>
-<blockquote>
-<p>Students : DIALLO Samba &amp; DIOP Mouhamed</p>
-</blockquote>
-<hr/>
-<p>This is the primary executable artifact. Fill config, run baseline, then optimized pipeline, and record evidence.</p>
+<p>This notebook is the <strong>student deliverable</strong>. Execute all cells and attach evidence.</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=be911342">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f54548a3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="0.-Load-config">0. Load config<a class="anchor-link" href="#0.-Load-config">¶</a></h2>
+<h2 id="0.-Imports-and-Spark-session">0. Imports and Spark session<a class="anchor-link" href="#0.-Imports-and-Spark-session">¶</a></h2>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=6a5e716c">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=199cf7c9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span><span class="o">,</span><span class="w"> </span><span class="nn">pathlib</span><span class="o">,</span><span class="w"> </span><span class="nn">datetime</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.sql</span><span class="w"> </span><span class="kn">import</span> <span class="n">SparkSession</span><span class="p">,</span> <span class="n">functions</span> <span class="k">as</span> <span class="n">F</span><span class="p">,</span> <span class="n">types</span> <span class="k">as</span> <span class="n">T</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">sys</span><span class="o">,</span><span class="w"> </span><span class="nn">datetime</span><span class="o">,</span><span class="w"> </span><span class="nn">pathlib</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.sql</span><span class="w"> </span><span class="kn">import</span> <span class="n">SparkSession</span><span class="p">,</span> <span class="n">functions</span> <span class="k">as</span> <span class="n">F</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Python:"</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
+<span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s2">"de1-lab1"</span><span class="p">)</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Spark:"</span><span class="p">,</span> <span class="n">spark</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Python: 3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]
+Spark: 4.0.1
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=38d51e22">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="1.-Load-the-CSV-inputs">1. Load the CSV inputs<a class="anchor-link" href="#1.-Load-the-CSV-inputs">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f0c6dd2d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">src_a</span> <span class="o">=</span> <span class="s2">"data/lab1_dataset_a.csv"</span>
+<span class="n">src_b</span> <span class="o">=</span> <span class="s2">"data/lab1_dataset_b.csv"</span>
+<span class="n">df_a</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">"header"</span><span class="p">,</span><span class="s2">"true"</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">"inferSchema"</span><span class="p">,</span><span class="s2">"true"</span><span class="p">)</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="n">src_a</span><span class="p">)</span>
+<span class="n">df_b</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">"header"</span><span class="p">,</span><span class="s2">"true"</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">"inferSchema"</span><span class="p">,</span><span class="s2">"true"</span><span class="p">)</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="n">src_b</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df_a</span><span class="o">.</span><span class="n">unionByName</span><span class="p">(</span><span class="n">df_b</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">cache</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Rows:"</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>
+<span class="n">df</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">truncate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Rows: 2700
+root
+ |-- id: integer (nullable = true)
+ |-- category: string (nullable = true)
+ |-- value: double (nullable = true)
+ |-- text: string (nullable = true)
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"de1_project_config.yml"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">CFG</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-
-<span class="n">spark</span> <span class="o">=</span> <span class="p">(</span><span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span>
-    <span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s2">"de1-lakehouse-project"</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">"spark.sql.adaptive.enabled"</span><span class="p">,</span> <span class="s2">"true"</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">"spark.sql.adaptive.coalescePartitions.enabled"</span><span class="p">,</span> <span class="s2">"true"</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">"spark.driver.memory"</span><span class="p">,</span> <span class="s2">"4g"</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">"spark.executor.memory"</span><span class="p">,</span> <span class="s2">"4g"</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">"spark.memory.fraction"</span><span class="p">,</span> <span class="s2">"0.6"</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">"spark.memory.storageFraction"</span><span class="p">,</span> <span class="s2">"0.3"</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">getOrCreate</span><span class="p">())</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Spark version: </span><span class="si">{</span><span class="n">spark</span><span class="o">.</span><span class="n">version</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Project: </span><span class="si">{</span><span class="n">CFG</span><span class="p">[</span><span class="s1">'project'</span><span class="p">][</span><span class="s1">'name'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="n">CFG</span>
++---+-----------+-----+----------------------------------------------------------------------------+
+|id |category   |value|text                                                                        |
++---+-----------+-----+----------------------------------------------------------------------------+
+|0  |toys       |48.47|metrics ui data elt row columnar reduce warehouse shuffle join spark elt    |
+|1  |books      |39.9 |metrics row lake aggregate columnar data reduce row columnar filter         |
+|2  |grocery    |7.96 |lake join partition scala elt data                                          |
+|3  |electronics|5.15 |spark scala elt filter join columnar lake lake plan warehouse columnar spark|
+|4  |toys       |44.87|aggregate metrics row row filter lake map metrics columnar spark            |
++---+-----------+-----+----------------------------------------------------------------------------+
+only showing top 5 rows
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7ac5d292">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="2.-Top%E2%80%91N-with-RDD-API">2. Top‑N with <strong>RDD</strong> API<a class="anchor-link" href="#2.-Top%E2%80%91N-with-RDD-API">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=98c75bd2">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># RDD pipeline: tokenize 'text' column and count tokens</span>
+<span class="n">rdd</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">"text"</span><span class="p">)</span><span class="o">.</span><span class="n">rdd</span><span class="o">.</span><span class="n">flatMap</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">or</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+<span class="n">pair</span> <span class="o">=</span> <span class="n">rdd</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">pair</span><span class="o">.</span><span class="n">reduceByKey</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">:</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
+<span class="n">top_rdd</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">sortBy</span><span class="p">(</span><span class="k">lambda</span> <span class="n">kv</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="n">kv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">kv</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">top_rdd</span>
 </pre></div>
 </div>
 </div>
@@ -7579,347 +7667,41 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>WARNING: Using incubator modules: jdk.incubator.vector
-Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
-25/12/20 20:51:51 WARN Utils: Your hostname, sable-ThinkPad-X1-Yoga-3rd, resolves to a loopback address: 127.0.1.1; using 10.192.33.105 instead (on interface wlp2s0)
-25/12/20 20:51:51 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
-Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
-25/12/20 20:51:51 WARN Utils: Your hostname, sable-ThinkPad-X1-Yoga-3rd, resolves to a loopback address: 127.0.1.1; using 10.192.33.105 instead (on interface wlp2s0)
-25/12/20 20:51:51 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
-Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
-Setting default log level to "WARN".
-To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
-Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
-Setting default log level to "WARN".
-To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
-25/12/20 20:51:52 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-25/12/20 20:51:52 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Spark version: 4.0.1
-Project: DE1 Local Lakehouse Project
-</pre>
+<pre>                                                                                </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[1]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>{'project': {'name': 'DE1 Local Lakehouse Project',
-  'dataset': 'Wikipedia Clickstream (Nov 2024)',
-  'dataset_size': '10M rows / 450MB',
-  'team': 'Badr TAJINI'},
- 'paths': {'raw_csv_glob': 'data/clickstream/clickstream-10M.tsv',
-  'bronze': 'outputs/project/bronze',
-  'silver': 'outputs/project/silver',
-  'gold': 'outputs/project/gold',
-  'proof': 'proof',
-  'metrics_log': 'project_metrics_log.csv'},
- 'slo': {'freshness_hours': 2,
-  'q1_latency_p95_seconds': 4,
-  'storage_ratio_max': 0.6},
- 'hardware': {'cpu': 'Intel Core i7',
-  'ram_gb': 16,
-  'disk_type': 'SSD',
-  'spark_version': '4.0.0'},
- 'layout': {'partition_by': [],
-  'sort_by': [],
-  'target_file_size_mb': 128,
-  'max_files_per_partition': 10},
- 'queries': {'q1': {'description': 'Top 20 most visited pages',
-   'sql': 'SELECT curr as page, \n       SUM(n) as total_clicks\nFROM silver\nGROUP BY curr\nORDER BY total_clicks DESC\nLIMIT 20\n'},
-  'q2': {'description': 'Top 20 referrer pages',
-   'sql': "SELECT prev as referrer, \n       SUM(n) as total_clicks\nFROM silver\nWHERE prev != 'other-empty'\nGROUP BY prev\nORDER BY total_clicks DESC\nLIMIT 20\n"},
-  'q3': {'description': 'Click patterns by type (external/internal/link)',
-   'sql': 'SELECT type,\n       COUNT(DISTINCT curr) as unique_pages,\n       SUM(n) as total_clicks,\n       AVG(n) as avg_clicks_per_pair\nFROM silver\nGROUP BY type\nORDER BY total_clicks DESC\n'}},
- 'silver_schema': {'columns': [{'name': 'prev',
-    'type': 'StringType',
-    'nullable': False},
-   {'name': 'curr', 'type': 'StringType', 'nullable': False},
-   {'name': 'type', 'type': 'StringType', 'nullable': False},
-   {'name': 'n', 'type': 'IntegerType', 'nullable': False}]},
- 'data_quality': {'rules': [{'name': 'Non-null clicks',
-    'check': 'n IS NOT NULL',
-    'severity': 'error'},
-   {'name': 'Positive clicks', 'check': 'n &gt;= 0', 'severity': 'error'},
-   {'name': 'Valid page names',
-    'check': 'LENGTH(curr) &gt; 0',
-    'severity': 'error'},
-   {'name': 'Valid type',
-    'check': "type IN ('link', 'external', 'other')",
-    'severity': 'warning'}]},
- 'optimization': {'baseline': ['No partitioning',
-   'No sorting',
-   'Default file sizes',
-   'Full table scans'],
-  'optimized': ['Repartition by computed hash',
-   'Sort by clicks (n) descending',
-   'Target 128MB file size',
-   'Enable AQE',
-   'Coalesce small files']}}</pre>
+<pre>[('lake', 1215),
+ ('scala', 1200),
+ ('elt', 1199),
+ ('metrics', 1190),
+ ('row', 1183),
+ ('join', 1169),
+ ('warehouse', 1168),
+ ('shuffle', 1160),
+ ('ui', 1145),
+ ('aggregate', 1144)]</pre>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3485bc1e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="1.-Bronze-%E2%80%94-landing-raw-data">1. Bronze — landing raw data<a class="anchor-link" href="#1.-Bronze-%E2%80%94-landing-raw-data">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b70b077b">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8f79d2e8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">raw_glob</span> <span class="o">=</span> <span class="n">CFG</span><span class="p">[</span><span class="s2">"paths"</span><span class="p">][</span><span class="s2">"raw_csv_glob"</span><span class="p">]</span>
-<span class="n">bronze</span> <span class="o">=</span> <span class="n">CFG</span><span class="p">[</span><span class="s2">"paths"</span><span class="p">][</span><span class="s2">"bronze"</span><span class="p">]</span>
-<span class="n">proof</span> <span class="o">=</span> <span class="n">CFG</span><span class="p">[</span><span class="s2">"paths"</span><span class="p">][</span><span class="s2">"proof"</span><span class="p">]</span>
-
-<span class="n">df_raw</span> <span class="o">=</span> <span class="p">(</span><span class="n">spark</span><span class="o">.</span><span class="n">read</span>
-    <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">"header"</span><span class="p">,</span> <span class="s2">"false"</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">"inferSchema"</span><span class="p">,</span> <span class="s2">"false"</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">"delimiter"</span><span class="p">,</span> <span class="s2">"</span><span class="se">\t</span><span class="s2">"</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="n">raw_glob</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">toDF</span><span class="p">(</span><span class="s2">"prev"</span><span class="p">,</span> <span class="s2">"curr"</span><span class="p">,</span> <span class="s2">"type"</span><span class="p">,</span> <span class="s2">"n"</span><span class="p">))</span>
-
-<span class="n">row_count</span> <span class="o">=</span> <span class="n">df_raw</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
-<span class="n">df_raw</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="s2">"overwrite"</span><span class="p">)</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="n">bronze</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Bronze written: </span><span class="si">{</span><span class="n">bronze</span><span class="si">}</span><span class="s2">, rows: </span><span class="si">{</span><span class="n">row_count</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>[Stage 4:============================================&gt;              (6 + 2) / 8]</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Bronze written: outputs/project/bronze, rows: 10,000,000
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>                                                                                </pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=db84f2f2">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="2.-Silver-%E2%80%94-cleaning-and-typing">2. Silver — cleaning and typing<a class="anchor-link" href="#2.-Silver-%E2%80%94-cleaning-and-typing">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=2632c45c">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">silver</span> <span class="o">=</span> <span class="n">CFG</span><span class="p">[</span><span class="s2">"paths"</span><span class="p">][</span><span class="s2">"silver"</span><span class="p">]</span>
-
-<span class="n">df_silver</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_raw</span>
-    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">"n"</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"n"</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s2">"integer"</span><span class="p">))</span>
-    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"n"</span><span class="p">)</span><span class="o">.</span><span class="n">isNotNull</span><span class="p">())</span>
-    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"n"</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">length</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"curr"</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">dropDuplicates</span><span class="p">())</span>
-
-<span class="n">silver_count</span> <span class="o">=</span> <span class="n">df_silver</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
-<span class="n">df_silver</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="s2">"overwrite"</span><span class="p">)</span><span class="o">.</span><span class="n">parquet</span><span class="p">(</span><span class="n">silver</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Silver written: </span><span class="si">{</span><span class="n">silver</span><span class="si">}</span><span class="s2">, rows: </span><span class="si">{</span><span class="n">silver_count</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>[Stage 13:===================================================&gt;      (8 + 1) / 9]</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Silver written: outputs/project/silver, rows: 10,000,000
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>                                                                                </pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b80aca31">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="3.-Gold-%E2%80%94-analytics-tables">3. Gold — analytics tables<a class="anchor-link" href="#3.-Gold-%E2%80%94-analytics-tables">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a07fd046">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">gold</span> <span class="o">=</span> <span class="n">CFG</span><span class="p">[</span><span class="s2">"paths"</span><span class="p">][</span><span class="s2">"gold"</span><span class="p">]</span>
-<span class="n">queries</span> <span class="o">=</span> <span class="n">CFG</span><span class="p">[</span><span class="s2">"queries"</span><span class="p">]</span>
-
-<span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">gold</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">df_silver</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">"silver"</span><span class="p">)</span>
-
-<span class="n">df_q1</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">queries</span><span class="p">[</span><span class="s2">"q1"</span><span class="p">][</span><span class="s2">"sql"</span><span class="p">])</span>
-<span class="n">q1_count</span> <span class="o">=</span> <span class="n">df_q1</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
-<span class="n">df_q1</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="s2">"overwrite"</span><span class="p">)</span><span class="o">.</span><span class="n">parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">gold</span><span class="si">}</span><span class="s2">/q1_daily_aggregation"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Q1 written, rows: </span><span class="si">{</span><span class="n">q1_count</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-
-<span class="n">df_q2</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">queries</span><span class="p">[</span><span class="s2">"q2"</span><span class="p">][</span><span class="s2">"sql"</span><span class="p">])</span>
-<span class="n">q2_count</span> <span class="o">=</span> <span class="n">df_q2</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
-<span class="n">df_q2</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="s2">"overwrite"</span><span class="p">)</span><span class="o">.</span><span class="n">parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">gold</span><span class="si">}</span><span class="s2">/q2_top_referrers"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Q2 written, rows: </span><span class="si">{</span><span class="n">q2_count</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-
-<span class="n">df_q3</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">queries</span><span class="p">[</span><span class="s2">"q3"</span><span class="p">][</span><span class="s2">"sql"</span><span class="p">])</span>
-<span class="n">q3_count</span> <span class="o">=</span> <span class="n">df_q3</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
-<span class="n">df_q3</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="s2">"overwrite"</span><span class="p">)</span><span class="o">.</span><span class="n">parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">gold</span><span class="si">}</span><span class="s2">/q3_filtered_analysis"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Q3 written, rows: </span><span class="si">{</span><span class="n">q3_count</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Gold written: </span><span class="si">{</span><span class="n">gold</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>                                                                                </pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Q1 written, rows: 20
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>                                                                                </pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Q2 written, rows: 20
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>                                                                                </pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Q3 written, rows: 3
-Gold written: outputs/project/gold
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=06d72a4a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="4.-Baseline-plans-and-metrics">4. Baseline plans and metrics<a class="anchor-link" href="#4.-Baseline-plans-and-metrics">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=81d3388e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">proof</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">df_q1_baseline</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">queries</span><span class="p">[</span><span class="s2">"q1"</span><span class="p">][</span><span class="s2">"sql"</span><span class="p">])</span>
-<span class="n">plan_q1</span> <span class="o">=</span> <span class="n">df_q1_baseline</span><span class="o">.</span><span class="n">_jdf</span><span class="o">.</span><span class="n">queryExecution</span><span class="p">()</span><span class="o">.</span><span class="n">executedPlan</span><span class="p">()</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">proof</span><span class="si">}</span><span class="s2">/baseline_q1_plan.txt"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">plan_q1</span><span class="p">)</span>
-
-<span class="n">df_q2_baseline</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">queries</span><span class="p">[</span><span class="s2">"q2"</span><span class="p">][</span><span class="s2">"sql"</span><span class="p">])</span>
-<span class="n">plan_q2</span> <span class="o">=</span> <span class="n">df_q2_baseline</span><span class="o">.</span><span class="n">_jdf</span><span class="o">.</span><span class="n">queryExecution</span><span class="p">()</span><span class="o">.</span><span class="n">executedPlan</span><span class="p">()</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">proof</span><span class="si">}</span><span class="s2">/baseline_q2_plan.txt"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">plan_q2</span><span class="p">)</span>
-
-<span class="n">df_q3_baseline</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">queries</span><span class="p">[</span><span class="s2">"q3"</span><span class="p">][</span><span class="s2">"sql"</span><span class="p">])</span>
-<span class="n">plan_q3</span> <span class="o">=</span> <span class="n">df_q3_baseline</span><span class="o">.</span><span class="n">_jdf</span><span class="o">.</span><span class="n">queryExecution</span><span class="p">()</span><span class="o">.</span><span class="n">executedPlan</span><span class="p">()</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">proof</span><span class="si">}</span><span class="s2">/baseline_q3_plan.txt"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">plan_q3</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Saved baseline plans. Record Spark UI metrics now."</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Save as CSV (token,count)</span>
+<span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">"outputs"</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"outputs/top10_rdd.csv"</span><span class="p">,</span><span class="s2">"w"</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"token,count</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">t</span><span class="p">,</span><span class="n">c</span> <span class="ow">in</span> <span class="n">top_rdd</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Wrote outputs/top10_rdd.csv"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -7932,70 +7714,39 @@ Gold written: outputs/project/gold
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Saved baseline plans. Record Spark UI metrics now.
+<pre>Wrote outputs/top10_rdd.csv
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7535edef">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b9a71d88">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="5.-Optimization-%E2%80%94-layout-and-joins">5. Optimization — layout and joins<a class="anchor-link" href="#5.-Optimization-%E2%80%94-layout-and-joins">¶</a></h2>
+<h3 id="RDD-plan-%E2%80%94-evidence">RDD plan — evidence<a class="anchor-link" href="#RDD-plan-%E2%80%94-evidence">¶</a></h3>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b3c5adef">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=7999639c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">layout</span> <span class="o">=</span> <span class="n">CFG</span><span class="p">[</span><span class="s2">"layout"</span><span class="p">]</span>
-<span class="n">target_size_mb</span> <span class="o">=</span> <span class="n">layout</span><span class="p">[</span><span class="s2">"target_file_size_mb"</span><span class="p">]</span>
-
-<span class="n">df_silver_reloaded</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">parquet</span><span class="p">(</span><span class="n">silver</span><span class="p">)</span>
-<span class="n">total_bytes</span> <span class="o">=</span> <span class="n">df_silver_reloaded</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span>
-<span class="n">num_partitions</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">total_bytes</span> <span class="o">/</span> <span class="p">(</span><span class="n">target_size_mb</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">)))</span>
-
-<span class="n">df_silver_opt</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_silver_reloaded</span>
-    <span class="o">.</span><span class="n">repartition</span><span class="p">(</span><span class="n">num_partitions</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">sortWithinPartitions</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">desc</span><span class="p">(</span><span class="s2">"n"</span><span class="p">)))</span>
-
-<span class="n">silver_opt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">silver</span><span class="si">}</span><span class="s2">_optimized"</span>
-<span class="n">df_silver_opt</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="s2">"overwrite"</span><span class="p">)</span><span class="o">.</span><span class="n">parquet</span><span class="p">(</span><span class="n">silver_opt</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Optimized silver written: </span><span class="si">{</span><span class="n">silver_opt</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-
-<span class="n">df_silver_opt</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">"silver"</span><span class="p">)</span>
-
-<span class="n">df_q1_opt</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">queries</span><span class="p">[</span><span class="s2">"q1"</span><span class="p">][</span><span class="s2">"sql"</span><span class="p">])</span>
-<span class="n">plan_q1_opt</span> <span class="o">=</span> <span class="n">df_q1_opt</span><span class="o">.</span><span class="n">_jdf</span><span class="o">.</span><span class="n">queryExecution</span><span class="p">()</span><span class="o">.</span><span class="n">executedPlan</span><span class="p">()</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">proof</span><span class="si">}</span><span class="s2">/optimized_q1_plan.txt"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Optimizations: </span><span class="si">{</span><span class="n">num_partitions</span><span class="si">}</span><span class="s2"> partitions, sorted by n desc</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">plan_q1_opt</span><span class="p">)</span>
-
-<span class="n">df_q2_opt</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">queries</span><span class="p">[</span><span class="s2">"q2"</span><span class="p">][</span><span class="s2">"sql"</span><span class="p">])</span>
-<span class="n">plan_q2_opt</span> <span class="o">=</span> <span class="n">df_q2_opt</span><span class="o">.</span><span class="n">_jdf</span><span class="o">.</span><span class="n">queryExecution</span><span class="p">()</span><span class="o">.</span><span class="n">executedPlan</span><span class="p">()</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">proof</span><span class="si">}</span><span class="s2">/optimized_q2_plan.txt"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Optimizations: </span><span class="si">{</span><span class="n">num_partitions</span><span class="si">}</span><span class="s2"> partitions, sorted by n desc</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">plan_q2_opt</span><span class="p">)</span>
-
-<span class="n">df_q3_opt</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">queries</span><span class="p">[</span><span class="s2">"q3"</span><span class="p">][</span><span class="s2">"sql"</span><span class="p">])</span>
-<span class="n">plan_q3_opt</span> <span class="o">=</span> <span class="n">df_q3_opt</span><span class="o">.</span><span class="n">_jdf</span><span class="o">.</span><span class="n">queryExecution</span><span class="p">()</span><span class="o">.</span><span class="n">executedPlan</span><span class="p">()</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">proof</span><span class="si">}</span><span class="s2">/optimized_q3_plan.txt"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Optimizations: </span><span class="si">{</span><span class="n">num_partitions</span><span class="si">}</span><span class="s2"> partitions, sorted by n desc</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">plan_q3_opt</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Saved optimized plans. Record Spark UI metrics now."</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Trigger an action and record a textual plan for evidence</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="n">plan_rdd</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">_jdf</span><span class="o">.</span><span class="n">queryExecution</span><span class="p">()</span><span class="o">.</span><span class="n">executedPlan</span><span class="p">()</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
+<span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">"proof"</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"proof/plan_rdd.txt"</span><span class="p">,</span><span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n\n</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">plan_rdd</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Saved proof/plan_rdd.txt"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8007,43 +7758,410 @@ Gold written: outputs/project/gold
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>[Stage 77:&gt;                                                         (0 + 7) / 7]</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Optimized silver written: outputs/project/silver_optimized
-Saved optimized plans. Record Spark UI metrics now.
+<pre>Saved proof/plan_rdd.txt
 </pre>
 </div>
 </div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>                                                                                </pre>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=14ee5bbd">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2bb015a3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="6.-Cleanup">6. Cleanup<a class="anchor-link" href="#6.-Cleanup">¶</a></h2>
+<h2 id="3.-Top%E2%80%91N-with-DataFrame-API">3. Top‑N with <strong>DataFrame</strong> API<a class="anchor-link" href="#3.-Top%E2%80%91N-with-DataFrame-API">¶</a></h2>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9bbc1dfe">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c205ed41">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">tokens</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"text"</span><span class="p">)),</span> <span class="s2">"</span><span class="se">\\</span><span class="s2">s+"</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"token"</span><span class="p">)</span>
+<span class="n">df_tokens</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"token"</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">""</span><span class="p">)</span>
+<span class="n">agg_df</span> <span class="o">=</span> <span class="n">df_tokens</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s2">"token"</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">"*"</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"count"</span><span class="p">))</span>
+<span class="n">top_df</span> <span class="o">=</span> <span class="n">agg_df</span><span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">desc</span><span class="p">(</span><span class="s2">"count"</span><span class="p">),</span> <span class="n">F</span><span class="o">.</span><span class="n">asc</span><span class="p">(</span><span class="s2">"token"</span><span class="p">))</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">top_df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">top_df</span><span class="o">.</span><span class="n">coalesce</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="s2">"overwrite"</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">"header"</span><span class="p">,</span><span class="s2">"true"</span><span class="p">)</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s2">"outputs/top10_df_tmp"</span><span class="p">)</span>
+<span class="c1"># move single part file to stable path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">glob</span><span class="o">,</span><span class="w"> </span><span class="nn">shutil</span>
+<span class="n">part</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"outputs/top10_df_tmp/part*"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">part</span><span class="p">,</span> <span class="s2">"outputs/top10_df.csv"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Wrote outputs/top10_df.csv"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>+---------+-----+
+|token    |count|
++---------+-----+
+|lake     |1215 |
+|scala    |1200 |
+|elt      |1199 |
+|metrics  |1190 |
+|row      |1183 |
+|join     |1169 |
+|warehouse|1168 |
+|shuffle  |1160 |
+|ui       |1145 |
+|aggregate|1144 |
++---------+-----+
+
+Wrote outputs/top10_df.csv
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c3d0f80d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="DataFrame-plan-%E2%80%94-evidence">DataFrame plan — evidence<a class="anchor-link" href="#DataFrame-plan-%E2%80%94-evidence">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5b14fe8c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plan_df</span> <span class="o">=</span> <span class="n">top_df</span><span class="o">.</span><span class="n">_jdf</span><span class="o">.</span><span class="n">queryExecution</span><span class="p">()</span><span class="o">.</span><span class="n">executedPlan</span><span class="p">()</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"proof/plan_df.txt"</span><span class="p">,</span><span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n\n</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">plan_df</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Saved proof/plan_df.txt"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Saved proof/plan_df.txt
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=26353e14">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="4.-Projection-experiment:-select(%22*%22)-vs-minimal-projection">4. Projection experiment: <code>select("*")</code> vs minimal projection<a class="anchor-link" href="#4.-Projection-experiment:-select(%22*%22)-vs-minimal-projection">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=897926c4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Case A: select all columns then aggregate on 'category'</span>
+<span class="n">all_cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">"*"</span><span class="p">)</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s2">"category"</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">"value"</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"sum_value"</span><span class="p">))</span>
+<span class="n">all_cols</span><span class="o">.</span><span class="n">explain</span><span class="p">(</span><span class="s2">"formatted"</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">all_cols</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>  <span class="c1"># trigger</span>
+
+<span class="c1"># Case B: minimal projection then aggregate</span>
+<span class="n">proj</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">"category"</span><span class="p">,</span><span class="s2">"value"</span><span class="p">)</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s2">"category"</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">"value"</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"sum_value"</span><span class="p">))</span>
+<span class="n">proj</span><span class="o">.</span><span class="n">explain</span><span class="p">(</span><span class="s2">"formatted"</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">proj</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>  <span class="c1"># trigger</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Open Spark UI at http://localhost:4040 while each job runs and record metrics into lab1_metrics_log.csv"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>== Physical Plan ==
+AdaptiveSparkPlan (9)
++- HashAggregate (8)
+   +- Exchange (7)
+      +- HashAggregate (6)
+         +- InMemoryTableScan (1)
+               +- InMemoryRelation (2)
+                     +- Union (5)
+                        :- Scan csv  (3)
+                        +- Scan csv  (4)
+
+
+(1) InMemoryTableScan
+Output [2]: [category#1050, value#1051]
+Arguments: [category#1050, value#1051]
+
+(2) InMemoryRelation
+Arguments: [id#1049, category#1050, value#1051, text#1052], StorageLevel(disk, memory, deserialized, 1 replicas)
+
+(3) Scan csv 
+Output [4]: [id#1049, category#1050, value#1051, text#1052]
+Batched: false
+Location: InMemoryFileIndex [file:/home/sable/Documents/data engineering1/lab1-practice/data/lab1_dataset_a.csv]
+ReadSchema: struct&lt;id:int,category:string,value:double,text:string&gt;
+
+(4) Scan csv 
+Output [4]: [id#1070, category#1071, value#1072, text#1073]
+Batched: false
+Location: InMemoryFileIndex [file:/home/sable/Documents/data engineering1/lab1-practice/data/lab1_dataset_b.csv]
+ReadSchema: struct&lt;id:int,category:string,value:double,text:string&gt;
+
+(5) Union
+
+(6) HashAggregate
+Input [2]: [category#1050, value#1051]
+Keys [1]: [category#1050]
+Functions [1]: [partial_sum(value#1051)]
+Aggregate Attributes [1]: [sum#1784]
+Results [2]: [category#1050, sum#1785]
+
+(7) Exchange
+Input [2]: [category#1050, sum#1785]
+Arguments: hashpartitioning(category#1050, 200), ENSURE_REQUIREMENTS, [plan_id=1035]
+
+(8) HashAggregate
+Input [2]: [category#1050, sum#1785]
+Keys [1]: [category#1050]
+Functions [1]: [sum(value#1051)]
+Aggregate Attributes [1]: [sum(value#1051)#1723]
+Results [2]: [category#1050, sum(value#1051)#1723 AS sum_value#1718]
+
+(9) AdaptiveSparkPlan
+Output [2]: [category#1050, sum_value#1718]
+Arguments: isFinalPlan=false
+
+
+== Physical Plan ==
+AdaptiveSparkPlan (9)
++- HashAggregate (8)
+   +- Exchange (7)
+      +- HashAggregate (6)
+         +- InMemoryTableScan (1)
+               +- InMemoryRelation (2)
+                     +- Union (5)
+                        :- Scan csv  (3)
+                        +- Scan csv  (4)
+
+
+(1) InMemoryTableScan
+Output [2]: [category#1050, value#1051]
+Arguments: [category#1050, value#1051]
+
+(2) InMemoryRelation
+Arguments: [id#1049, category#1050, value#1051, text#1052], StorageLevel(disk, memory, deserialized, 1 replicas)
+
+(3) Scan csv 
+Output [4]: [id#1049, category#1050, value#1051, text#1052]
+Batched: false
+Location: InMemoryFileIndex [file:/home/sable/Documents/data engineering1/lab1-practice/data/lab1_dataset_a.csv]
+ReadSchema: struct&lt;id:int,category:string,value:double,text:string&gt;
+
+(4) Scan csv 
+Output [4]: [id#1070, category#1071, value#1072, text#1073]
+Batched: false
+Location: InMemoryFileIndex [file:/home/sable/Documents/data engineering1/lab1-practice/data/lab1_dataset_b.csv]
+ReadSchema: struct&lt;id:int,category:string,value:double,text:string&gt;
+
+(5) Union
+
+(6) HashAggregate
+Input [2]: [category#1050, value#1051]
+Keys [1]: [category#1050]
+Functions [1]: [partial_sum(value#1051)]
+Aggregate Attributes [1]: [sum#1956]
+Results [2]: [category#1050, sum#1957]
+
+(7) Exchange
+Input [2]: [category#1050, sum#1957]
+Arguments: hashpartitioning(category#1050, 200), ENSURE_REQUIREMENTS, [plan_id=1166]
+
+(8) HashAggregate
+Input [2]: [category#1050, sum#1957]
+Keys [1]: [category#1050]
+Functions [1]: [sum(value#1051)]
+Aggregate Attributes [1]: [sum(value#1051)#1895]
+Results [2]: [category#1050, sum(value#1051)#1895 AS sum_value#1892]
+
+(9) AdaptiveSparkPlan
+Output [2]: [category#1050, sum_value#1892]
+Arguments: isFinalPlan=false
+
+
+Open Spark UI at http://localhost:4040 while each job runs and record metrics into lab1_metrics_log.csv
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=825fd762">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## 4.1 Extract metrics from Spark UI and log to CSV</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
+
+<span class="c1"># Données extraites manuellement du Spark UI (Stage 30)</span>
+<span class="c1"># À adapter pour Case A et Case B</span>
+
+<span class="n">metrics_data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">"run_id"</span><span class="p">:</span> <span class="s2">"r1"</span><span class="p">,</span>
+        <span class="s2">"task"</span><span class="p">:</span> <span class="s2">"projection_experiment"</span><span class="p">,</span>
+        <span class="s2">"case"</span><span class="p">:</span> <span class="s2">"Case A: select(*)"</span><span class="p">,</span>
+        <span class="s2">"job_id"</span><span class="p">:</span> <span class="s2">"19"</span><span class="p">,</span>  <span class="c1"># À vérifier dans Jobs tab</span>
+        <span class="s2">"stage_id"</span><span class="p">:</span> <span class="s2">"30"</span><span class="p">,</span>
+        <span class="s2">"files_read"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span>
+        <span class="s2">"input_size_bytes"</span><span class="p">:</span> <span class="s2">"184627"</span><span class="p">,</span>  <span class="c1"># 180.4 KiB = 180.4 * 1024 = 184627.6</span>
+        <span class="s2">"input_records"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span>
+        <span class="s2">"shuffle_read_bytes"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>  <span class="c1"># Pas de shuffle read visible ici</span>
+        <span class="s2">"shuffle_write_bytes"</span><span class="p">:</span> <span class="s2">"560"</span><span class="p">,</span>  <span class="c1"># 560 B</span>
+        <span class="s2">"shuffle_write_records"</span><span class="p">:</span> <span class="s2">"8"</span><span class="p">,</span>
+        <span class="s2">"elapsed_ms"</span><span class="p">:</span> <span class="s2">"25"</span><span class="p">,</span>  <span class="c1"># Total Time Across All Tasks</span>
+        <span class="s2">"timestamp"</span><span class="p">:</span> <span class="s2">"2025-10-23T00:29:57"</span><span class="p">,</span>
+        <span class="s2">"notes"</span><span class="p">:</span> <span class="s2">"baseline - all columns, 2 tasks (12ms + 13ms)"</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">"run_id"</span><span class="p">:</span> <span class="s2">"r1"</span><span class="p">,</span>
+        <span class="s2">"task"</span><span class="p">:</span> <span class="s2">"projection_experiment"</span><span class="p">,</span>
+        <span class="s2">"case"</span><span class="p">:</span> <span class="s2">"Case B: select(category,value)"</span><span class="p">,</span>
+        <span class="s2">"job_id"</span><span class="p">:</span> <span class="s2">"20"</span><span class="p">,</span>  <span class="c1"># À vérifier</span>
+        <span class="s2">"stage_id"</span><span class="p">:</span> <span class="s2">"31"</span><span class="p">,</span>  <span class="c1"># Probablement stage suivant</span>
+        <span class="s2">"files_read"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span>
+        <span class="s2">"input_size_bytes"</span><span class="p">:</span> <span class="s2">"184627"</span><span class="p">,</span>  <span class="c1"># Même input (même données)</span>
+        <span class="s2">"input_records"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span>
+        <span class="s2">"shuffle_read_bytes"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>  <span class="c1"># À vérifier</span>
+        <span class="s2">"shuffle_write_bytes"</span><span class="p">:</span> <span class="s2">"560"</span><span class="p">,</span>  <span class="c1"># À comparer avec Case A</span>
+        <span class="s2">"shuffle_write_records"</span><span class="p">:</span> <span class="s2">"8"</span><span class="p">,</span>
+        <span class="s2">"elapsed_ms"</span><span class="p">:</span> <span class="s2">"30"</span><span class="p">,</span>  <span class="c1"># À extraire du UI pour Case B</span>
+        <span class="s2">"timestamp"</span><span class="p">:</span> <span class="s2">"2025-10-23T00:30:05"</span><span class="p">,</span>
+        <span class="s2">"notes"</span><span class="p">:</span> <span class="s2">"minimal projection - 2 columns only"</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+
+<span class="c1"># Créer le dossier outputs</span>
+<span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">"outputs"</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Écrire dans le CSV</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"outputs/lab1_metrics_log.csv"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">fieldnames</span> <span class="o">=</span> <span class="n">metrics_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+    <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictWriter</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">fieldnames</span><span class="o">=</span><span class="n">fieldnames</span><span class="p">)</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writeheader</span><span class="p">()</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writerows</span><span class="p">(</span><span class="n">metrics_data</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"✓ Wrote outputs/lab1_metrics_log.csv"</span><span class="p">)</span>
+
+<span class="c1"># Afficher pour vérifier</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">df_metrics</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"outputs/lab1_metrics_log.csv"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">=== Lab1 Metrics Summary ==="</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_metrics</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+
+<span class="c1"># Analyse comparative</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">=== Comparative Analysis ==="</span><span class="p">)</span>
+<span class="n">case_a_shuffle</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">metrics_data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">'shuffle_write_bytes'</span><span class="p">])</span>
+<span class="n">case_b_shuffle</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">metrics_data</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">'shuffle_write_bytes'</span><span class="p">])</span>
+<span class="n">case_a_time</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">metrics_data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">'elapsed_ms'</span><span class="p">])</span>
+<span class="n">case_b_time</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">metrics_data</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">'elapsed_ms'</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Case A shuffle write: </span><span class="si">{</span><span class="n">case_a_shuffle</span><span class="si">}</span><span class="s2"> B"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Case B shuffle write: </span><span class="si">{</span><span class="n">case_b_shuffle</span><span class="si">}</span><span class="s2"> B"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Reduction: </span><span class="si">{</span><span class="n">case_a_shuffle</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">case_b_shuffle</span><span class="si">}</span><span class="s2"> B (</span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">case_a_shuffle</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">case_b_shuffle</span><span class="p">)</span><span class="o">/</span><span class="n">case_a_shuffle</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%)"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Case A elapsed: </span><span class="si">{</span><span class="n">case_a_time</span><span class="si">}</span><span class="s2"> ms"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Case B elapsed: </span><span class="si">{</span><span class="n">case_b_time</span><span class="si">}</span><span class="s2"> ms"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Time ratio: </span><span class="si">{</span><span class="n">case_b_time</span><span class="o">/</span><span class="n">case_a_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">x"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>✓ Wrote outputs/lab1_metrics_log.csv
+
+=== Lab1 Metrics Summary ===
+run_id                  task                           case  job_id  stage_id  files_read  input_size_bytes  input_records  shuffle_read_bytes  shuffle_write_bytes  shuffle_write_records  elapsed_ms           timestamp                                         notes
+    r1 projection_experiment              Case A: select(*)      19        30           2            184627              2                   0                  560                      8          25 2025-10-23T00:29:57 baseline - all columns, 2 tasks (12ms + 13ms)
+    r1 projection_experiment Case B: select(category,value)      20        31           2            184627              2                   0                  560                      8          30 2025-10-23T00:30:05           minimal projection - 2 columns only
+
+=== Comparative Analysis ===
+Case A shuffle write: 560 B
+Case B shuffle write: 560 B
+Reduction: 0 B (0.0%)
+
+Case A elapsed: 25 ms
+Case B elapsed: 30 ms
+Time ratio: 1.20x
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9a1c0e6b">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="5.-Cleanup">5. Cleanup<a class="anchor-link" href="#5.-Cleanup">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=26d39b5c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>

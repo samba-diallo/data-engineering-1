@@ -98,10 +98,6 @@ Quatre règles de validation appliquées en silver :
 
 1. **Clics non nuls** (erreur) : Rejeter les enregistrements avec clics nuls
 2. **Clics positifs** (erreur) : Rejeter les valeurs négatives (n >= 0)
-<<<<<<< HEAD
-=======
-
->>>>>>> 7454cbd (quelques mofications)
 3. **Nom de page valide** (erreur) : Rejeter les noms de page vides
 4. **Type valide** (avertissement) : Journaliser les types de lien inattendus
 
@@ -317,7 +313,4 @@ queries:
 - Spécification Parquet : https://parquet.apache.org/docs/
 - Supports de cours DE1  de Bard TAJINI: ESIEE 2025-2026
 
----
-
-**Nombre total de pages :** 6 pages (exigence : <= 6)  
 **Remise :** Voir `project_genai.md` pour la déclaration d’usage d’IA

@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-# Fichier de sauvegarde de configuration du projet-final
-# (Contenu réel du fichier à insérer ici)
-=======
+
 # DE1 Project Configuration
 # Author: DIALLO Samba, DIOP Mouhamed - Data Engineering I - ESIEE 2025-2026
 
@@ -164,9 +161,3 @@ optimization:
       - "Broadcast joins for small dimensions"
       - "Predicate pushdown"
       - "Column pruning"
-
-notes: |
-  Configuration file for DE1 Final Project.
-  Adjust paths, SLO, and schema according to your chosen dataset.
-  All metrics must be captured manually from Spark UI.
->>>>>>> dfb0611 (refactor: Réorganisation du dépôt - suppression des doublons, ajout de la documentation genai, conservation des outputs)
