@@ -1,9 +1,35 @@
-# Python
+# ===== Python =====
 __pycache__/
 *.py[cod]
+*$py.class
+.ipynb_checkpoints/
 
-# Large parquet files (too large for GitHub)
+# Virtual environments
+.venv/
+venv/
+env/
+
+# ===== Node / Quartz =====
+node_modules/
+public/
+.quartz-cache/
+*.log
+npm-debug.log*
+
+# ===== Données volumineuses =====
+# Lab 2 (parquet + dump)
 lab2-practice/retail_dw_20250826/
-
-# Large dump file
 lab2-practice/retail_schema_ownerless_full.dump
+
+# Projet final (datasets générés localement)
+projet-final/outputs/
+
+# ===== Caches & IDE =====
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ===== Claude / agents =====
+.claude/
+.sixth/

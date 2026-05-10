@@ -1,0 +1,12 @@
+2025-12-20 20:56:33.928983
+AdaptiveSparkPlan isFinalPlan=false
++- TakeOrderedAndProject(limit=20, orderBy=[total_clicks#198L DESC NULLS LAST], output=[referrer#197,total_clicks#198L])
+   +- HashAggregate(keys=[prev#21], functions=[sum(n#38)], output=[referrer#197, total_clicks#198L])
+      +- Exchange hashpartitioning(prev#21, 200), ENSURE_REQUIREMENTS, [plan_id=1376]
+         +- HashAggregate(keys=[prev#21], functions=[partial_sum(n#38)], output=[prev#21, sum#201L])
+            +- HashAggregate(keys=[prev#21, curr#22, type#23, n#38], functions=[], output=[prev#21, n#38])
+               +- Exchange hashpartitioning(prev#21, curr#22, type#23, n#38, 200), ENSURE_REQUIREMENTS, [plan_id=1372]
+                  +- HashAggregate(keys=[prev#21, curr#22, type#23, n#38], functions=[], output=[prev#21, curr#22, type#23, n#38])
+                     +- Project [_c0#17 AS prev#21, _c1#18 AS curr#22, _c2#19 AS type#23, cast(_c3#20 as int) AS n#38]
+                        +- Filter ((((((isnotnull(_c3#20) AND isnotnull(_c1#18)) AND isnotnull(_c0#17)) AND isnotnull(cast(_c3#20 as int))) AND (cast(_c3#20 as int) >= 0)) AND (length(_c1#18) > 0)) AND NOT (_c0#17 = other-empty))
+                           +- FileScan csv [_c0#17,_c1#18,_c2#19,_c3#20] Batched: false, DataFilters: [isnotnull(_c3#20), isnotnull(_c1#18), isnotnull(_c0#17), isnotnull(cast(_c3#20 as int)), (cast(_..., Format: CSV, Location: InMemoryFileIndex(1 paths)[file:/home/sable/Documents/data engineering1/projet-final/data/clickst..., PartitionFilters: [], PushedFilters: [IsNotNull(_c3), IsNotNull(_c1), IsNotNull(_c0), Not(EqualTo(_c0,other-empty))], ReadSchema: struct<_c0:string,_c1:string,_c2:string,_c3:string>

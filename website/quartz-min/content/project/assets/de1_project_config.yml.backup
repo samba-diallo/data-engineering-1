@@ -1,0 +1,163 @@
+
+# DE1 Project Configuration
+# Author: DIALLO Samba, DIOP Mouhamed - Data Engineering I - ESIEE 2025-2026
+
+project:
+  name: "DE1 Local Lakehouse Project"
+  dataset: "Wikipedia Clickstream (Nov 2024)"
+  dataset_size: "33.5M rows / 1.5GB"
+  team: "Badr TAJINI"
+
+paths:
+  # Raw data input
+  raw_csv_glob: "data/clickstream/*.csv"
+  
+  # Lakehouse layers
+  bronze: "outputs/project/bronze"
+  silver: "outputs/project/silver"
+  gold: "outputs/project/gold"
+  
+  # Evidence folder
+  proof: "proof"
+  
+  # Metrics log
+  metrics_log: "project_metrics_log.csv"
+
+slo:
+  # Freshness: gold updated within X hours after bronze arrival
+  freshness_hours: 2
+  
+  # Query latency: 95th percentile for Q1 on laptop
+  q1_latency_p95_seconds: 4
+  
+  # Storage: Parquet total size vs CSV baseline
+  storage_ratio_max: 0.60
+  
+  # Acceptable thresholds
+  thresholds:
+    max_shuffle_gb: 5
+    min_parallelism: 4
+    max_task_time_seconds: 60
+
+hardware:
+  cpu: "i7"
+  ram_gb: 16
+  spark_version: "4.0.0"
+  python_version: "3.10"
+
+layout:
+  # Partitioning strategy
+  partition_by: ["year", "month"]  # Adjust according to dataset
+  
+  # Bucketing (if applicable)
+  bucket_by: null
+  num_buckets: null
+  
+  # Z-ordering columns (if supported)
+  zorder_by: null
+  
+  # Sort within partitions
+  sort_by: ["timestamp"]  # Adjust according to dataset
+  
+  # Compaction
+  target_file_size_mb: 128
+  max_files_per_partition: 10
+
+queries:
+  Q1:
+    description: "Daily aggregation by date"
+    sql: |
+      SELECT date, 
+             COUNT(*) as total_clicks,
+             SUM(n) as total_views
+      FROM silver_table
+      GROUP BY date
+      ORDER BY date
+    
+  Q2:
+    description: "Top 10 referrers by total clicks"
+    sql: |
+      SELECT prev, 
+             COUNT(*) as click_count,
+             SUM(n) as total_views
+      FROM silver_table
+      WHERE prev IS NOT NULL
+      GROUP BY prev
+      ORDER BY click_count DESC
+      LIMIT 10
+    
+  Q3:
+    description: "Join aggregation with filter"
+    sql: |
+      SELECT curr, 
+             COUNT(DISTINCT prev) as unique_referrers,
+             SUM(n) as total_views
+      FROM silver_table
+      WHERE type = 'link'
+      GROUP BY curr
+      ORDER BY total_views DESC
+      LIMIT 100
+
+schema:
+  # Silver layer schema contracts
+  silver:
+    columns:
+      - name: "prev"
+        type: "string"
+        nullable: true
+      - name: "curr"
+        type: "string"
+        nullable: false
+      - name: "type"
+        type: "string"
+        nullable: false
+      - name: "n"
+        type: "long"
+        nullable: false
+      - name: "date"
+        type: "date"
+        nullable: false
+      - name: "year"
+        type: "integer"
+        nullable: false
+      - name: "month"
+        type: "integer"
+        nullable: false
+    
+    constraints:
+      - "n > 0"
+      - "type IN ('link', 'external', 'other')"
+      - "year >= 2015"
+
+data_quality:
+  rules:
+    - name: "no_null_curr"
+      check: "curr IS NOT NULL"
+      severity: "error"
+    
+    - name: "positive_n"
+      check: "n > 0"
+      severity: "error"
+    
+    - name: "valid_type"
+      check: "type IN ('link', 'external', 'other')"
+      severity: "warning"
+    
+    - name: "recent_dates"
+      check: "date >= '2015-01-01'"
+      severity: "info"
+
+optimization:
+  baseline:
+    description: "Initial pipeline without optimizations"
+    features: []
+  
+  optimized:
+    description: "Optimized pipeline with layout improvements"
+    features:
+      - "Partitioning by year/month"
+      - "Sorting by timestamp within partitions"
+      - "File compaction to target size"
+      - "Broadcast joins for small dimensions"
+      - "Predicate pushdown"
+      - "Column pruning"

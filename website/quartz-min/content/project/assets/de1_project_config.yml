@@ -1,0 +1,119 @@
+
+# DE1 Project Configuration
+# Author: DIALLO Samba, DIOP Mouhamed - Data Engineering I - ESIEE 2025-2026
+
+project:
+  name: "DE1 Local Lakehouse Project"
+  dataset: "Wikipedia Clickstream (Nov 2024)"
+  dataset_size: "10M rows / 450MB"
+
+paths:
+  # Raw data input
+  raw_csv_glob: "data/clickstream/clickstream-10M.tsv"
+  
+  # Lakehouse layers
+  bronze: "outputs/project/bronze"
+  silver: "outputs/project/silver"
+  gold: "outputs/project/gold"
+  
+  # Evidence folder
+  proof: "proof"
+  
+  # Metrics log
+  metrics_log: "project_metrics_log.csv"
+
+slo:
+  # Service Level Objectives
+  freshness_hours: 2
+  q1_latency_p95_seconds: 4
+  storage_ratio_max: 0.60
+
+hardware:
+  cpu: "Intel Core i7"
+  ram_gb: 16
+  disk_type: "SSD"
+  spark_version: "4.0.0"
+
+layout:
+  # Physical layout strategy
+  partition_by: []
+  sort_by: []
+  target_file_size_mb: 128
+  max_files_per_partition: 10
+
+queries:
+  q1:
+    description: "Top 20 most visited pages"
+    sql: |
+      SELECT curr as page, 
+             SUM(n) as total_clicks
+      FROM silver
+      GROUP BY curr
+      ORDER BY total_clicks DESC
+      LIMIT 20
+    
+  q2:
+    description: "Top 20 referrer pages"
+    sql: |
+      SELECT prev as referrer, 
+             SUM(n) as total_clicks
+      FROM silver
+      WHERE prev != 'other-empty'
+      GROUP BY prev
+      ORDER BY total_clicks DESC
+      LIMIT 20
+    
+  q3:
+    description: "Click patterns by type (external/internal/link)"
+    sql: |
+      SELECT type,
+             COUNT(DISTINCT curr) as unique_pages,
+             SUM(n) as total_clicks,
+             AVG(n) as avg_clicks_per_pair
+      FROM silver
+      GROUP BY type
+      ORDER BY total_clicks DESC
+
+silver_schema:
+  columns:
+    - name: prev
+      type: StringType
+      nullable: false
+    - name: curr
+      type: StringType
+      nullable: false
+    - name: type
+      type: StringType
+      nullable: false
+    - name: n
+      type: IntegerType
+      nullable: false
+
+data_quality:
+  rules:
+    - name: "Non-null clicks"
+      check: "n IS NOT NULL"
+      severity: "error"
+    - name: "Positive clicks"
+      check: "n >= 0"
+      severity: "error"
+    - name: "Valid page names"
+      check: "LENGTH(curr) > 0"
+      severity: "error"
+    - name: "Valid type"
+      check: "type IN ('link', 'external', 'other')"
+      severity: "warning"
+
+optimization:
+  baseline:
+    - "No partitioning"
+    - "No sorting"
+    - "Default file sizes"
+    - "Full table scans"
+  
+  optimized:
+    - "Repartition by computed hash"
+    - "Sort by clicks (n) descending"
+    - "Target 128MB file size"
+    - "Enable AQE"
+    - "Coalesce small files"
