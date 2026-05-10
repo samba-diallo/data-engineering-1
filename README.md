@@ -1,4 +1,4 @@
-# Data Engineering 1 - CEU
+# Data Engineering 1 
 
 Ce dépôt contient les travaux pratiques et le projet final du cours Data Engineering 1.
 
